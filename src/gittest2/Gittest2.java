@@ -24,7 +24,7 @@ public class Gittest2 {
        
        System.out.println("Testing testing");
        
-      System.out.prinln(2dsfdssd)
+      System.out.println("sfdssd");
     }
     
 }
