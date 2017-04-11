@@ -11,4 +11,8 @@ package gittest2;
  */
 public class Arende {
     
+    private int idarende;
+    private boolean status;
+    private String comment;
+    
 }
