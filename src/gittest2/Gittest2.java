@@ -6,6 +6,8 @@
 package gittest2;
 
 import java.awt.BorderLayout;
+import java.awt.FlowLayout;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 
 
@@ -15,27 +17,28 @@ import javax.swing.JFrame;
  */
 public class Gittest2 extends JFrame {
 
+    private static final long serialVersionUID = 1L;
+
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         
-       JFrame hoho = new JFrame();
+    new Gittest2().setVisible(true);    
        
-     
-       hoho.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // fixade en jävla ruta
-       hoho.setSize(1000,800);
-       hoho.setVisible(true);
-       System.out.println("Hello world");
-       
-       System.out.println("Tja Isak");
-       
-       System.out.println("Hola");
-       
-       
-       System.out.println("Testing testing");
-       
-      System.out.println("sfdssd");
+
+
     }
+    private Gittest2(){
+        super("hey");
+        setSize(1000,1000);
+        setResizable(false);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setLayout(new FlowLayout());
+        JButton button = new JButton("Jk");
+        add(button);
+        
+    }
+    
     
 }
