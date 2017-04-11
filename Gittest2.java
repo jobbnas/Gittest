@@ -20,6 +20,7 @@ public class Gittest2 {
        System.out.println("Tja Isak");
        
        System.out.print(sdfdafsd);
+       asdfasdgasdg
     }
     
 }
