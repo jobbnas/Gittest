@@ -101,3 +101,4 @@ public class Gittest2 extends JFrame { // extends betyder att Gittest ärver all
     
     
 }
+/// waddup?
