@@ -11,4 +11,11 @@ package gittest2;
  */
 public class Kund {
     
+    int kund_id;
+    String namn;
+    int perNr;
+    String adress;
+    String postNr;
+    String telNr;
+    
 }
