@@ -11,8 +11,11 @@ package gittest2;
  */
 public class Arende {
     
-    private int idarende;
+    private int arande_id;
     private boolean status;
     private String comment;
-    
+    private int tidsatgang;
+    private int preTid;
+    private int timPris;
+    private String arbetsuppgift;
 }
