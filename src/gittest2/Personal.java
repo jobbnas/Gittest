@@ -11,4 +11,9 @@ package gittest2;
  */
 public class Personal {
     String username;
+    String perNr;
+    String adress;
+    String postNr;
+    String telNr;
+    
 }
