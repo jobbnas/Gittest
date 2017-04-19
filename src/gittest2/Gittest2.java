@@ -38,7 +38,7 @@ public class Gittest2 extends JFrame { // extends betyder att Gittest ärver all
      */
     public static void main(String[] args) {
         
-    new Gittest2().setVisible(true);    
+       
     GUI test = new GUI();
     test.setVisible(true);
       
@@ -46,59 +46,7 @@ public class Gittest2 extends JFrame { // extends betyder att Gittest ärver all
 
     }
    
-    private Gittest2(){
-        super("Welcome");
-        setSize(1000,1000); // fönsterstorlek
-        setResizable(false);
-        setDefaultCloseOperation(EXIT_ON_CLOSE); // programmet slutar när man trycker på close
-        setLayout(new FlowLayout()); // layout
-        
-        
-        
-        JPanel pnl = new JPanel(); // schysst panel med bild
-        JLabel pnllable = new JLabel(new ImageIcon("/Users/mcbookpro/Downloads/dj-artist-dixon.jpg")); // här kan du lägga till bakrund
-        pnl.setVisible(true); // synlighet
-        pnl.setLocation(500, 500); // panelen placering
-        pnl.setLayout(new GridBagLayout());
-        JButton button2 = new JButton("Test"); //knappar
-        JButton button = new JButton("Tryck här");
-        button.setBounds(200, 300, 20, 100);
-        
-        JMenuBar hog = new JMenuBar();
-        
-        JMenu menyn = new JMenu("DO IT");
-        JMenuItem item = new JMenuItem("Nike");
-        menyn.add(item);
-        
-        add(hog);
-        hog.setVisible(true);
-        hog.add(menyn);
-        add(button); // Lägger till knappar i ramen
-        add(button2);
-        add(pnllable);
-        add(pnl);
-        button.addActionListener(new ActionListener()
-{
-  public void actionPerformed(ActionEvent e)
-  {
-   JOptionPane.showMessageDialog(null, "Isak my brother", "Isak suger", JOptionPane.ERROR_MESSAGE);
-  }
-});
-        
-        item.addActionListener(new ActionListener()
-{
-  public void actionPerformed(ActionEvent e)
-  {
-   JFrame nikes = new JFrame();
    
-        nikes.setVisible(true);
-        nikes.setSize(500,500); // fönsterstorlek
-        nikes.setResizable(false);
-         // programmet slutar när man trycker på close
-        nikes.setLayout(new FlowLayout()); // layout
-  }
-});
-    }
     
     
 }
