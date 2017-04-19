@@ -13,6 +13,7 @@ public class Personal {
     String username;
     String perNr;
     String adress;
+    String ort;
     String postNr;
     String telNr;
     

@@ -15,6 +15,7 @@ public class Kund {
     String namn;
     int perNr;
     String adress;
+    String ort;
     String postNr;
     String telNr;
     
