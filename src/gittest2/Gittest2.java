@@ -39,7 +39,8 @@ public class Gittest2 extends JFrame { // extends betyder att Gittest ärver all
     public static void main(String[] args) {
         
     new Gittest2().setVisible(true);    
-    
+    GUI test = new GUI();
+    test.setVisible(true);
       
 
 
