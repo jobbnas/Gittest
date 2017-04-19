@@ -15,7 +15,8 @@ import javax.swing.JFrame;
 public class Gittest2{ 
    static final String JDBC_DRIVER = "com.microsoft.sqlserver.jdbc.SQLServerDriver";  
    static final String DB_URL = "jdbc:sqlserver://localhost;databaseName=Github2;integratedSecurity=true;";
-    
+   static final String USER = "username";
+   static final String PASS = "password";
 
     public static void main(String[] args) {
         
