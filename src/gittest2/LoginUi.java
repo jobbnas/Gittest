@@ -11,6 +11,18 @@ package gittest2;
  */
 public class LoginUi extends javax.swing.JFrame {
 
+    private String user;
+    private String passw;
+    
+    String getPass(){
+        
+     return this.passw;   
+    }
+    
+    String getUser(){
+        
+    return this.user;    
+    }
     /**
      * Creates new form LoginUi
      */
@@ -73,6 +85,14 @@ public class LoginUi extends javax.swing.JFrame {
         jLabel2.setText("Användarnamn");
 
         jButton1.setText("Login");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jButton1MousePressed(evt);
+            }
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -148,6 +168,18 @@ public class LoginUi extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+      String usi = jTextField1.getText();
+      String pass = String.valueOf(jPasswordField1.getPassword());
+      user = usi;
+      passw = pass;
+      System.out.println(usi + " " + pass);
+    }//GEN-LAST:event_jButton1MouseClicked
+
+    private void jButton1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1MousePressed
 
     /**
      * @param args the command line arguments

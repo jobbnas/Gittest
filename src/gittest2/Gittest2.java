@@ -28,16 +28,22 @@ public class Gittest2{
     DB data = new DB();
     data.koppla();
     System.out.println("Ange användarnamn");
-    String u = input.nextLine();
+    String u;
     System.out.println("Ange lösen");
-    String l = input.nextLine();
+    String l;
     
-    data.login(u, l);
-    data.stang();
+    
+    
     
     LoginUi login = new LoginUi();
     login.setVisible(true);
-
+    while(login.isActive()){
+    u = login.getUser();
+    l = login.getPass();
+    data.login(u, l);
+    }
+    
+    
     }
 
     private static void KopplaUpp() throws ClassNotFoundException, SQLException {

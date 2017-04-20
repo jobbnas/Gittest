@@ -88,6 +88,7 @@ public class DB {
    }
    
    public void login(String username, String password) throws ClassNotFoundException, SQLException{   
+       conn = DriverManager.getConnection(jdbcUrl,USER,PASS);
        logg = conn.prepareStatement(get_personal);
        logg.setString(1,username);
        logg.setString(2,password);
@@ -100,6 +101,11 @@ public class DB {
            System.out.println("Välkommen"+use);
            
        }
+       try{
+         if(conn!=null)
+            conn.close();
+      }catch(SQLException se){
+      }
        
    }
    
