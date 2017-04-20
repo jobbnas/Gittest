@@ -62,14 +62,11 @@ public class DB {
       //finally block used to close resources
       try{
          if(stmt!=null)
+             System.out.println("Connection closed");
             stmt.close();
       }catch(SQLException se2){
       }// nothing we can do
-      try{
-         if(conn!=null)
-            conn.close();
-      }catch(SQLException se){
-      }//end finally try
+      
    }//end try
        
        

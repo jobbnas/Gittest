@@ -24,8 +24,10 @@ public class Gittest2{
        
 //    GUI test = new GUI();
 //    test.setVisible(true);
+    DB data = new DB();
+    data.koppla();
+    data.stang();
     
-    KopplaUpp();
     LoginUi login = new LoginUi();
     login.setVisible(true);
 
