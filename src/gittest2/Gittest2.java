@@ -7,6 +7,7 @@ package gittest2;
 
 
 import java.sql.*;
+import java.util.Scanner;
 import javax.swing.JFrame;
 
 
@@ -20,12 +21,18 @@ public class Gittest2{
    static final String PASS = "199404046253";
 
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
-        
+        Scanner input = new Scanner(System.in);
        
 //    GUI test = new GUI();
 //    test.setVisible(true);
     DB data = new DB();
     data.koppla();
+    System.out.println("Ange användarnamn");
+    String u = input.nextLine();
+    System.out.println("Ange lösen");
+    String l = input.nextLine();
+    
+    data.login(u, l);
     data.stang();
     
     LoginUi login = new LoginUi();

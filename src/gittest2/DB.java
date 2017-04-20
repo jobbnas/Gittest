@@ -18,8 +18,10 @@ public class DB {
    static final String jdbcUrl = "jdbc:sqlserver://myisak.cvhdjaougv6g.eu-central-1.rds.amazonaws.com\\myisak:1433;databaseName=Github2";
    static final String USER = "root";
    static final String PASS = "199404046253";
+   static final String get_personal ="SELECT * FROM Personal "+"WHERE userName=? "+"AND password=?" ;
    Connection conn = null;
    Statement stmt = null;
+   PreparedStatement logg = null;
    
    
    public void koppla() throws ClassNotFoundException, SQLException {
@@ -46,16 +48,20 @@ public class DB {
   
          String first = rs.getString("fNamn");
          String last = rs.getString("eNamn");
+         String prnr = rs.getString("perNr");
+         String adress = rs.getString("adress");
+         String ort = rs.getString("ort");
+         String telnr = rs.getString("telNr");
         
           
          //Display values
         
-         System.out.println(first + " " +last);
+         System.out.println(first + " " +last + " "+prnr+" "+adress+" "+ort+" "+telnr);
          
       }
       
       stmt.close();
-      conn.close();
+     
    }catch(SQLException se){
    }catch(Exception e){
    }finally{
@@ -81,7 +87,21 @@ public class DB {
        
    }
    
-      
+   public void login(String username, String password) throws ClassNotFoundException, SQLException{   
+       logg = conn.prepareStatement(get_personal);
+       logg.setString(1,username);
+       logg.setString(2,password);
+       ResultSet rs1 = logg.executeQuery();
+       
+       while (rs1.next()){
+           
+           String use = rs1.getString("userName");
+           
+           System.out.println("Välkommen"+use);
+           
+       }
+       
+   }
    
 }//end main
     
