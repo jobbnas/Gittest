@@ -26,7 +26,8 @@ public class Gittest2{
 //    test.setVisible(true);
     
     KopplaUpp();
-    
+    LoginUi login = new LoginUi();
+    login.setVisible(true);
 
     }
 
