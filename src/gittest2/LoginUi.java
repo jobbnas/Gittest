@@ -11,8 +11,8 @@ package gittest2;
  */
 public class LoginUi extends javax.swing.JFrame {
 
-    private String user = "jobbnas";
-    private String passw = "123";
+    private String user; 
+    private String passw;
     void setUser(String us){
     this.user = us;    
         
