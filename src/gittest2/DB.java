@@ -18,7 +18,7 @@ public class DB {
    static final String jdbcUrl = "jdbc:sqlserver://myisak.cvhdjaougv6g.eu-central-1.rds.amazonaws.com\\myisak:1433;databaseName=Github2";
    static final String USER = "root";
    static final String PASS = "199404046253";
-   static final String get_personal ="SELECT * FROM Personal "+"WHERE userName=? "+"AND password=?" ;
+   static final String get_personal ="SELECT * FROM Personal WHERE userName=? AND password=?";
    Connection conn = null;
    Statement stmt = null;
    PreparedStatement logg = null;
