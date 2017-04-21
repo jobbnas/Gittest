@@ -47,60 +47,7 @@ public class Gittest2{
     
     }
 
-    private static void KopplaUpp() throws ClassNotFoundException, SQLException {
-        
-            Connection conn = null;
-            Statement stmt = null;
-    
 
-   try{
-      //STEP 2: Register JDBC driver
-      Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-
-      //STEP 3: Open a connection
-      System.out.println("Connecting to database...");
-      conn = DriverManager.getConnection(jdbcUrl,USER,PASS);
-
-      //STEP 4: Execute a query
-      System.out.println("Creating statement...");
-    stmt = conn.createStatement();
-      String sql;
-      sql = "SELECT * From Kund";
-      
-     ResultSet rs = stmt.executeQuery(sql);
-     
-           while(rs.next()){
-         //Retrieve by column name
-  
-         String first = rs.getString("fNamn");
-         String last = rs.getString("eNamn");
-        
-          
-         //Display values
-        
-         System.out.println(first + " " +last);
-         
-      }
-      
-      stmt.close();
-      conn.close();
-   }catch(SQLException se){
-   }catch(Exception e){
-   }finally{
-      //finally block used to close resources
-      try{
-         if(stmt!=null)
-            stmt.close();
-      }catch(SQLException se2){
-      }// nothing we can do
-      try{
-         if(conn!=null)
-            conn.close();
-      }catch(SQLException se){
-      }//end finally try
-   }//end try
-   System.out.println("Goodbye!");
-}//end main
 }//end FirstExample
     
    
