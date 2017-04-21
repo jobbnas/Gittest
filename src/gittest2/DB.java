@@ -90,6 +90,7 @@ public class DB {
    public void login(String username, String password) throws ClassNotFoundException, SQLException{   
        
        Connection conn1 = null;
+       Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
        conn1 = DriverManager.getConnection(jdbcUrl,USER,PASS);
        logg = conn1.prepareStatement(get_personal);
        logg.setString(1,username);
@@ -111,6 +112,51 @@ public class DB {
        
    }
    
+   public void loginjonas() throws ClassNotFoundException, SQLException{
+      Connection conn3 = null;
+      Statement stmt3 = null;
+      
+      try {
+          Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+          
+          conn3 = DriverManager.getConnection(jdbcUrl, USER, PASS);
+          System.out.println("Jonas connection online!");
+          
+          System.out.println("Skapar statement");
+          stmt3 = conn3.createStatement();
+          
+          String sqlJ = "SELECT * FROM Personal";
+          ResultSet rsJ = stmt3.executeQuery(sqlJ);
+          
+          while (rsJ.next()){
+              
+              String nam = rsJ.getString("fNamn");
+              System.out.println(nam);
+              
+              
+          }
+          rsJ.close();
+      }catch(SQLException se){
+          se.printStackTrace();
+       }catch(Exception e){
+      //Handle errors for Class.forName
+      e.printStackTrace();
+   }finally{
+      //finally block used to close resources
+      try{
+         if(stmt!=null)
+            conn.close();
+      }catch(SQLException se){
+      }// do nothing
+      try{
+         if(conn!=null)
+            conn.close();
+      }catch(SQLException se){
+         se.printStackTrace();
+      }//end finally try
+   }//end try
+       
+   }
 }//end main
     
 
