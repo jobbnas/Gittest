@@ -15,25 +15,36 @@ import javax.swing.table.DefaultTableModel;
 public class KundUI extends javax.swing.JFrame {
 
     Kund k = new Kund();
-
+    ArrayList<Kund> lista = new ArrayList<>();
     public KundUI() {
         initComponents();
+        Visa_Kund();
         
         
         
     }
     
+    
 
 
     
     public void Visa_Kund(){
-        ArrayList<Kund> lista = new kundLisata();
+        
+        
         DefaultTableModel mode = (DefaultTableModel)JTable_KundLista.getModel();
         Object[] row = new Object[6];
         for(int i=0; i<lista.size();i++){
             
             row[0]lista.get(i).getKund_id();
             row[1]lista.get(i).getNamn();
+            row[2]lista.get(i).getAdress();
+            row[3]lista.get(i).getOrt();
+            row[4]lista.get(i).getPostNr();
+            row[5]lista.get(i).getTelNr();
+            
+            mode.addRow(row);
+            
+            
         }
     }
     
