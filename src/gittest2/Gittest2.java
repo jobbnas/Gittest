@@ -29,7 +29,8 @@ public class Gittest2{
 //    test.setVisible(true);
     
 
-
+    LoadingScreen1 ladda = new LoadingScreen1();
+    
     DB data = new DB();
     
     System.out.println("Ange användarnamn");
