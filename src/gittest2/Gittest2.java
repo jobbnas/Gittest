@@ -25,6 +25,9 @@ public class Gittest2{
        
 //    GUI test = new GUI();
 //    test.setVisible(true);
+    Kund k = new Kund();
+
+
     DB data = new DB();
     data.koppla();
     System.out.println("Ange användarnamn");
@@ -32,7 +35,7 @@ public class Gittest2{
     System.out.println("Ange lösen");
     String l;
     
-    
+
     
     
     LoginUi login = new LoginUi();
