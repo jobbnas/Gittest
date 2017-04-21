@@ -37,6 +37,17 @@ public class Kund {
     String postNr;
     String telNr;
     
+    public Kund(int id,String n,int prnr,String adr,String or,String pstnr,String telnr){
+        kund_id = id;
+        namn = n;
+        perNr = prnr;
+        adress = adr;
+        ort = or;
+        postNr = pstnr;
+        telNr = telnr;
+        
+        
+    }
     
     
     public void laggTillKund(){
