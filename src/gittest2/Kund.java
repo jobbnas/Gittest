@@ -31,13 +31,14 @@ public class Kund {
    
     int kund_id;
     String namn;
-    int perNr;
+   
+    String perNr;
     String adress;
     String ort;
     String postNr;
     String telNr;
     
-    public Kund(int id,String n,int prnr,String adr,String or,String pstnr,String telnr){
+    public Kund(int id,String n,String prnr,String adr,String or,String pstnr,String telnr){
         this.kund_id = id;
         this.namn = n;
         this.perNr = prnr;
@@ -65,11 +66,11 @@ public class Kund {
         this.namn = namn;
     }
 
-    public int getPerNr() {
+    public String getPerNr() {
         return perNr;
     }
 
-    public void setPerNr(int perNr) {
+    public void setPerNr(String perNr) {
         this.perNr = perNr;
     }
 
@@ -105,6 +106,10 @@ public class Kund {
         this.telNr = telNr;
     }
     
+    @Override
+    public String toString() {
+    return telNr + " of " + namn;
+     }
     
     public void laggTillKund(){
         

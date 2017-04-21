@@ -7,6 +7,8 @@ package gittest2;
 
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 import javax.swing.JFrame;
 
@@ -25,21 +27,27 @@ public class Gittest2{
        
 //    GUI test = new GUI();
 //    test.setVisible(true);
-    Kund k = new Kund();
+    
 
 
     DB data = new DB();
-    data.koppla();
+    
     System.out.println("Ange användarnamn");
     String u;
     System.out.println("Ange lösen");
     String l;
-    
+    data.setKundtoList();
 
+    ArrayList<Kund> kundlist;
     
+ 
     
     LoginUi login = new LoginUi();
     login.setVisible(true);
+    data.loginjonas();
+    
+    
+    
     
     while(login.isActive()){
     u = login.getUser();

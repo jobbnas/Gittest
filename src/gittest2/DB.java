@@ -23,6 +23,7 @@ public class DB {
    Connection conn = null;
    Statement stmt = null;
    PreparedStatement logg = null;
+   private ArrayList<Kund>listkund = new ArrayList<>();
    
    
    public void koppla() throws ClassNotFoundException, SQLException {
@@ -173,8 +174,12 @@ public class DB {
           
           String sqlJ = "SELECT * FROM Kund";
           ResultSet rsJ = stmt4.executeQuery(sqlJ);
-          
+          System.out.println("Result");
+          int steg=0;
           while (rsJ.next()){
+              
+              steg += 1;
+              System.out.println(steg);
               int i =rsJ.getInt("Kund_ID");
               String nam = rsJ.getString("fNamn");
               String enam = rsJ.getString("eNamn");
@@ -191,28 +196,87 @@ public class DB {
               
               
           }
+          stmt4.close();
           rsJ.close();
-      }catch(SQLException se){
-          se.printStackTrace();
-       }catch(Exception e){
-      //Handle errors for Class.forName
-      e.printStackTrace();
-   }finally{
+      }catch(SQLException | ClassNotFoundException se){
+       }finally{
       //finally block used to close resources
       try{
-         if(stmt4!=null)
-            conn4.close();
+         if(stmt!=null) {
+             conn.close();
+         }
       }catch(SQLException se){
       }// do nothing
       try{
-         if(conn4!=null)
-            conn4.close();
+         if(conn!=null) {
+             conn.close();
+         }
       }catch(SQLException se){
-         se.printStackTrace();
       }//end finally try
    }//end try 
-            
+          System.out.print("We made it");
      return kundlist();       
+   }
+   
+   public void setKundtoList()throws ClassNotFoundException, SQLException{
+       
+       Connection conn4 = null;
+      Statement stmt4 = null; 
+            try {
+          Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+          
+          conn4 = DriverManager.getConnection(jdbcUrl, USER, PASS);
+          System.out.println("Jonas connection online!");
+          
+          System.out.println("Skapar statement");
+          stmt4 = conn4.createStatement();
+          
+          String sqlJ = "SELECT * FROM Kund";
+          ResultSet rsJ = stmt4.executeQuery(sqlJ);
+          System.out.println("Result");
+          int steg=0;
+          while (rsJ.next()){
+              
+              steg += 1;
+              System.out.println(steg);
+              int i =rsJ.getInt("Kund_ID");
+              String nam = rsJ.getString("fNamn");
+              String enam = rsJ.getString("eNamn");
+              String pr =rsJ.getString("perNr");
+              String ad = rsJ.getString("adress");
+              String o = rsJ.getString("ort");
+              String ps = rsJ.getString("postNr");
+              String tel = rsJ.getString("telNr");
+              
+              Kund kk = new Kund(i,nam,pr,ad,o,ps,tel);
+              listkund.add(kk);
+              
+              
+              
+              
+          }
+          stmt4.close();
+          rsJ.close();
+      }catch(SQLException | ClassNotFoundException se){
+       }finally{
+      //finally block used to close resources
+      try{
+         if(stmt!=null) {
+             conn.close();
+         }
+      }catch(SQLException se){
+      }// do nothing
+      try{
+         if(conn!=null) {
+             conn.close();
+         }
+      }catch(SQLException se){
+      }//end finally try
+   }//end try 
+          System.out.print("We made it");
+       
+       
+       
    }
 }//end main
     
