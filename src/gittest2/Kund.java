@@ -48,6 +48,62 @@ public class Kund {
         
         
     }
+
+    public int getKund_id() {
+        return kund_id;
+    }
+
+    public void setKund_id(int kund_id) {
+        this.kund_id = kund_id;
+    }
+
+    public String getNamn() {
+        return namn;
+    }
+
+    public void setNamn(String namn) {
+        this.namn = namn;
+    }
+
+    public int getPerNr() {
+        return perNr;
+    }
+
+    public void setPerNr(int perNr) {
+        this.perNr = perNr;
+    }
+
+    public String getAdress() {
+        return adress;
+    }
+
+    public void setAdress(String adress) {
+        this.adress = adress;
+    }
+
+    public String getOrt() {
+        return ort;
+    }
+
+    public void setOrt(String ort) {
+        this.ort = ort;
+    }
+
+    public String getPostNr() {
+        return postNr;
+    }
+
+    public void setPostNr(String postNr) {
+        this.postNr = postNr;
+    }
+
+    public String getTelNr() {
+        return telNr;
+    }
+
+    public void setTelNr(String telNr) {
+        this.telNr = telNr;
+    }
     
     
     public void laggTillKund(){
