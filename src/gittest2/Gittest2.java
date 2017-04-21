@@ -37,6 +37,7 @@ public class Gittest2{
     
     LoginUi login = new LoginUi();
     login.setVisible(true);
+    
     while(login.isActive()){
     u = login.getUser();
     l = login.getPass();

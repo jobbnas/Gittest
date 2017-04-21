@@ -11,9 +11,17 @@ package gittest2;
  */
 public class LoginUi extends javax.swing.JFrame {
 
-    private String user;
-    private String passw;
+    private String user = "jobbnas";
+    private String passw = "123";
+    void setUser(String us){
+    this.user = us;    
+        
+    }
     
+    void setPassw(String pass){
+        
+     this.passw = pass;   
+    }
     String getPass(){
         
      return this.passw;   
@@ -172,8 +180,8 @@ public class LoginUi extends javax.swing.JFrame {
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
       String usi = jTextField1.getText();
       String pass = String.valueOf(jPasswordField1.getPassword());
-      user = usi;
-      passw = pass;
+      this.user = usi;
+      this.passw = pass;
       System.out.println(usi + " " + pass);
     }//GEN-LAST:event_jButton1MouseClicked
 
