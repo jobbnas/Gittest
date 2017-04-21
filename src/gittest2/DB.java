@@ -6,6 +6,7 @@
 package gittest2;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 
 /**
@@ -156,6 +157,62 @@ public class DB {
       }//end finally try
    }//end try
        
+   }
+   
+   public ArrayList<Kund>kundlist()throws ClassNotFoundException, SQLException{
+      Connection conn4 = null;
+      Statement stmt4 = null; 
+            try {
+          Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+          
+          conn4 = DriverManager.getConnection(jdbcUrl, USER, PASS);
+          System.out.println("Jonas connection online!");
+          
+          System.out.println("Skapar statement");
+          stmt4 = conn4.createStatement();
+          
+          String sqlJ = "SELECT * FROM Kund";
+          ResultSet rsJ = stmt4.executeQuery(sqlJ);
+          
+          while (rsJ.next()){
+              int i =rsJ.getInt("Kund_ID");
+              String nam = rsJ.getString("fNamn");
+              String enam = rsJ.getString("eNamn");
+              String pr =rsJ.getString("perNr");
+              String ad = rsJ.getString("adress");
+              String o = rsJ.getString("ort");
+              String ps = rsJ.getString("postNr");
+              String tel = rsJ.getString("telNr");
+              
+              Kund kk = new Kund(i,nam,pr,ad,o,ps,tel);
+              kundlist().add(kk);
+              
+              
+              
+              
+          }
+          rsJ.close();
+      }catch(SQLException se){
+          se.printStackTrace();
+       }catch(Exception e){
+      //Handle errors for Class.forName
+      e.printStackTrace();
+   }finally{
+      //finally block used to close resources
+      try{
+         if(stmt4!=null)
+            conn4.close();
+      }catch(SQLException se){
+      }// do nothing
+      try{
+         if(conn4!=null)
+            conn4.close();
+      }catch(SQLException se){
+         se.printStackTrace();
+      }//end finally try
+   }//end try 
+            
+     return kundlist();       
    }
 }//end main
     
