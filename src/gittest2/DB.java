@@ -14,7 +14,7 @@ import java.sql.*;
  */
 public class DB {
     
-    static final String JDBC_DRIVER = "com.microsoft.sqlserver.jdbc.SQLServerDriver";  
+   static final String JDBC_DRIVER = "com.microsoft.sqlserver.jdbc.SQLServerDriver";  
    static final String jdbcUrl = "jdbc:sqlserver://myisak.cvhdjaougv6g.eu-central-1.rds.amazonaws.com\\myisak:1433;databaseName=Github2";
    static final String USER = "root";
    static final String PASS = "199404046253";
@@ -100,7 +100,7 @@ public class DB {
            
            String use = rs1.getString("userName");
            
-           System.out.println("Välkommen"+use);
+           System.out.println("Välkommen "+use);
            
        }
        try{
