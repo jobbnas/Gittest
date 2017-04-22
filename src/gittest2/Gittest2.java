@@ -40,11 +40,13 @@ public class Gittest2{
     data.setKundtoList();
 
     ArrayList<Kund> kundlist;
+    kundlist = (ArrayList<Kund>)data.listkund.clone();
    
     LoginUi login = new LoginUi();
     login.setVisible(true);
     data.loginjonas();
     KundUI isak = new KundUI();
+    isak.lista = (ArrayList<Kund>)kundlist.clone();
     isak.Visa_Kund();
     isak.setVisible(true);
     

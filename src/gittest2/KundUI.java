@@ -20,19 +20,19 @@ public  class KundUI extends javax.swing.JFrame {
 
    
    DB db = new DB();
-   
+   public ArrayList<Kund> lista;
    Kund k;
     
     public KundUI() throws ClassNotFoundException, SQLException {
         initComponents();
-        Visa_Kund();
+        
      
         
     }
     
     public void Visa_Kund() throws ClassNotFoundException, SQLException{
         
-        ArrayList<Kund> lista =db.listkund;
+        
         
         DefaultTableModel mode = (DefaultTableModel)JTable_KundLista.getModel();
         Object[] row = new Object[6];
