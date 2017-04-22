@@ -47,7 +47,7 @@ public class Kund {
     String telNr;
     String fNamn;
     String eNamn;
-    public Kund(String fNamn,String eNamn, String prnr,String adr,String or,String pstnr,String telnr){
+    public Kund(int kund_id, String fNamn,String eNamn, String prnr,String adr,String or,String pstnr,String telnr){
         
         this.fNamn = fNamn;
         this.eNamn = eNamn;
@@ -56,7 +56,7 @@ public class Kund {
         this.ort = or;
         this.postNr = pstnr;
         this.telNr = telnr;
-        
+        this.kund_id = kund_id;
         
     }
 

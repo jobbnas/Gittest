@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -36,17 +38,18 @@ Scanner input = new Scanner(System.in);
         
         
         DefaultTableModel mode = (DefaultTableModel)JTable_KundLista.getModel();
-        Object[] row = new Object[6];
+        Object[] row = new Object[8];
         for(int i=0; i<lista.size();i++){
             
-            row[0]=lista.get(i).getKund_id();
-            row[1]=lista.get(i).getfNamn();
-            row[1]=lista.get(i).geteNamn();
-            row[2]=lista.get(i).getAdress();
-            row[3]=lista.get(i).getOrt();
-            row[4]=lista.get(i).getPostNr();
-            row[5]=lista.get(i).getTelNr();
             
+            row[0]=lista.get(i).getfNamn();
+            row[1]=lista.get(i).geteNamn();
+            row[2]=lista.get(i).getPerNr();
+            row[3]=lista.get(i).getAdress();
+            row[4]=lista.get(i).getOrt();
+            row[5]=lista.get(i).getPostNr();
+            row[6]=lista.get(i).getTelNr();
+            row[7]=lista.get(i).getKund_id();
             mode.addRow(row);
             
            
@@ -79,7 +82,7 @@ Scanner input = new Scanner(System.in);
 
             },
             new String [] {
-                "Förnamn", "Efternamn", "Personnummer", "Adress", "Ort", "Postnummer", "Telefonnummer"
+                "Förnamn", "Efternamn", "Personnummer", "Adress", "Ort", "Postnummer", "Telefonnummer", "Kund_Id"
             }
         ));
         jScrollPane1.setViewportView(JTable_KundLista);
@@ -96,6 +99,11 @@ Scanner input = new Scanner(System.in);
         jButton3.setText("Tabort Kund");
 
         jButton4.setText("Sök Kund");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -153,29 +161,35 @@ Scanner input = new Scanner(System.in);
       
       String fNamn, eNamn, prnr,adr,or,pstnr,telnr;
       Scanner input = new Scanner(System.in);
+    JFrame frame = new JFrame();
+     
+      int id =0;
+      fNamn = JOptionPane.showInputDialog(frame, "Skriv in Kundens namn");
+      eNamn = JOptionPane.showInputDialog(frame, "Skriv in Kundens efternamn");
+      prnr  = JOptionPane.showInputDialog(frame, "SKriv in Kundens personnummer");
+      adr  = JOptionPane.showInputDialog(frame, "SKriv in Kundens adress");
+      or  = JOptionPane.showInputDialog(frame, "Skriv in Kundens ort");
+      pstnr  = JOptionPane.showInputDialog(frame, "SKriv in Kundens postnummer");
+      telnr  = JOptionPane.showInputDialog(frame, "SKriv in Kundens telefonnummer");
       
-      
-      System.out.println("SKriv in Kundens namn");
-      fNamn = input.nextLine();
-      System.out.println("SKriv in Kundens efternamn");
-      eNamn = input.nextLine();
-      System.out.println("SKriv in Kundens personnummer");
-      prnr = input.nextLine();
-      System.out.println("SKriv in Kundens adress");
-      adr = input.nextLine();
-      System.out.println("SKriv in Kundens ort");
-      or = input.nextLine();
-      System.out.println("SKriv in Kundens postnummer");
-      pstnr = input.nextLine();
-      System.out.println("SKriv in Kundens telefonnummer");
-      telnr = input.nextLine();
-      
-       Kund k = new Kund(fNamn, eNamn, prnr,adr,or,pstnr,telnr);
+       Kund k = new Kund(id,fNamn, eNamn, prnr,adr,or,pstnr,telnr);
         k.laggTillKund();
        
         
         
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+      
+        db.SökKund();
+        
+        
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments

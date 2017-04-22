@@ -7,6 +7,7 @@ package gittest2;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Scanner;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -25,6 +26,7 @@ public class DB {
    Statement stmt = null;
    PreparedStatement logg = null;
    public ArrayList<Kund>listkund = new ArrayList<>();
+   ResultSet rsJ;
 
     public void setListkund(ArrayList<Kund> listkund) {
         this.listkund = listkund;
@@ -169,8 +171,6 @@ public class DB {
        
    }
    
-  
-   
    public void setKundtoList()throws ClassNotFoundException, SQLException{
        
        Connection conn4 = null;
@@ -192,7 +192,7 @@ public class DB {
               
               steg += 1;
               System.out.println(steg);
-              int i =rsJ.getInt("Kund_ID");
+              int b =rsJ.getInt("Kund_ID");
               String fNamn = rsJ.getString("fNamn");
               String eNamn = rsJ.getString("eNamn");
               String pr =rsJ.getString("perNr");
@@ -201,7 +201,7 @@ public class DB {
               String ps = rsJ.getString("postNr");
               String tel = rsJ.getString("telNr");
               
-              Kund kk = new Kund(fNamn,eNamn,pr,ad,o,ps,tel);
+              Kund kk = new Kund(b,fNamn,eNamn,pr,ad,o,ps,tel);
               listkund.add(kk);
               
               
@@ -231,7 +231,91 @@ public class DB {
        
        
    }
+   public void SökKund(){
+       
+      Scanner input = new Scanner(System.in);
+      
+      Connection conn3 = null;
+      Statement stmt3 = null;
+      int id;
+      String fNamn;
+      String eNamn;
+      
+
+      System.out.println("Skriv fNamn");
+      fNamn = input.nextLine();
+      
+      System.out.println("Skriv eNamn");
+      eNamn = input.nextLine();
+      
+      System.out.println("Skriv id");
+      id = input.nextInt();
+      
+      
+      try {
+          Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+          
+          conn3 = DriverManager.getConnection(jdbcUrl, USER, PASS);
+          System.out.println("Jonas connection online!");
+          
+          System.out.println("Skapar statement");
+          stmt3 = conn3.createStatement();
+          
+          String sql1 = "SELECT fNamn, eNamn, perNr, adress, ort, postNr, telNr\n" +
+                        "FROM Kund\n" +
+                        "WHERE ";
+          String and =" and ";
+          String sql2 ="Kund_ID = "+id;
+          String sql3 ="fNamn = "+"'"+fNamn+"'";
+          String sql4 ="eNamn"+"'"+eNamn+"'";
+          
+          if(id > 0){
+               rsJ = stmt3.executeQuery(sql1+sql2);
+          }
+          
+          else{
+             
+               rsJ = stmt3.executeQuery(sql1+sql3+and+sql4);
+          }
+          
+          while (rsJ.next()){
+              
+              String fNamn2 = rsJ.getString("fNamn");
+              String eNamn2 = rsJ.getString("eNamn");
+              String pr =rsJ.getString("perNr");
+              String ad = rsJ.getString("adress");
+              String o = rsJ.getString("ort");
+              String ps = rsJ.getString("postNr");
+              String tel = rsJ.getString("telNr");
+              
+              System.out.println(fNamn2);
+              
+          }
+          rsJ.close();
+      }catch(SQLException se){
+          se.printStackTrace();
+       }catch(Exception e){
+      //Handle errors for Class.forName
+      e.printStackTrace();
+   }finally{
+      //finally block used to close resources
+      try{
+         if(stmt!=null)
+            conn.close();
+      }catch(SQLException se){
+      }// do nothing
+      try{
+         if(conn!=null)
+            conn.close();
+      }catch(SQLException se){
+         se.printStackTrace();
+      }//end finally try
+   }//end try
+       
+   }
    
+   
+ 
   
 }//end main
 
