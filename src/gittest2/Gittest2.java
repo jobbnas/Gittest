@@ -15,7 +15,7 @@ import javax.swing.JFrame;
 
 
 
-
+//update
 public class Gittest2{ 
    static final String JDBC_DRIVER = "com.microsoft.sqlserver.jdbc.SQLServerDriver";  
    static final String jdbcUrl = "jdbc:sqlserver://myisak.cvhdjaougv6g.eu-central-1.rds.amazonaws.com\\myisak:1433;databaseName=Github2";
