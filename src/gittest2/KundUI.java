@@ -5,45 +5,49 @@
  */
 package gittest2;
 
+
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author El Rey
  */
-public class KundUI extends javax.swing.JFrame {
+public  class KundUI extends javax.swing.JFrame {
 
-    Kund k = new Kund();
-    ArrayList<Kund> lista = new ArrayList<>();
-    public KundUI() {
+   
+   DB db = new DB();
+   
+   Kund k;
+    
+    public KundUI() throws ClassNotFoundException, SQLException {
         initComponents();
         Visa_Kund();
-        
-        
+     
         
     }
     
-    
-
-
-    
-    public void Visa_Kund(){
+    public void Visa_Kund() throws ClassNotFoundException, SQLException{
         
+        ArrayList<Kund> lista =db.listkund;
         
         DefaultTableModel mode = (DefaultTableModel)JTable_KundLista.getModel();
         Object[] row = new Object[6];
         for(int i=0; i<lista.size();i++){
             
-            row[0]lista.get(i).getKund_id();
-            row[1]lista.get(i).getNamn();
-            row[2]lista.get(i).getAdress();
-            row[3]lista.get(i).getOrt();
-            row[4]lista.get(i).getPostNr();
-            row[5]lista.get(i).getTelNr();
+            row[0]=lista.get(i).getKund_id();
+            row[1]=lista.get(i).getNamn();
+            row[2]=lista.get(i).getAdress();
+            row[3]=lista.get(i).getOrt();
+            row[4]=lista.get(i).getPostNr();
+            row[5]=lista.get(i).getTelNr();
             
             mode.addRow(row);
             
+           
             
         }
     }
@@ -70,7 +74,16 @@ public class KundUI extends javax.swing.JFrame {
 
         JTable_KundLista.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
                 "Förnamn", "Efternamn", "Personnummer", "Adress", "Ort", "Postnummer", "Telefonnummer"
@@ -145,8 +158,8 @@ public class KundUI extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
       
+       
         k.laggTillKund();
-        
         
         
         
@@ -181,12 +194,15 @@ public class KundUI extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
+        java.awt.EventQueue.invokeLater(() -> {
+            try {
                 new KundUI().setVisible(true);
+            } catch (ClassNotFoundException | SQLException ex) {
+                Logger.getLogger(KundUI.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
     }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable JTable_KundLista;

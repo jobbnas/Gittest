@@ -92,7 +92,7 @@
             <Component class="javax.swing.JTable" name="JTable_KundLista">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="7" rowCount="0">
+                  <Table columnCount="7" rowCount="10">
                     <Column editable="true" title="F&#xf6;rnamn" type="java.lang.Object"/>
                     <Column editable="true" title="Efternamn" type="java.lang.Object"/>
                     <Column editable="true" title="Personnummer" type="java.lang.Object"/>
