@@ -8,6 +8,7 @@ package gittest2;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
@@ -17,12 +18,12 @@ import javax.swing.table.DefaultTableModel;
  * @author El Rey
  */
 public  class KundUI extends javax.swing.JFrame {
-
+Scanner input = new Scanner(System.in);
    
    DB db = new DB();
    public ArrayList<Kund> lista;
-   Kund k;
-    
+   
+   
     public KundUI() throws ClassNotFoundException, SQLException {
         initComponents();
         
@@ -39,7 +40,8 @@ public  class KundUI extends javax.swing.JFrame {
         for(int i=0; i<lista.size();i++){
             
             row[0]=lista.get(i).getKund_id();
-            row[1]=lista.get(i).getNamn();
+            row[1]=lista.get(i).getfNamn();
+            row[1]=lista.get(i).geteNamn();
             row[2]=lista.get(i).getAdress();
             row[3]=lista.get(i).getOrt();
             row[4]=lista.get(i).getPostNr();
@@ -74,16 +76,7 @@ public  class KundUI extends javax.swing.JFrame {
 
         JTable_KundLista.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+
             },
             new String [] {
                 "Förnamn", "Efternamn", "Personnummer", "Adress", "Ort", "Postnummer", "Telefonnummer"
@@ -158,10 +151,28 @@ public  class KundUI extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
       
-       
+      String fNamn, eNamn, prnr,adr,or,pstnr,telnr;
+      Scanner input = new Scanner(System.in);
+      
+      
+      System.out.println("SKriv in Kundens namn");
+      fNamn = input.nextLine();
+      System.out.println("SKriv in Kundens efternamn");
+      eNamn = input.nextLine();
+      System.out.println("SKriv in Kundens personnummer");
+      prnr = input.nextLine();
+      System.out.println("SKriv in Kundens adress");
+      adr = input.nextLine();
+      System.out.println("SKriv in Kundens ort");
+      or = input.nextLine();
+      System.out.println("SKriv in Kundens postnummer");
+      pstnr = input.nextLine();
+      System.out.println("SKriv in Kundens telefonnummer");
+      telnr = input.nextLine();
+      
+       Kund k = new Kund(fNamn, eNamn, prnr,adr,or,pstnr,telnr);
         k.laggTillKund();
-        
-        
+       
         
         
     }//GEN-LAST:event_jButton1ActionPerformed

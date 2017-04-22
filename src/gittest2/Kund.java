@@ -30,17 +30,27 @@ public class Kund {
    PreparedStatement logg = null;
    
     int kund_id;
-    String namn;
+
+    public int getKund_id() {
+        return kund_id;
+    }
+
+    public void setKund_id(int kund_id) {
+        this.kund_id = kund_id;
+    }
+    
    
     String perNr;
     String adress;
     String ort;
     String postNr;
     String telNr;
-    
-    public Kund(int id,String n,String prnr,String adr,String or,String pstnr,String telnr){
-        this.kund_id = id;
-        this.namn = n;
+    String fNamn;
+    String eNamn;
+    public Kund(String fNamn,String eNamn, String prnr,String adr,String or,String pstnr,String telnr){
+        
+        this.fNamn = fNamn;
+        this.eNamn = eNamn;
         this.perNr = prnr;
         this.adress = adr;
         this.ort = or;
@@ -50,20 +60,20 @@ public class Kund {
         
     }
 
-    public int getKund_id() {
-        return kund_id;
+    public String getfNamn() {
+        return fNamn;
     }
 
-    public void setKund_id(int kund_id) {
-        this.kund_id = kund_id;
+    public void setfNamn(String fNamn) {
+        this.fNamn = fNamn;
     }
 
-    public String getNamn() {
-        return namn;
+    public String geteNamn() {
+        return eNamn;
     }
 
-    public void setNamn(String namn) {
-        this.namn = namn;
+    public void seteNamn(String eNamn) {
+        this.eNamn = eNamn;
     }
 
     public String getPerNr() {
@@ -106,15 +116,11 @@ public class Kund {
         this.telNr = telNr;
     }
     
-    @Override
-    public String toString() {
-    return telNr + " of " + namn;
-     }
+
     
     public void laggTillKund(){
         
-   String fNamn, eNamn, perNr,adress,ort,postNr,telNr;
-   Scanner input = new Scanner(System.in);
+   
         
    Connection conn = null;
    Statement stmt = null;
@@ -132,20 +138,7 @@ public class Kund {
       stmt = conn.createStatement();
       
 
-      System.out.println("SKriv in Kundens namn");
-      fNamn = input.nextLine();
-      System.out.println("SKriv in Kundens efternamn");
-      eNamn = input.nextLine();
-      System.out.println("SKriv in Kundens personnummer");
-      perNr = input.nextLine();
-      System.out.println("SKriv in Kundens adress");
-      adress = input.nextLine();
-      System.out.println("SKriv in Kundens ort");
-      ort = input.nextLine();
-      System.out.println("SKriv in Kundens postnummer");
-      postNr = input.nextLine();
-      System.out.println("SKriv in Kundens telefonnummer");
-      telNr = input.nextLine();
+ 
      
      String sql =("INSERT INTO Kund\n" +
      "VALUES('"+fNamn+"','"+eNamn+"','"+perNr+"','"+adress+"','"+ort+"','"+postNr+"','"+telNr+"')");

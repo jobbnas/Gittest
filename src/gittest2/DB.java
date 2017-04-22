@@ -25,6 +25,14 @@ public class DB {
    Statement stmt = null;
    PreparedStatement logg = null;
    public ArrayList<Kund>listkund = new ArrayList<>();
+
+    public void setListkund(ArrayList<Kund> listkund) {
+        this.listkund = listkund;
+    }
+
+    public ArrayList<Kund> getListkund() {
+        return listkund;
+    }
    
    
    public void koppla() throws ClassNotFoundException, SQLException {
@@ -185,15 +193,15 @@ public class DB {
               steg += 1;
               System.out.println(steg);
               int i =rsJ.getInt("Kund_ID");
-              String nam = rsJ.getString("fNamn");
-              String enam = rsJ.getString("eNamn");
+              String fNamn = rsJ.getString("fNamn");
+              String eNamn = rsJ.getString("eNamn");
               String pr =rsJ.getString("perNr");
               String ad = rsJ.getString("adress");
               String o = rsJ.getString("ort");
               String ps = rsJ.getString("postNr");
               String tel = rsJ.getString("telNr");
               
-              Kund kk = new Kund(i,nam,pr,ad,o,ps,tel);
+              Kund kk = new Kund(fNamn,eNamn,pr,ad,o,ps,tel);
               listkund.add(kk);
               
               
