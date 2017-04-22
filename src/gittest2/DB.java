@@ -25,6 +25,7 @@ public class DB {
    Statement stmt = null;
    PreparedStatement logg = null;
    public ArrayList<Kund>listkund = new ArrayList<>();
+   public boolean loginSc = false;
 
     public void setListkund(ArrayList<Kund> listkund) {
         this.listkund = listkund;
@@ -113,7 +114,7 @@ public class DB {
            String use = rs1.getString("userName");
            
            System.out.println("Välkommen "+use);
-           
+           loginSc=true;
        }
        try{
          if(conn!=null)

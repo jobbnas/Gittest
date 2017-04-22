@@ -57,6 +57,7 @@ public class Gittest2{
     u = login.getUser();
     l = login.getPass();
     data.login(u, l);
+
     }
     
     
