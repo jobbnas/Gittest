@@ -5,12 +5,27 @@
  */
 package gittest2;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author El Rey
  */
-public class IT_Support {
+public class IT_Support extends Personal {
     
     String något;
+    private ArrayList<Kompetens>kompetenslista = new ArrayList<>();
+    
+    
+    void addKompetens (Kompetens k){
+        
+        kompetenslista.add(k);
+        
+        
+        
+    }
+    
+    
+    
     
 }

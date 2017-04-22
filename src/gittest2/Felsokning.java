@@ -5,12 +5,15 @@
  */
 package gittest2;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author mcbookpro
  */
-public class Felsokning {
+public class Felsokning extends Arende {
     
     int fel_id;
+    private ArrayList<Hittadefel>fellista = new ArrayList<>();
     
 }
