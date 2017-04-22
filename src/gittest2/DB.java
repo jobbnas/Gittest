@@ -5,9 +5,17 @@
  */
 package gittest2;
 
+import java.awt.Component;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Scanner;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -241,21 +249,44 @@ public class DB {
       
       Connection conn3 = null;
       Statement stmt3 = null;
-      int id;
+      String id;
       String fNamn;
       String eNamn;
       
 
-      System.out.println("Skriv fNamn");
-      fNamn = input.nextLine();
-      
-      System.out.println("Skriv eNamn");
-      eNamn = input.nextLine();
-      
-      System.out.println("Skriv id");
-      id = input.nextInt();
-      
-      
+JTextField field1 = new JTextField(10), field2 = new JTextField(10), field3 = new JTextField(10);
+
+            JPanel myPanel = new JPanel();
+
+            myPanel.setLayout(new BoxLayout(myPanel, BoxLayout.Y_AXIS));
+
+            myPanel.add(new JLabel("Kund ID:"));
+
+            myPanel.add(field1);
+
+            myPanel.add(Box.createHorizontalStrut(5));
+
+            myPanel.add(new JLabel("Förnamn:"));
+
+            myPanel.add(field2);
+
+            myPanel.add(Box.createHorizontalStrut(5));
+            myPanel.add(new JLabel("Efternamn:"));
+
+            myPanel.add(field3);
+
+
+            int result = JOptionPane.showConfirmDialog(null, myPanel, "Fyll i sökfält:", 
+            JOptionPane.OK_CANCEL_OPTION);
+            
+            id =field1.getText();
+            fNamn = field2.getText();
+            eNamn = field3.getText();
+            int id2 = Integer.parseInt(id);
+            
+            
+            
+
       try {
           Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
           
@@ -269,11 +300,11 @@ public class DB {
                         "FROM Kund\n" +
                         "WHERE ";
           String and =" and ";
-          String sql2 ="Kund_ID = "+id;
-          String sql3 ="fNamn = "+"'"+fNamn+"'";
-          String sql4 ="eNamn"+"'"+eNamn+"'";
+          String sql2 ="Kund_ID = "+field3;
+          String sql3 ="fNamn = "+"'"+field1+"'";
+          String sql4 ="eNamn"+"'"+field2+"'";
           
-          if(id > 0){
+          if(id2>0){
                rsJ = stmt3.executeQuery(sql1+sql2);
           }
           
