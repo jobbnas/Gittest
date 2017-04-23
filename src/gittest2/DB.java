@@ -252,9 +252,10 @@ public class DB {
       String id;
       String fNamn;
       String eNamn;
-      
+      String perNr;
 
-JTextField field1 = new JTextField(10), field2 = new JTextField(10), field3 = new JTextField(10);
+JTextField field1 = new JTextField(10), field2 = new JTextField(10), 
+        field3 = new JTextField(10), field4 = new JTextField(10);
 
             JPanel myPanel = new JPanel();
 
@@ -274,6 +275,11 @@ JTextField field1 = new JTextField(10), field2 = new JTextField(10), field3 = ne
             myPanel.add(new JLabel("Efternamn:"));
 
             myPanel.add(field3);
+            
+            myPanel.add(Box.createHorizontalStrut(5));
+            myPanel.add(new JLabel("Personnummer:"));
+
+            myPanel.add(field4);
 
 
             int result = JOptionPane.showConfirmDialog(null, myPanel, "Fyll i sökfält:", 
@@ -282,11 +288,12 @@ JTextField field1 = new JTextField(10), field2 = new JTextField(10), field3 = ne
             id =field1.getText();
             fNamn = field2.getText();
             eNamn = field3.getText();
+            perNr = field4.getName();
             int id2 = Integer.parseInt(id);
             
+            System.out.println(id2+"Hej");
             
             
-
       try {
           Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
           
@@ -296,23 +303,22 @@ JTextField field1 = new JTextField(10), field2 = new JTextField(10), field3 = ne
           System.out.println("Skapar statement");
           stmt3 = conn3.createStatement();
           
-          String sql1 = "SELECT fNamn, eNamn, perNr, adress, ort, postNr, telNr\n" +
-                        "FROM Kund\n" +
-                        "WHERE ";
-          String and =" and ";
-          String sql2 ="Kund_ID = "+field3;
-          String sql3 ="fNamn = "+"'"+field1+"'";
-          String sql4 ="eNamn"+"'"+field2+"'";
+          CallableStatement cstmt = null;
+                
           
-          if(id2>0){
-               rsJ = stmt3.executeQuery(sql1+sql2);
-          }
-          
-          else{
-             
-               rsJ = stmt3.executeQuery(sql1+sql3+and+sql4);
-          }
-          
+
+                    cstmt = conn3.prepareCall ("{call Sök2Test (?, ?, ?, ?)}");
+                    cstmt.setInt(1, id2);
+                    cstmt.setString(2, fNamn);
+                    cstmt.setString(3, eNamn);
+                    cstmt.setString(4, perNr);
+                    
+                    cstmt.execute();
+                    System.out.println("Färdig");
+                    rsJ = cstmt.getResultSet();
+
+
+
           while (rsJ.next()){
               
               String fNamn2 = rsJ.getString("fNamn");
@@ -323,10 +329,12 @@ JTextField field1 = new JTextField(10), field2 = new JTextField(10), field3 = ne
               String ps = rsJ.getString("postNr");
               String tel = rsJ.getString("telNr");
               
-              System.out.println(fNamn2);
+              System.out.println(fNamn2+eNamn2+pr+ad+o+ps+tel);
               
           }
+   
           rsJ.close();
+          cstmt.close();
       }catch(SQLException se){
           se.printStackTrace();
        }catch(Exception e){
