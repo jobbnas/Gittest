@@ -146,6 +146,13 @@ public class DB {
       Connection conn3 = null;
       Statement stmt3 = null;
       boolean temp = false;
+      String tempu =null;
+      String tempp=null;
+      String use=null;
+      String p=null;
+      boolean grind1 =false;
+      boolean grind2 =false;
+              
       try {
           Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
           
@@ -160,17 +167,22 @@ public class DB {
           
           while (rsJ.next()){
               
-              String use = rsJ.getString("userName");
-              String p = rsJ.getString("password");
+              tempu = rsJ.getString("userName");
+              tempp = rsJ.getString("password");
               
-            if (use.equals(user)&& p.equals(pass))  {
-                temp= true;
-            }
-            else{
-                temp= false;
-            }
+              if (tempp.equals(pass)){
+                grind1=true;
+              }
+              
+              if (tempu.equals(user)){
+                  grind2=true;
+                  
+              }
+
               
           }
+          
+
           rsJ.close();
       }catch(SQLException se){
           se.printStackTrace();
@@ -180,18 +192,28 @@ public class DB {
    }finally{
       //finally block used to close resources
       try{
-         if(stmt!=null)
-            conn.close();
+         if(stmt3!=null)
+            conn3.close();
       }catch(SQLException se){
       }// do nothing
       try{
-         if(conn!=null)
-            conn.close();
+         if(conn3!=null)
+            conn3.close();
       }catch(SQLException se){
          se.printStackTrace();
       }//end finally try
    }//end try
-      return temp; 
+                          if (grind1==true && grind2==true)  {
+                              System.out.println("Lösenord giltigt");
+                return true;
+            }
+            else{
+                 System.out.println("Funkar ej");             
+                return false;
+                
+            }  
+      
+      
    }
    
    public void setKundtoList()throws ClassNotFoundException, SQLException{
