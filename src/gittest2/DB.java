@@ -34,6 +34,11 @@ public class DB {
    Statement stmt = null;
    PreparedStatement logg = null;
    public ArrayList<Kund>listkund = new ArrayList<>();
+       String id;
+      String fNamn;
+      String eNamn;
+      String perNr;
+
 
    ResultSet rsJ;
 
@@ -249,51 +254,63 @@ public class DB {
       
       Connection conn3 = null;
       Statement stmt3 = null;
-      String id;
-      String fNamn;
-      String eNamn;
-      String perNr;
 
-JTextField field1 = new JTextField(10), field2 = new JTextField(10), 
-        field3 = new JTextField(10), field4 = new JTextField(10);
+
+JTextField field1 = new JTextField(10), 
+        field2 = new JTextField(10), 
+        field3 = new JTextField(10), 
+        field4 = new JTextField(10);
 
             JPanel myPanel = new JPanel();
 
             myPanel.setLayout(new BoxLayout(myPanel, BoxLayout.Y_AXIS));
 
             myPanel.add(new JLabel("Kund ID:"));
-
+            
             myPanel.add(field1);
 
             myPanel.add(Box.createHorizontalStrut(5));
 
             myPanel.add(new JLabel("Förnamn:"));
-
+            
             myPanel.add(field2);
 
             myPanel.add(Box.createHorizontalStrut(5));
             myPanel.add(new JLabel("Efternamn:"));
-
+            
             myPanel.add(field3);
             
             myPanel.add(Box.createHorizontalStrut(5));
             myPanel.add(new JLabel("Personnummer:"));
-
+            
             myPanel.add(field4);
 
 
             int result = JOptionPane.showConfirmDialog(null, myPanel, "Fyll i sökfält:", 
             JOptionPane.OK_CANCEL_OPTION);
             
-            id =field1.getText();
+            
+            
+            if (field1.getText() != null) {
+                id =field1.getText();
+                
+            }
+            if (field2.getText()!=null) {
             fNamn = field2.getText();
+            }
+            if (field3.getText()!=null){
             eNamn = field3.getText();
-            perNr = field4.getName();
+            }
+            if (field3.getText()!=null){
+            perNr = field4.getText();
+            
+            }
+
+            
+
+            System.out.println(fNamn+"Hej");
+            
             int id2 = Integer.parseInt(id);
-            
-            System.out.println(id2+"Hej");
-            
-            
       try {
           Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
           
@@ -356,10 +373,8 @@ JTextField field1 = new JTextField(10), field2 = new JTextField(10),
    }//end try
        
    }
+
    
-   
- 
-  
 }//end main
 
     
