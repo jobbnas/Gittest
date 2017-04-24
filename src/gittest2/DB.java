@@ -38,7 +38,7 @@ public class DB {
       String fNamn;
       String eNamn;
       String perNr;
-
+int id2;
 
    ResultSet rsJ;
 
@@ -290,27 +290,44 @@ JTextField field1 = new JTextField(10),
             JOptionPane.OK_CANCEL_OPTION);
             
             
-            
-            if (field1.getText() != null) {
-                id =field1.getText();
+                if (field1.getText().isEmpty()){
+                  
+                }
+                else {
+                   id=field1.getText();
+                   id2 = Integer.parseInt(id);
+                }
                 
-            }
-            if (field2.getText()!=null) {
-            fNamn = field2.getText();
-            }
-            if (field3.getText()!=null){
-            eNamn = field3.getText();
-            }
-            if (field3.getText()!=null){
-            perNr = field4.getText();
+                if (field2.getText().equals("")){
+                  
+                }
+                else {
+                 fNamn=field2.getText();
+                }     
+                
+                 if (field3.getText().equals("")){
+                  
+                }
+                else {
+                  eNamn=field3.getText();
+                }
+                 
+                if (field4.getText().equals("")){
+                 
+                }
+                else {
+                 perNr=field4.getText();
+                }                
+
             
-            }
+
+
 
             
 
             System.out.println(fNamn+"Hej");
             
-            int id2 = Integer.parseInt(id);
+            
       try {
           Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
           
