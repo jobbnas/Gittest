@@ -53,14 +53,14 @@ public class Gittest2{
     
     
     
-    while(login.isActive()){
-    if (data.loginjonas(login.getUser(), login.getPass(), login.getPos())==true){ // Ändrar man detta till false så stängs den, så ifsatsen funkar. men verkar vara något kraj på metoden
+    do{
+    if (data.loginjonas("gigday", "123", "Admin")==true){ // Ändrar man detta till false så stängs den, så ifsatsen funkar. men verkar vara något kraj på metoden
         System.out.println("Hej");
         login.dispose();
         
     }
      System.out.println("Running");
-    }
+    } while(login.isActive());
     
     
     }
