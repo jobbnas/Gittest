@@ -21,6 +21,10 @@ public class Gittest2{
    static final String jdbcUrl = "jdbc:sqlserver://myisak.cvhdjaougv6g.eu-central-1.rds.amazonaws.com\\myisak:1433;databaseName=Github2";
    static final String USER = "root";
    static final String PASS = "199404046253";
+   
+   static String b;
+   static String c;
+   static String r;
 
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
         Scanner input = new Scanner(System.in);
@@ -49,15 +53,34 @@ public class Gittest2{
     isak.lista = (ArrayList<Kund>)kundlist.clone();
     isak.Visa_Kund();
     isak.setVisible(true);
-    
+    while(login.getKnapp()==false){
+        
+       b= login.getUser();
+       c=  login.getPass();
+        r= login.getPos();
+        
+    }
     
     
     
     do{
-    if (data.loginjonas("gigday", "123", "Admin")==true){ // Ändrar man detta till false så stängs den, så ifsatsen funkar. men verkar vara något kraj på metoden
+ 
+       System.out.println(b+c);
+    if (data.loginjonas(b, c, r)==true){ // Ändrar man detta till false så stängs den, så ifsatsen funkar. men verkar vara något kraj på metoden
         System.out.println("Hej");
         login.dispose();
         
+        switch(r){
+            case"Admin":
+                
+                LoadingScreen1 hola = new LoadingScreen1();
+                hola.setVisible(true);
+            case"IT-Position":
+                
+            case"Processledare":
+                
+            default:
+        }
     }
      System.out.println("Running");
     } while(login.isActive());

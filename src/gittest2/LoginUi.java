@@ -13,8 +13,18 @@ public class LoginUi extends javax.swing.JFrame {
 
     private String user; 
     private String passw;
+    private boolean knapp = false;
+
+    public boolean getKnapp() {
+        return knapp;
+    }
+    
+    
+    
+    
     void setUser(String us){
-    this.user = us;    
+    this.user = us;
+        
         
     }
     String getPos(){
@@ -199,6 +209,7 @@ public class LoginUi extends javax.swing.JFrame {
       this.user = usi;
       this.passw = pass;
       System.out.println(usi + " " + pass);
+      this.knapp=true;
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jButton1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MousePressed
