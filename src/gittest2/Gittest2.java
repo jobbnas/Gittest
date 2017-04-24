@@ -44,9 +44,7 @@ public class Gittest2{
    
     LoginUi login = new LoginUi();
     login.setVisible(true);
-    if (data.loginjonas(login.getUser(), login.getPass(), login.getPos())){
-        System.out.println("Hej");
-    }
+
     KundUI isak = new KundUI();
     isak.lista = (ArrayList<Kund>)kundlist.clone();
     isak.Visa_Kund();
@@ -56,10 +54,12 @@ public class Gittest2{
     
     
     while(login.isActive()){
-    u = login.getUser();
-    l = login.getPass();
-    data.login(u, l);
-
+    if (data.loginjonas(login.getUser(), login.getPass(), login.getPos())==true){ // Ändrar man detta till false så stängs den, så ifsatsen funkar. men verkar vara något kraj på metoden
+        System.out.println("Hej");
+        login.dispose();
+        
+    }
+     System.out.println("Running");
     }
     
     
