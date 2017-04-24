@@ -44,7 +44,9 @@ public class Gittest2{
    
     LoginUi login = new LoginUi();
     login.setVisible(true);
-    data.loginjonas();
+    if (data.loginjonas(login.getUser(), login.getPass(), login.getPos())){
+        System.out.println("Hej");
+    }
     KundUI isak = new KundUI();
     isak.lista = (ArrayList<Kund>)kundlist.clone();
     isak.Visa_Kund();

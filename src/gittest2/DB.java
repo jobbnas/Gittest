@@ -38,7 +38,7 @@ public class DB {
       String fNamn;
       String eNamn;
       String perNr;
-int id2;
+    int id2;
 
    ResultSet rsJ;
 
@@ -142,10 +142,10 @@ int id2;
        
    }
    
-   public void loginjonas() throws ClassNotFoundException, SQLException{
+   public boolean loginjonas(String user, String pass, String pos) throws ClassNotFoundException, SQLException{
       Connection conn3 = null;
       Statement stmt3 = null;
-      
+      boolean temp = false;
       try {
           Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
           
@@ -155,14 +155,20 @@ int id2;
           System.out.println("Skapar statement");
           stmt3 = conn3.createStatement();
           
-          String sqlJ = "SELECT * FROM Personal";
+          String sqlJ = "SELECT * FROM Personal WHERE position= "+"'"+ pos+"'";
           ResultSet rsJ = stmt3.executeQuery(sqlJ);
           
           while (rsJ.next()){
               
-              String nam = rsJ.getString("fNamn");
-              System.out.println(nam);
+              String use = rsJ.getString("userName");
+              String p = rsJ.getString("password");
               
+            if (use.equals(user)&& p.equals(pass))  {
+                temp= true;
+            }
+            else{
+                temp= false;
+            }
               
           }
           rsJ.close();
@@ -185,7 +191,7 @@ int id2;
          se.printStackTrace();
       }//end finally try
    }//end try
-       
+      return temp; 
    }
    
    public void setKundtoList()throws ClassNotFoundException, SQLException{
