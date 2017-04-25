@@ -42,7 +42,7 @@ public class Gittest2{
     System.out.println("Ange lösen");
     String l;
     data.setKundtoList();
-
+// aaay
     ArrayList<Kund> kundlist;
     kundlist = (ArrayList<Kund>)data.listkund.clone();
    
