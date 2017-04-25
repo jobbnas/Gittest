@@ -84,7 +84,15 @@ Scanner input = new Scanner(System.in);
             new String [] {
                 "Förnamn", "Efternamn", "Personnummer", "Adress", "Ort", "Postnummer", "Telefonnummer", "Kund_Id"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(JTable_KundLista);
 
         jButton1.setText("Skapa Kund");

@@ -52,7 +52,7 @@ public class Gittest2{
     KundUI isak = new KundUI();
     isak.lista = (ArrayList<Kund>)kundlist.clone();
     isak.Visa_Kund();
-    isak.setVisible(true);
+    
     while(login.getKnapp()==false){
         
        b= login.getUser();
@@ -69,7 +69,7 @@ public class Gittest2{
     if (data.loginjonas(b, c, r)==true){ // Ändrar man detta till false så stängs den, så ifsatsen funkar. men verkar vara något kraj på metoden
         System.out.println("Hej");
         login.dispose();
-        
+        isak.setVisible(true);
         switch(r){
             case"Admin":
                 
