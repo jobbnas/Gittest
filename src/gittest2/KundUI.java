@@ -6,13 +6,19 @@
 package gittest2;
 
 //ayhshs
+import java.awt.Image;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.io.File;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -21,10 +27,11 @@ import javax.swing.table.DefaultTableModel;
  */
 public  class KundUI extends javax.swing.JFrame {
 Scanner input = new Scanner(System.in);
-   
+File icon = new File("C:\\Users\\El Rey\\Desktop\\Skola\\reload-icon-blue-symbol-circle-arrows-refresh-update_f"); 
+
    DB db = new DB();
    public ArrayList<Kund> lista;
-   
+   int pung;
    
     public KundUI() throws ClassNotFoundException, SQLException {
         initComponents();
@@ -74,6 +81,7 @@ Scanner input = new Scanner(System.in);
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         scrollbar1 = new java.awt.Scrollbar();
+        jButton5 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -91,6 +99,11 @@ Scanner input = new Scanner(System.in);
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
+            }
+        });
+        JTable_KundLista.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JTable_KundListaMouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(JTable_KundLista);
@@ -113,19 +126,26 @@ Scanner input = new Scanner(System.in);
             }
         });
 
+        jButton5.setText("Uppdatera");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING))
-                .addGap(64, 64, 64)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 689, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton5))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton2, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addGap(64, 64, 64)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 689, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(scrollbar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24))
@@ -133,7 +153,9 @@ Scanner input = new Scanner(System.in);
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(35, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jButton1)
@@ -199,6 +221,39 @@ Scanner input = new Scanner(System.in);
         
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    private void JTable_KundListaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTable_KundListaMouseClicked
+      JTable_KundLista.addMouseListener(new MouseAdapter() {
+  @Override
+  public void mouseClicked(MouseEvent e) {
+    if (e.getClickCount() == 2) {
+      JTable target = (JTable)e.getSource();
+      int row = target.getSelectedRow();
+            int column = target.getColumnCount();
+      
+      for(int i = 1; i<=column; i++){
+
+          if(JTable_KundLista.getModel().getColumnName(i).equalsIgnoreCase("Kund_Id")){
+             
+           
+              
+             pung = ((Integer) JTable_KundLista.getModel().getValueAt(row, i));
+             
+             System.out.println(pung);
+          }
+      }
+      
+      System.out.println("Hejhgdsjfkladkfjklsafj");
+      
+      // do some action if appropriate column
+    }
+  }
+});
+        
+        
+        
+        
+    }//GEN-LAST:event_JTable_KundListaMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -243,6 +298,7 @@ Scanner input = new Scanner(System.in);
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private java.awt.Scrollbar scrollbar1;
