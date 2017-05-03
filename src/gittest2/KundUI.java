@@ -6,7 +6,6 @@
 package gittest2;
 
 //ayhshs
-import java.awt.Image;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
@@ -15,10 +14,14 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.imageio.ImageIO;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -189,18 +192,70 @@ File icon = new File("C:\\Users\\El Rey\\Desktop\\Skola\\reload-icon-blue-symbol
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
       
+        
+        JTextField field1 = new JTextField(10), 
+        field2 = new JTextField(10), 
+        field3 = new JTextField(10), 
+        field4 = new JTextField(10),
+        field5 = new JTextField(10),
+        field6 = new JTextField(10),
+        field7 = new JTextField(10);
+
+            JPanel myPanel = new JPanel();
+
+            myPanel.setLayout(new BoxLayout(myPanel, BoxLayout.Y_AXIS));
+
+            myPanel.add(new JLabel("Förnamn:"));
+            
+            myPanel.add(field1);
+
+            myPanel.add(Box.createHorizontalStrut(5));
+
+            myPanel.add(new JLabel("Efternamn:"));
+            
+            myPanel.add(field2);
+
+            myPanel.add(Box.createHorizontalStrut(5));
+            myPanel.add(new JLabel("Personnummer:"));
+            
+            myPanel.add(field3);
+            
+            myPanel.add(Box.createHorizontalStrut(5));
+            myPanel.add(new JLabel("Adress:"));
+            
+            myPanel.add(field4);
+            
+            myPanel.add(Box.createHorizontalStrut(5));
+            myPanel.add(new JLabel("Ort:"));
+            
+            myPanel.add(field5);
+            
+            myPanel.add(Box.createHorizontalStrut(5));
+            myPanel.add(new JLabel("Postnummer:"));
+            
+            myPanel.add(field6);
+            
+            myPanel.add(Box.createHorizontalStrut(5));
+            myPanel.add(new JLabel("Telefonnummer:"));
+            
+            myPanel.add(field7);
+            
+
+            int result = JOptionPane.showConfirmDialog(null, myPanel, "Fyll i kunduppgifter:", 
+            JOptionPane.OK_CANCEL_OPTION);
+            
       String fNamn, eNamn, prnr,adr,or,pstnr,telnr;
       Scanner input = new Scanner(System.in);
     JFrame frame = new JFrame();
      
       int id =0;
-      fNamn = JOptionPane.showInputDialog(frame, "Skriv in Kundens namn");
-      eNamn = JOptionPane.showInputDialog(frame, "Skriv in Kundens efternamn");
-      prnr  = JOptionPane.showInputDialog(frame, "SKriv in Kundens personnummer");
-      adr  = JOptionPane.showInputDialog(frame, "SKriv in Kundens adress");
-      or  = JOptionPane.showInputDialog(frame, "Skriv in Kundens ort");
-      pstnr  = JOptionPane.showInputDialog(frame, "SKriv in Kundens postnummer");
-      telnr  = JOptionPane.showInputDialog(frame, "SKriv in Kundens telefonnummer");
+      fNamn = field1.getText();
+      eNamn = field2.getText();
+      prnr  = field3.getText();
+      adr  = field4.getText();
+      or  = field5.getText();
+      pstnr  = field6.getText();
+      telnr  = field7.getText();
       
        Kund k = new Kund(id,fNamn, eNamn, prnr,adr,or,pstnr,telnr);
         k.laggTillKund();
