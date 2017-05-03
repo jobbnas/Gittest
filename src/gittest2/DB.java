@@ -218,7 +218,7 @@ public class DB {
    
    public void setKundtoList()throws ClassNotFoundException, SQLException{
        
-       Connection conn4 = null;
+      Connection conn4 = null;
       Statement stmt4 = null; 
             try {
           Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");

@@ -49,9 +49,9 @@ public class Gittest2{
     LoginUi login = new LoginUi();
     login.setVisible(true);
 
-    KundUI isak = new KundUI();
-    isak.lista = (ArrayList<Kund>)kundlist.clone();
-    isak.Visa_Kund();
+    KundUI kundUI = new KundUI();
+    kundUI.lista = (ArrayList<Kund>)kundlist.clone();
+    kundUI.Visa_Kund();
     
     while(login.getKnapp()==false){
         
@@ -60,21 +60,17 @@ public class Gittest2{
         r= login.getPos();
         
     }
-    
-    
-    
-    do{
+     do{
  
        System.out.println(b+c);
     if (data.loginjonas(b, c, r)==true){ // Ändrar man detta till false så stängs den, så ifsatsen funkar. men verkar vara något kraj på metoden
         System.out.println("Hej");
         login.dispose();
-        isak.setVisible(true);
+        kundUI.setVisible(true);
         switch(r){
             case"Admin":
-                
-                LoadingScreen1 hola = new LoadingScreen1();
-                hola.setVisible(true);
+                    
+
             case"IT-Position":
                 
             case"Processledare":
