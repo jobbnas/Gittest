@@ -32,7 +32,7 @@ File icon = new File("C:\\Users\\El Rey\\Desktop\\Skola\\reload-icon-blue-symbol
    DB db = new DB();
    public ArrayList<Kund> lista;
    int pung;
-   
+   String namn;
     public KundUI() throws ClassNotFoundException, SQLException {
         initComponents();
         
@@ -90,7 +90,7 @@ File icon = new File("C:\\Users\\El Rey\\Desktop\\Skola\\reload-icon-blue-symbol
 
             },
             new String [] {
-                "Förnamn", "Efternamn", "Personnummer", "Adress", "Ort", "Postnummer", "Telefonnummer", "Kund_Id"
+                "Fornamn", "Efternamn", "Personnummer", "Adress", "Ort", "Postnummer", "Telefonnummer", "Kund_Id"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -230,7 +230,7 @@ File icon = new File("C:\\Users\\El Rey\\Desktop\\Skola\\reload-icon-blue-symbol
       int row = target.getSelectedRow();
             int column = target.getColumnCount();
       
-      for(int i = 1; i<=column; i++){
+      for(int i = 0; i<=column; i++){
 
           if(JTable_KundLista.getModel().getColumnName(i).equalsIgnoreCase("Kund_Id")){
              
@@ -240,9 +240,27 @@ File icon = new File("C:\\Users\\El Rey\\Desktop\\Skola\\reload-icon-blue-symbol
              
              System.out.println(pung);
           }
+          
+
+          
+      }
+      for(int i = 0; i<=column; i++){
+
+          
+          if(JTable_KundLista.getModel().getColumnName(i).equals("Fornamn")){
+             
+           
+              
+             namn = ((String) JTable_KundLista.getModel().getValueAt(row, i));
+             
+             System.out.println(namn);
+          }
+          
       }
       
-      System.out.println("Hejhgdsjfkladkfjklsafj");
+      
+      
+      System.out.println("Hejhgdsjfkladkfjklsafj"+namn+pung);
       
       // do some action if appropriate column
     }
