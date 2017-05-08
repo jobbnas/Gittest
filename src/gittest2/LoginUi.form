@@ -178,7 +178,7 @@
         </Component>
         <Component class="java.awt.Choice" name="choice1">
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="choice1.add(&quot;Admin&quot;);&#xa;choice1.add(&quot;IT-Position&quot;);&#xa;choice1.add(&quot;Processledare&quot;);"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="choice1.add(&quot;Admin&quot;); choice1.add(&quot;IT-Support&quot;); choice1.add(&quot;Processledare&quot;);"/>
             <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="LoginUi_choice1"/>
           </AuxValues>
         </Component>

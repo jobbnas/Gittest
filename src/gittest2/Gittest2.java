@@ -71,7 +71,7 @@ public class Gittest2{
             case"Admin":
                     
 
-            case"IT-Position":
+            case"IT-Support":
                 
             case"Processledare":
                 
