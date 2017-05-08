@@ -13,7 +13,7 @@ import java.util.Scanner;
 import javax.swing.JFrame;
 
 
-//asdadsaasdSADasdASDSAdASasd
+//asdadsaasdSADasdASDSAdASasdasdAS
 
 //update
 public class Gittest2{ 
