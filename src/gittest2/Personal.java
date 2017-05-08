@@ -16,5 +16,8 @@ public class Personal {
     String ort;
     String postNr;
     String telNr;
+    String fNamn;
+    String eNamn;
+    
     
 }
