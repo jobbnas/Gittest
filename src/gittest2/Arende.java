@@ -83,19 +83,19 @@ public class Arende {
         this.kompId = kompId;
     }
     
-    private int arande_id;
-    private boolean status;
-    private int tidsatgang;
-    private int preTid;
-    private int timPris;
-    private String arbetsuppgift;
-    private String Kund_ID;
-    private String userNamne;
-    private String kompId;
+     int arande_id;
+     boolean status = true;
+     int tidsatgang;
+     int preTid;
+     int timPris;
+     String arbetsuppgift;
+     String Kund_ID;
+     String userNamne;
+     String kompId;
     
 
 
-    public Arende(int arande_id, Boolean status,int tidsatgang, int preTid,
+    public Arende(int arande_id,int tidsatgang, int preTid,
             int timPris,String arbetsuppgift,String Kund_ID,String userNamne, String kompId){
         
         this.arande_id = arande_id;

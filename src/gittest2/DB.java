@@ -227,33 +227,33 @@ public class DB {
    
    public void setKundtoList()throws ClassNotFoundException, SQLException{
        
-      Connection conn4 = null;
-      Statement stmt4 = null; 
+      Connection conn8 = null;
+      Statement stmt8 = null; 
             try {
           Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
           
-          conn4 = DriverManager.getConnection(jdbcUrl, USER, PASS);
+          conn8 = DriverManager.getConnection(jdbcUrl, USER, PASS);
           System.out.println("Jonas connection online!");
           
           System.out.println("Skapar statement");
-          stmt4 = conn4.createStatement();
+          stmt8 = conn8.createStatement();
           
           String sqlJ = "SELECT * FROM Kund";
-          ResultSet rsJ = stmt4.executeQuery(sqlJ);
+          ResultSet rsJ8 = stmt8.executeQuery(sqlJ);
           System.out.println("Result");
           int steg=0;
-          while (rsJ.next()){
+          while (rsJ8.next()){
               
               steg += 1;
               System.out.println(steg);
-              int b =rsJ.getInt("Kund_ID");
-              String fNamn = rsJ.getString("fNamn");
-              String eNamn = rsJ.getString("eNamn");
-              String pr =rsJ.getString("perNr");
-              String ad = rsJ.getString("adress");
-              String o = rsJ.getString("ort");
-              String ps = rsJ.getString("postNr");
-              String tel = rsJ.getString("telNr");
+              int b =rsJ8.getInt("Kund_ID");
+              String fNamn = rsJ8.getString("fNamn");
+              String eNamn = rsJ8.getString("eNamn");
+              String pr =rsJ8.getString("perNr");
+              String ad = rsJ8.getString("adress");
+              String o = rsJ8.getString("ort");
+              String ps = rsJ8.getString("postNr");
+              String tel = rsJ8.getString("telNr");
               
               Kund kk = new Kund(b,fNamn,eNamn,pr,ad,o,ps,tel);
               listkund.add(kk);
@@ -262,20 +262,20 @@ public class DB {
               
               
           }
-          stmt4.close();
-          rsJ.close();
+          stmt8.close();
+          rsJ8.close();
       }catch(SQLException | ClassNotFoundException se){
        }finally{
       //finally block used to close resources
       try{
-         if(stmt!=null) {
-             conn.close();
+         if(stmt8!=null) {
+             conn8.close();
          }
       }catch(SQLException se){
       }// do nothing
       try{
-         if(conn!=null) {
-             conn.close();
+         if(conn8!=null) {
+             conn8.close();
          }
       }catch(SQLException se){
       }//end finally try
@@ -298,25 +298,25 @@ public class DB {
           System.out.println("Skapar statement");
           stmt4 = conn4.createStatement();
           
-          String sqlJ = "SELECT * FROM Arende";
-          ResultSet rsJ = stmt4.executeQuery(sqlJ);
+          String sqlJ4 = "SELECT * FROM Arande";
+          ResultSet rsJ4 = stmt4.executeQuery(sqlJ4);
           System.out.println("Result");
           int steg=0;
-          while (rsJ.next()){
-              
+          while (rsJ4.next()){
+              System.out.println("YO");
               steg += 1;
               System.out.println(steg);
-              int b =rsJ.getInt("arande_ID");
-              boolean status = rsJ.getBoolean("status");
-              int tidsatgang = rsJ.getInt("tidsatgang");
-              int preltid =rsJ.getInt("preltid");
-              int timpris = rsJ.getInt("timpris");
-              String arbetsuppgift = rsJ.getString("arbetsuppgift");
-              String userName = rsJ.getString("userName");
-              String kompID = rsJ.getString("komp_ID");
-              String kundID = rsJ.getString("Kund_ID");
+              int b =rsJ4.getInt("arande_ID");
+              boolean status = rsJ4.getBoolean("status");
+              int tidsatgang = rsJ4.getInt("tidsatgang");
+              int preltid =rsJ4.getInt("preltid");
+              int timpris = rsJ4.getInt("timpris");
+              String arbetsuppgift = rsJ4.getString("arbetsuppgift");
+              String userName = rsJ4.getString("userName");
+              String kompID = rsJ4.getString("komp_ID");
+              String kundID = rsJ4.getString("Kund_ID");
               
-              Arende arende = new Arende(b,status,tidsatgang, preltid,
+              Arende arende = new Arende(b,tidsatgang, preltid,
             timpris,arbetsuppgift,userName,kompID, kundID);
               arendeArray.add(arende);
               
@@ -325,19 +325,19 @@ public class DB {
               
           }
           stmt4.close();
-          rsJ.close();
+          rsJ4.close();
       }catch(SQLException | ClassNotFoundException se){
        }finally{
       //finally block used to close resources
       try{
-         if(stmt!=null) {
-             conn.close();
+         if(stmt4!=null) {
+             conn4.close();
          }
       }catch(SQLException se){
       }// do nothing
       try{
-         if(conn!=null) {
-             conn.close();
+         if(conn4!=null) {
+             conn4.close();
          }
       }catch(SQLException se){
       }//end finally try

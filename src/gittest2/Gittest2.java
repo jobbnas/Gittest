@@ -38,8 +38,8 @@ public class Gittest2{
 
     
     DB data = new DB();
-    data.setArendetoList();
     
+     data.setArendetoList();   
     ArrayList<Arende> arendeArray;
     arendeArray = (ArrayList<Arende>)data.arendeArray.clone();
     
@@ -79,7 +79,7 @@ public class Gittest2{
         kundUI.setVisible(true);
         switch(r){
             case"Admin":
-                    
+                
                 arende.setVisible(true);
             case"IT-Support":
                 
