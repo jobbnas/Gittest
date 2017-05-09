@@ -46,6 +46,16 @@ public class DB {
        String id;
       String fNamn;
       String eNamn;
+      String fornamn;
+      String efternman;
+
+    public String getFornamn() {
+        return fornamn;
+    }
+
+    public String getEfternman() {
+        return efternman;
+    }
       String perNr;
     int id2;
 
@@ -178,6 +188,7 @@ public class DB {
               
               tempu = rsJ.getString("userName");
               tempp = rsJ.getString("password");
+
               
               if (tempp.equals(pass)){
                 grind1=true;
@@ -185,7 +196,10 @@ public class DB {
               
               if (tempu.equals(user)){
                   grind2=true;
-                  
+              this.fornamn = rsJ.getString("fNamn");
+              this.efternman = rsJ.getString("eNamn");
+                
+              System.out.println("isak bäst");
               }
 
               

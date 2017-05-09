@@ -79,8 +79,8 @@ public class Gittest2{
         kundUI.setVisible(true);
         switch(r){
             case"Admin":
-                
-                arende.setVisible(true);
+                Hemskärm hem = new Hemskärm();
+                hem.setVisible(true);
             case"IT-Support":
                 
             case"Processledare":

@@ -11,14 +11,16 @@ package gittest2;
  */
 public class Hemskärm extends javax.swing.JFrame {
 
-
+DB data = new DB();
     
-    
+String f = data.getFornamn();
+String b data.getEfternman();
     
     
     public Hemskärm() {
         initComponents();
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -29,6 +31,9 @@ public class Hemskärm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jColorChooser1 = new javax.swing.JColorChooser();
+        jColorChooser2 = new javax.swing.JColorChooser();
+        jColorChooser3 = new javax.swing.JColorChooser();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
@@ -43,7 +48,8 @@ public class Hemskärm extends javax.swing.JFrame {
 
         jLabel1.setText("ÄHS");
 
-        jLabel2.setText("jLabel2");
+        String f = data.getFornamn()
+        String b data.getEfternman()
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -170,6 +176,9 @@ public class Hemskärm extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JColorChooser jColorChooser1;
+    private javax.swing.JColorChooser jColorChooser2;
+    private javax.swing.JColorChooser jColorChooser3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
