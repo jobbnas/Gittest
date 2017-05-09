@@ -68,7 +68,7 @@ public class Gittest2{
     LoginUi login = new LoginUi();
     login.setVisible(true);
     
-
+    Hemskärm hem = new Hemskärm();
     
     while(login.getKnapp()==false){
         
@@ -79,7 +79,7 @@ public class Gittest2{
     }
      do{
  
-       System.out.println(b+c);
+       
     if (data.loginjonas(b, c, r)==true){ // Ändrar man detta till false så stängs den, så ifsatsen funkar. men verkar vara något kraj på metoden
         System.out.println("Hej");
         login.dispose();
@@ -88,7 +88,7 @@ public class Gittest2{
             case"Admin":
                String f = data.getFornamn();
                String e = data.getEfternman();
-                Hemskärm hem = new Hemskärm();
+                
                 hem.setLabelName(f, e);
                 hem.setVisible(true);
                 
@@ -101,12 +101,30 @@ public class Gittest2{
     }
      System.out.println("Running");
     } while(login.isActive());
+     
+     
+     
+     while(hem.getLoop()== false){
+        
+         input.nextLine();
+         
+         if(hem.getArende()==true){
+             System.out.print("Arende");
+             Arende();
+             
+         }
+         else if(hem.getKund()==true){
+             Kund();
+             
+         }
+         
+     }
     
     
     }
     
     static void Arende() throws ClassNotFoundException, SQLException{
-     data.setArendetoList();   
+    data.setArendetoList();   
     ArrayList<Arende> arendeArray;
     arendeArray = (ArrayList<Arende>)data.arendeArray.clone();
     

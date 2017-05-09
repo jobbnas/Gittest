@@ -16,7 +16,33 @@ import java.util.logging.Logger;
 public class Hemskärm extends javax.swing.JFrame {
     
     
+    boolean arende = false;
+    boolean kund = false;
+    boolean loop = false;
 
+    public boolean getKund() {
+        return kund;
+    }
+
+    public void setKund(boolean kund) {
+        this.kund = kund;
+    }
+
+    public boolean getLoop() {
+        return loop;
+    }
+
+    public void setLoop(boolean loop) {
+        this.loop = loop;
+    }
+
+    public boolean getArende() {
+        return arende;
+    }
+
+    public void setArende(boolean arende) {
+        this.arende = arende;
+    }
     String fornamn;
 
     public void setLabelName(String f,String e){
@@ -170,18 +196,18 @@ public class Hemskärm extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
-        Gittest2 git = new Gittest2();
         
-        git.a
-      
-        
+
+      this.arende = true;
+      this.loop = true;  
         
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 
-        
+      this.kund = true;
+      this.loop = true; 
         
         
     }//GEN-LAST:event_jButton2ActionPerformed
