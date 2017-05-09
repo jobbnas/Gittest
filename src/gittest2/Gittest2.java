@@ -106,8 +106,8 @@ public class Gittest2{
      
      while(hem.getLoop()== false){
         
-         input.nextLine();
          
+         login.dispose();
          if(hem.getArende()==true){
              System.out.print("Arende");
              Arende();
@@ -116,8 +116,8 @@ public class Gittest2{
          else if(hem.getKund()==true){
              Kund();
              
+
          }
-         
      }
     
     
