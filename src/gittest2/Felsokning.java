@@ -11,9 +11,9 @@ import java.util.ArrayList;
  *
  * @author mcbookpro
  */
-public class Felsokning extends Arende {
+public class Felsokning  {
     
-    int fel_id;
+    int felkod;
     private ArrayList<Hittadefel>fellista = new ArrayList<>();
     
 }

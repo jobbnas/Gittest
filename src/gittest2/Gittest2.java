@@ -25,7 +25,8 @@ public class Gittest2{
    static String b;
    static String c;
    static String r;
-
+   static DB data = new DB();
+   
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
         Scanner input = new Scanner(System.in);
        
@@ -37,9 +38,12 @@ public class Gittest2{
     
 
     
-    DB data = new DB();
+  
     
-     data.setArendetoList();   
+  
+        
+    
+    data.setArendetoList();   
     ArrayList<Arende> arendeArray;
     arendeArray = (ArrayList<Arende>)data.arendeArray.clone();
     
@@ -47,21 +51,24 @@ public class Gittest2{
     arende.arendeLista = (ArrayList<Arende>)arendeArray.clone();
     arende.VisaArende();
     
-    System.out.println("Ange användarnamn");
-    String u;
-    System.out.println("Ange lösen");
-    String l;
+    
+    
+
     data.setKundtoList();
-// aaaysgdshd
+
     ArrayList<Kund> kundlist;
     kundlist = (ArrayList<Kund>)data.listkund.clone();
    
-    LoginUi login = new LoginUi();
-    login.setVisible(true);
+
 
     KundUI kundUI = new KundUI();
     kundUI.lista = (ArrayList<Kund>)kundlist.clone();
     kundUI.Visa_Kund();
+    
+    LoginUi login = new LoginUi();
+    login.setVisible(true);
+    
+
     
     while(login.getKnapp()==false){
         
@@ -79,8 +86,12 @@ public class Gittest2{
         kundUI.setVisible(true);
         switch(r){
             case"Admin":
+               String f = data.getFornamn();
+               String e = data.getEfternman();
                 Hemskärm hem = new Hemskärm();
+                hem.setLabelName(f, e);
                 hem.setVisible(true);
+                
             case"IT-Support":
                 
             case"Processledare":
@@ -93,9 +104,31 @@ public class Gittest2{
     
     
     }
+    
+    static void Arende() throws ClassNotFoundException, SQLException{
+     data.setArendetoList();   
+    ArrayList<Arende> arendeArray;
+    arendeArray = (ArrayList<Arende>)data.arendeArray.clone();
+    
+    ArandeUI arende = new ArandeUI();
+    arende.arendeLista = (ArrayList<Arende>)arendeArray.clone();
+    arende.VisaArende();
+    arende.setVisible(true);
+    }
+    
+    static void Kund() throws ClassNotFoundException, SQLException{
+    data.setKundtoList();
+    ArrayList<Kund> kundlist;
+    kundlist = (ArrayList<Kund>)data.listkund.clone();
+
+    KundUI kundUI = new KundUI();
+    kundUI.lista = (ArrayList<Kund>)kundlist.clone();
+    kundUI.Visa_Kund();
+    kundUI.setVisible(true);
+    }
 
 
-}//end FirstExample
+}
     
    
   

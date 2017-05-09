@@ -198,8 +198,10 @@ public class DB {
                   grind2=true;
               this.fornamn = rsJ.getString("fNamn");
               this.efternman = rsJ.getString("eNamn");
+              
+              
                 
-              System.out.println("isak bäst");
+              System.out.println("sfd");
               }
 
               
