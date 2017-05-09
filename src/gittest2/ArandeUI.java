@@ -5,17 +5,47 @@
  */
 package gittest2;
 
+import java.sql.SQLException;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author El Rey
  */
 public class ArandeUI extends javax.swing.JFrame {
+    
+    public ArrayList<Arende> arendeLista;
 
     /**
      * Creates new form ArandeUI
      */
     public ArandeUI() {
         initComponents();
+    }
+    
+        public void VisaArende() throws ClassNotFoundException, SQLException{
+        
+        
+        
+        DefaultTableModel mode = (DefaultTableModel)jTable1.getModel();
+        Object[] row = new Object[8];
+        for(int i=0; i<arendeLista.size();i++){
+            
+            
+            row[0]=arendeLista.get(i).getArande_id();
+            row[1]=arendeLista.get(i).getArbetsuppgift();
+            row[2]=arendeLista.get(i).getKompId();
+            row[3]=arendeLista.get(i).getKund_ID();
+            row[4]=arendeLista.get(i).getPreTid();
+            row[5]=arendeLista.get(i).getTidsatgang();
+            row[6]=arendeLista.get(i).getTimPris();
+            row[7]=arendeLista.get(i).getUserNamne();
+            mode.addRow(row);
+            
+           
+            
+        }
     }
 
     /**

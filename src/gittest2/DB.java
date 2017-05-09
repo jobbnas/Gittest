@@ -34,6 +34,15 @@ public class DB {
    Statement stmt = null;
    PreparedStatement logg = null;
    public ArrayList<Kund>listkund = new ArrayList<>();
+   public ArrayList<Arende>arendeArray = new ArrayList<>();
+
+    public ArrayList<Arende> getArendeArray() {
+        return arendeArray;
+    }
+
+    public void setArendeArray(ArrayList<Arende> arendeArray) {
+        this.arendeArray = arendeArray;
+    }
        String id;
       String fNamn;
       String eNamn;
@@ -248,6 +257,68 @@ public class DB {
               
               Kund kk = new Kund(b,fNamn,eNamn,pr,ad,o,ps,tel);
               listkund.add(kk);
+              
+              
+              
+              
+          }
+          stmt4.close();
+          rsJ.close();
+      }catch(SQLException | ClassNotFoundException se){
+       }finally{
+      //finally block used to close resources
+      try{
+         if(stmt!=null) {
+             conn.close();
+         }
+      }catch(SQLException se){
+      }// do nothing
+      try{
+         if(conn!=null) {
+             conn.close();
+         }
+      }catch(SQLException se){
+      }//end finally try
+   }//end try 
+          System.out.print("We made it");
+       
+       
+       
+   }
+      public void setArendetoList()throws ClassNotFoundException, SQLException{
+       
+      Connection conn4 = null;
+      Statement stmt4 = null; 
+            try {
+          Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+          
+          conn4 = DriverManager.getConnection(jdbcUrl, USER, PASS);
+          System.out.println("Jonas connection online!");
+          
+          System.out.println("Skapar statement");
+          stmt4 = conn4.createStatement();
+          
+          String sqlJ = "SELECT * FROM Arende";
+          ResultSet rsJ = stmt4.executeQuery(sqlJ);
+          System.out.println("Result");
+          int steg=0;
+          while (rsJ.next()){
+              
+              steg += 1;
+              System.out.println(steg);
+              int b =rsJ.getInt("arande_ID");
+              boolean status = rsJ.getBoolean("status");
+              int tidsatgang = rsJ.getInt("tidsatgang");
+              int preltid =rsJ.getInt("preltid");
+              int timpris = rsJ.getInt("timpris");
+              String arbetsuppgift = rsJ.getString("arbetsuppgift");
+              String userName = rsJ.getString("userName");
+              String kompID = rsJ.getString("komp_ID");
+              String kundID = rsJ.getString("Kund_ID");
+              
+              Arende arende = new Arende(b,status,tidsatgang, preltid,
+            timpris,arbetsuppgift,userName,kompID, kundID);
+              arendeArray.add(arende);
               
               
               

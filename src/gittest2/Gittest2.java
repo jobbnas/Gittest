@@ -35,7 +35,17 @@ public class Gittest2{
 
     LoadingScreen1 ladda = new LoadingScreen1();
     
+
+    
     DB data = new DB();
+    data.setArendetoList();
+    
+    ArrayList<Arende> arendeArray;
+    arendeArray = (ArrayList<Arende>)data.arendeArray.clone();
+    
+    ArandeUI arende = new ArandeUI();
+    arende.arendeLista = (ArrayList<Arende>)arendeArray.clone();
+    arende.VisaArende();
     
     System.out.println("Ange användarnamn");
     String u;
@@ -70,7 +80,7 @@ public class Gittest2{
         switch(r){
             case"Admin":
                     
-
+                arende.setVisible(true);
             case"IT-Support":
                 
             case"Processledare":
