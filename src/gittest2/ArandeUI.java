@@ -30,6 +30,24 @@ public class ArandeUI extends javax.swing.JFrame {
     public ArrayList<Arende> arendeLista;
     public int a_id;
     public int count;
+   boolean mille = false;
+    boolean merv = false;
+
+    public boolean getMerv() {
+        return this.merv;
+    }
+    public void setMervDefault(){
+        
+     this.merv=false;   
+    }
+
+    public boolean getMille() {
+        return this.mille;
+    }
+    public void setMilleDefault(){
+        
+      this.mille=false;  
+    }
 
     /**
      * Creates new form ArandeUI
@@ -297,14 +315,15 @@ public class ArandeUI extends javax.swing.JFrame {
                          
                          a_id =((Integer) jTable1.getModel().getValueAt(row, i));
                          
-                         
+                         mille = true;
+                         merv = true;
                          System.out.println(a_id);
                          
                          
                          
 
                                              }
-                                              
+                                               
                      
                  }
                     
