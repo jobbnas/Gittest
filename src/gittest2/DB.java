@@ -30,6 +30,7 @@ public class DB {
    static final String USER = "root";
    static final String PASS = "199404046253";
    static final String get_personal ="SELECT * FROM Personal WHERE userName=? AND password=?";
+   static ResultSet rsTable;
    Connection conn = null;
    Statement stmt = null;
    PreparedStatement logg = null;
@@ -316,6 +317,7 @@ public class DB {
           
           String sqlJ4 = "SELECT * FROM Arande";
           ResultSet rsJ4 = stmt4.executeQuery(sqlJ4);
+           rsTable = rsJ4;
           System.out.println("Result");
           int steg=0;
           while (rsJ4.next()){

@@ -14,6 +14,9 @@ import java.util.ArrayList;
 public class IT_Support extends Personal {
     
     String något;
+    int hour;
+    int minutes;
+    
     private ArrayList<Kompetens>kompetenslista = new ArrayList<>();
     
     
