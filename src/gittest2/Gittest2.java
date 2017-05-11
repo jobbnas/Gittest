@@ -44,15 +44,11 @@ public class Gittest2{
     ArandeUI arende = new ArandeUI();
     arende.arendeLista = (ArrayList<Arende>)arendeArray.clone();
     arende.VisaArende();
+   
     
-    
-    
-
     data.setKundtoList();
-
     ArrayList<Kund> kundlist;
     kundlist = (ArrayList<Kund>)data.listkund.clone();
-   
 
 
     KundUI kundUI = new KundUI();
@@ -105,8 +101,7 @@ public class Gittest2{
          
          login.dispose();
          if(hem.getArende()==true){
-             System.out.print("Arende");
-             arende.setVisible(true);
+            arende.setVisible(true);
              
          }
           if(hem.getKund()==true){

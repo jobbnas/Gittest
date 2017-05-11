@@ -5,6 +5,7 @@
  */
 package gittest2;
 ///shdbshdbs
+import static gittest2.DB.jdbcUrl;
 import static gittest2.Kund.jdbcUrl;
 import java.awt.Component;
 import java.sql.*;
@@ -76,93 +77,7 @@ public class DB {
     }
    
    
-   public void koppla() throws ClassNotFoundException, SQLException {
 
-       
-   try{
-      //STEP 2: Register JDBC driver
-      Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-
-      //STEP 3: Open a connection
-      System.out.println("Connecting to database...");
-      conn = DriverManager.getConnection(jdbcUrl,USER,PASS);
-
-      //STEP 4: Execute a query
-      System.out.println("Creating statement...");
-    stmt = conn.createStatement();
-      String sql;
-      sql = "SELECT * From Kund";
-      
-     ResultSet rs = stmt.executeQuery(sql);
-     
-           while(rs.next()){
-         //Retrieve by column name
-  
-         String first = rs.getString("fNamn");
-         String last = rs.getString("eNamn");
-         String prnr = rs.getString("perNr");
-         String adress = rs.getString("adress");
-         String ort = rs.getString("ort");
-         String telnr = rs.getString("telNr");
-        
-          
-         //Display values
-        
-         System.out.println(first + " " +last + " "+prnr+" "+adress+" "+ort+" "+telnr);
-         
-      }
-      
-      stmt.close();
-     
-   }catch(SQLException se){
-   }catch(Exception e){
-   }finally{
-      //finally block used to close resources
-      try{
-         if(stmt!=null)
-             System.out.println("Connection closed");
-            stmt.close();
-      }catch(SQLException se2){
-      }// nothing we can do
-      
-   }//end try
-       
-       
-   }
-   
-   public void stang() throws ClassNotFoundException, SQLException{
-             try{
-         if(conn!=null)
-            conn.close();
-      }catch(SQLException se){
-      }
-       
-   }
-   
-   public void login(String username, String password) throws ClassNotFoundException, SQLException{   
-       
-       Connection conn1 = null;
-       Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-       conn1 = DriverManager.getConnection(jdbcUrl,USER,PASS);
-       logg = conn1.prepareStatement(get_personal);
-       logg.setString(1,username);
-       logg.setString(2,password);
-       ResultSet rs1 = logg.executeQuery();
-       
-       while (rs1.next()){
-           
-           String use = rs1.getString("userName");
-           
-           System.out.println("Välkommen "+use);
-           loginSc=true;
-       }
-       try{
-         if(conn!=null)
-            conn.close();
-      }catch(SQLException se){
-      }
-       
-   }
    
    public boolean loginjonas(String user, String pass, String pos) throws ClassNotFoundException, SQLException{
       Connection conn3 = null;
@@ -243,7 +158,6 @@ public class DB {
       
       
    }
-   
    public void setKundtoList()throws ClassNotFoundException, SQLException{
        
       Connection conn8 = null;
@@ -306,58 +220,58 @@ public class DB {
    }
    public void setArendetoList()throws ClassNotFoundException, SQLException{
        
-      Connection conn4 = null;
-      Statement stmt4 = null; 
+      Connection conn20 = null;
+      Statement stmt20 = null; 
             try {
           Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
           
-          conn4 = DriverManager.getConnection(jdbcUrl, USER, PASS);
+          conn20 = DriverManager.getConnection(jdbcUrl, USER, PASS);
           System.out.println("Jonas connection online!");
           
           System.out.println("Skapar statement");
-          stmt4 = conn4.createStatement();
+          stmt20 = conn20.createStatement();
           
           String sqlJ4 = "SELECT * FROM Arande";
-          ResultSet rsJ4 = stmt4.executeQuery(sqlJ4);
-           rsTable = rsJ4;
+          ResultSet rsJ20 = stmt20.executeQuery(sqlJ4);
+            
           System.out.println("Result");
           int steg=0;
-          while (rsJ4.next()){
+          while (rsJ20.next()){
               System.out.println("YO");
               steg += 1;
-              System.out.println(steg);
-              int b =rsJ4.getInt("arande_ID");
-              boolean status = rsJ4.getBoolean("status");
-              int tidsatgang = rsJ4.getInt("tidsatgang");
-              int preltid =rsJ4.getInt("preltid");
-              int timpris = rsJ4.getInt("timpris");
-              String arbetsuppgift = rsJ4.getString("arbetsuppgift");
-              String userName = rsJ4.getString("userName");
-              String kompID = rsJ4.getString("komp_ID");
-              String kundID = rsJ4.getString("Kund_ID");
+              System.out.println("fan");
+              int b =rsJ20.getInt("arande_ID");
+              boolean status = rsJ20.getBoolean("tillstånd");
+              int tidsatgang = rsJ20.getInt("tidsatgang");
+              int preltid =rsJ20.getInt("preltid");
+              int timpris = rsJ20.getInt("timpris");
+              String arbetsuppgift = rsJ20.getString("arbetsuppgift");
+              String userName = rsJ20.getString("userName");
+              String kompID = rsJ20.getString("komp_ID");
+              String kundID = rsJ20.getString("Kund_ID");
               
               Arende arende = new Arende(b,tidsatgang, preltid,
             timpris,arbetsuppgift,userName,kompID, kundID);
               arendeArray.add(arende);
               
-              
+              System.out.println("bajs");
               
               
           }
-          stmt4.close();
-          rsJ4.close();
+          stmt20.close();
+          rsJ20.close();
       }catch(SQLException | ClassNotFoundException se){
        }finally{
       //finally block used to close resources
       try{
-         if(stmt4!=null) {
-             conn4.close();
+         if(stmt20!=null) {
+             conn20.close();
          }
       }catch(SQLException se){
       }// do nothing
       try{
-         if(conn4!=null) {
-             conn4.close();
+         if(conn20!=null) {
+             conn20.close();
          }
       }catch(SQLException se){
       }//end finally try
@@ -509,67 +423,70 @@ JTextField field1 = new JTextField(10),
    }//end try
        
    }
-    public void laggTillArende(int id, int tid,String upp, float pris,String sign, String komp, int kundID){
+   public void laggTillArende2(int id, int tid,String upp, float pris,String sign, String komp, int kundID){
         
-   //assdaasdAads
-        
-   Connection conn = null;
-   Statement stmt = null;
-   try{
-      //STEP 2: Register JDBC driver
-      Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-
-      //STEP 3: Open a connection
-      System.out.println("Connecting to a selected database...");
-      conn = DriverManager.getConnection(jdbcUrl, USER, PASS);
-      System.out.println("Connected database successfully...");
-      
-      //STEP 4: Execute a query
-      System.out.println("Inserting records into the table...");
-      stmt = conn.createStatement();
-      
-          String sqlJ = ("SELECT komp_ID FROM  Kompetens\n" +
-            "WHERE namn =" + komp );
+       Connection conn10 = null;
+      Statement stmt10 = null; 
+            try {
+          Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
           
-          ResultSet rsJ8 = stmt.executeQuery(sqlJ);
+          conn10 = DriverManager.getConnection(jdbcUrl, USER, PASS);
+          System.out.println("Jonas connection online!");
+          
+          System.out.println("Skapar statement");
+          stmt10 = conn10.createStatement();
+          
+        String sqlJ = ("SELECT komp_ID FROM  Kompetens\n" +
+            "WHERE namn =" +"'"+komp+"'");
+          
+          ResultSet rsJ10 = stmt10.executeQuery(sqlJ);
           System.out.println("Result");
           int steg=0;
-          while (rsJ8.next()){
+          while (rsJ10.next()){
               
               steg += 1;
               System.out.println(steg);
 
-              kompetens = rsJ8.getInt("namn");
+              kompetens = rsJ10.getInt("komp_ID");
 
           System.out.println("JAJAJAJAJ");
+          }
+          
+
      
-     String sql =("INSERT INTO Arande tillstånd,preltid,arbetsuppgift,timpris,userName,komp_ID, Kund_ID" +
+     String sql =("INSERT INTO Arande (preltid,arbetsuppgift,timpris,userName,komp_ID, Kund_ID) " +
      "VALUES('"+tid+"','"+upp+"','"+pris+"','"+sign+"',"+kompetens+",'"+kundID+"')");
      
      System.out.println("Skapar ärendet");
 
-     stmt.executeUpdate(sql);
-    
-          }
-   }catch(SQLException se){
-   }catch(Exception e){
-   }finally{
+     stmt10.executeUpdate(sql);
+     
+
+          stmt10.close();
+          rsJ10.close();
+      }catch(SQLException | ClassNotFoundException se){
+       }finally{
       //finally block used to close resources
       try{
-         if(stmt!=null)
-            conn.close();
+         if(stmt10!=null) {
+             conn10.close();
+         }
       }catch(SQLException se){
       }// do nothing
       try{
-         if(conn!=null)
-            conn.close();
+         if(conn10!=null) {
+             conn10.close();
+         }
       }catch(SQLException se){
       }//end finally try
-   }//end try
-   System.out.println("Goodbye!");
-}//end main
-}
-   
+   }//end try 
+          System.out.print("We made it");
+       
+       
+       
+   }     
+
+} 
 
 
     

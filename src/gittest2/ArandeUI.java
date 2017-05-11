@@ -10,6 +10,7 @@ import java.awt.event.MouseEvent;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.logging.Logger;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JFrame;
@@ -28,6 +29,7 @@ public class ArandeUI extends javax.swing.JFrame {
     
     public ArrayList<Arende> arendeLista;
     public int a_id;
+    public int count;
 
     /**
      * Creates new form ArandeUI
@@ -91,16 +93,9 @@ public class ArandeUI extends javax.swing.JFrame {
                 "arande_ID", "status", "tidsatgang", "preltid", "timpris", "arbetsuppgift", "userName", "Kund_ID"
             }
         ) {
-            Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
-            };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false, false, false, false
             };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
@@ -264,7 +259,7 @@ public class ArandeUI extends javax.swing.JFrame {
      
       int id =0;
     
-      upp = field1.getText();
+      upp = field7.getText();
       tid = Integer.parseInt(field2.getText());
       pris  = Float.parseFloat(field3.getText());;
       sign  = field4.getText();
@@ -272,7 +267,7 @@ public class ArandeUI extends javax.swing.JFrame {
       kundID  = Integer.parseInt(field6.getText());
       
        DB data = new DB();
-        data.laggTillArende(id, tid, upp, pris,sign,komp,kundID);
+        data.laggTillArende2(id, tid, upp, pris,sign,komp,kundID);
         
         
         
@@ -288,6 +283,8 @@ public class ArandeUI extends javax.swing.JFrame {
         jTable1.addMouseListener(new MouseAdapter(){
             @Override
             public void mouseClicked(MouseEvent e) {
+               count = e.getClickCount();
+               
                 if (e.getClickCount() == 2) {
                  JTable target = (JTable)e.getSource();   
                  int row = target.getSelectedRow();
@@ -301,10 +298,13 @@ public class ArandeUI extends javax.swing.JFrame {
                          a_id =((Integer) jTable1.getModel().getValueAt(row, i));
                          
                          
+                         System.out.println(a_id);
                          
                          
-                     }
-                     
+                         
+
+                                             }
+                                              
                      
                  }
                     
@@ -313,6 +313,7 @@ public class ArandeUI extends javax.swing.JFrame {
                 }
                 
             }
+            
             
           
         });
