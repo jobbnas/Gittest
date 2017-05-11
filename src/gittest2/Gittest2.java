@@ -96,8 +96,10 @@ public class Gittest2{
      System.out.println("Running");
     } while(login.isActive());
      
-     
-     
+     while(true){
+     hem.setLoop3();
+     hem.setArendeDefault();
+     hem.setKundDefault();
      while(hem.getLoop()== false){
         
          
@@ -112,9 +114,9 @@ public class Gittest2{
             kundUI.setVisible(true);
 
          }
-         System.out.println("Running");
+         
      }
-    
+     }
     
     }
     

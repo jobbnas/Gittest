@@ -86,8 +86,6 @@ File icon = new File("C:\\Users\\El Rey\\Desktop\\Skola\\reload-icon-blue-symbol
         scrollbar1 = new java.awt.Scrollbar();
         jButton5 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
         JTable_KundLista.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -184,7 +182,10 @@ File icon = new File("C:\\Users\\El Rey\\Desktop\\Skola\\reload-icon-blue-symbol
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(39, 39, 39))
         );
 
         pack();

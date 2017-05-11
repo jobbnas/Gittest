@@ -83,8 +83,6 @@ public class ArandeUI extends javax.swing.JFrame {
         jRadioButton3 = new javax.swing.JRadioButton();
         jRadioButton4 = new javax.swing.JRadioButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 

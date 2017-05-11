@@ -20,10 +20,16 @@ public class Hemskärm extends javax.swing.JFrame {
     boolean kund = false;
     boolean loop = false;
 
+    
+    public void setLoop3(){
+      this.loop=false;  
+    }
     public boolean getKund() {
         return kund;
     }
-
+public void setKundDefault(){
+    this.kund = false;
+}
     public void setKund(boolean kund) {
         this.kund = kund;
     }
@@ -39,7 +45,9 @@ public class Hemskärm extends javax.swing.JFrame {
     public boolean getArende() {
         return arende;
     }
-
+    public void setArendeDefault(){
+        this.arende=false;
+    }
     public void setArende(boolean arende) {
         this.arende = arende;
     }
