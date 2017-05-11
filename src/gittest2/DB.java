@@ -5,6 +5,7 @@
  */
 package gittest2;
 ///shdbshdbs
+import static gittest2.Kund.jdbcUrl;
 import java.awt.Component;
 import java.sql.*;
 import java.util.ArrayList;
@@ -35,6 +36,7 @@ public class DB {
    PreparedStatement logg = null;
    public ArrayList<Kund>listkund = new ArrayList<>();
    public ArrayList<Arende>arendeArray = new ArrayList<>();
+   int kompetens;
 
     public ArrayList<Arende> getArendeArray() {
         return arendeArray;
@@ -301,7 +303,7 @@ public class DB {
        
        
    }
-      public void setArendetoList()throws ClassNotFoundException, SQLException{
+   public void setArendetoList()throws ClassNotFoundException, SQLException{
        
       Connection conn4 = null;
       Statement stmt4 = null; 
@@ -505,9 +507,68 @@ JTextField field1 = new JTextField(10),
    }//end try
        
    }
-
+    public void laggTillArende(int id, int tid,String upp, float pris,String sign, String komp, int kundID){
+        
    
+        
+   Connection conn = null;
+   Statement stmt = null;
+   try{
+      //STEP 2: Register JDBC driver
+      Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+
+      //STEP 3: Open a connection
+      System.out.println("Connecting to a selected database...");
+      conn = DriverManager.getConnection(jdbcUrl, USER, PASS);
+      System.out.println("Connected database successfully...");
+      
+      //STEP 4: Execute a query
+      System.out.println("Inserting records into the table...");
+      stmt = conn.createStatement();
+      
+          String sqlJ = ("SELECT komp_ID FROM  Kompetens\n" +
+            "WHERE namn =" + komp );
+          
+          ResultSet rsJ8 = stmt.executeQuery(sqlJ);
+          System.out.println("Result");
+          int steg=0;
+          while (rsJ8.next()){
+              
+              steg += 1;
+              System.out.println(steg);
+
+              kompetens = rsJ8.getInt("namn");
+
+          System.out.println("JAJAJAJAJ");
+     
+     String sql =("INSERT INTO Arande tillstånd,preltid,arbetsuppgift,timpris,userName,komp_ID, Kund_ID" +
+     "VALUES('"+tid+"','"+upp+"','"+pris+"','"+sign+"',"+kompetens+",'"+kundID+"')");
+     
+     System.out.println("Skapar ärendet");
+
+     stmt.executeUpdate(sql);
+    
+          }
+   }catch(SQLException se){
+   }catch(Exception e){
+   }finally{
+      //finally block used to close resources
+      try{
+         if(stmt!=null)
+            conn.close();
+      }catch(SQLException se){
+      }// do nothing
+      try{
+         if(conn!=null)
+            conn.close();
+      }catch(SQLException se){
+      }//end finally try
+   }//end try
+   System.out.println("Goodbye!");
 }//end main
+}
+   
+
 
     
 

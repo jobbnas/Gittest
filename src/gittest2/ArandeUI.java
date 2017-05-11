@@ -7,6 +7,14 @@ package gittest2;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Scanner;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -110,7 +118,7 @@ public class ArandeUI extends javax.swing.JFrame {
 
         jButton2.setText("Sök Ärende");
 
-        jButton3.setText("jButton3");
+        jButton3.setText("Redigera Ärende");
 
         jButton4.setText("jButton4");
 
@@ -152,7 +160,7 @@ public class ArandeUI extends javax.swing.JFrame {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 837, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(scrollbar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -184,8 +192,73 @@ public class ArandeUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    @SuppressWarnings("empty-statement")
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+        JTextField field1 = new JTextField(10), 
+        field2 = new JTextField(10), 
+        field3 = new JTextField(10), 
+        field4 = new JTextField(10),
+        field5 = new JTextField(10),
+        field6 = new JTextField(10),
+        field7 = new JTextField(10);
+
+            JPanel myPanel = new JPanel();
+
+            myPanel.setLayout(new BoxLayout(myPanel, BoxLayout.Y_AXIS));
+
+            myPanel.add(new JLabel("Arbetsuppgift:"));
+            
+            myPanel.add(field7);
+            myPanel.add(Box.createHorizontalStrut(5));
+
+            myPanel.add(new JLabel("Perliminär tid:"));
+            
+            myPanel.add(field2);
+
+            myPanel.add(Box.createHorizontalStrut(5));
+            myPanel.add(new JLabel("Pris/h:"));
+            
+            myPanel.add(field3);
+            
+            myPanel.add(Box.createHorizontalStrut(5));
+            myPanel.add(new JLabel("Personal Signatur:"));
+            
+            myPanel.add(field4);
+            
+            myPanel.add(Box.createHorizontalStrut(5));
+            myPanel.add(new JLabel("Kompetens:"));
+            
+            myPanel.add(field5);
+            
+            myPanel.add(Box.createHorizontalStrut(5));
+            myPanel.add(new JLabel("KundID:"));
+            
+            myPanel.add(field6);
+            
+
+            
+
+            int result = JOptionPane.showConfirmDialog(null, myPanel, "Fyll i kunduppgifter:", 
+            JOptionPane.OK_CANCEL_OPTION);
+            
+      String status,sign,komp, upp;
+      float pris;
+      int tid, kundID;
+      Scanner input = new Scanner(System.in);
+    JFrame frame = new JFrame();
+     
+      int id =0;
+    
+      upp = field1.getText();
+      tid = Integer.parseInt(field2.getText());
+      pris  = Float.parseFloat(field3.getText());;
+      sign  = field4.getText();
+      komp  = field5.getText();
+      kundID  = Integer.parseInt(field6.getText());
       
+       DB data = new DB();
+        data.laggTillArende(id, tid, upp, pris,sign,komp,kundID);
         
         
         
