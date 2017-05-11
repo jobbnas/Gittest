@@ -96,18 +96,31 @@ public class Gittest2{
      hem.setLoop3();
      hem.setArendeDefault();
      hem.setKundDefault();
+     arende.setMervDefault();
+     arende.setMilleDefault();
+     KommentarUI komUI = new KommentarUI();
      while(hem.getLoop()== false){
         
          
          login.dispose();
          if(hem.getArende()==true){
             arende.setVisible(true);
+            
+            while(arende.getMille()== false){
+                
+                if(arende.getMerv()== true){
+                    
+                    komUI.setVisible(true);
+                }
+                
+            }
              
          }
           if(hem.getKund()==true){
              
             kundUI.setVisible(true);
-
+            
+           
          }
          
      }
