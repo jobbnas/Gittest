@@ -36,12 +36,6 @@ public class Gittest2{
 
     LoadingScreen1 ladda = new LoadingScreen1();
     
-
-    
-  
-    
-  
-        
     
     data.setArendetoList();   
     ArrayList<Arende> arendeArray;
@@ -83,7 +77,7 @@ public class Gittest2{
     if (data.loginjonas(b, c, r)==true){ // Ändrar man detta till false så stängs den, så ifsatsen funkar. men verkar vara något kraj på metoden
         System.out.println("Hej");
         login.dispose();
-        kundUI.setVisible(true);
+        
         switch(r){
             case"Admin":
                String f = data.getFornamn();
