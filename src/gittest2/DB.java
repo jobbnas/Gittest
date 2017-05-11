@@ -509,7 +509,7 @@ JTextField field1 = new JTextField(10),
    }
     public void laggTillArende(int id, int tid,String upp, float pris,String sign, String komp, int kundID){
         
-   
+   //assda
         
    Connection conn = null;
    Statement stmt = null;
