@@ -104,12 +104,12 @@ public class Gittest2{
          login.dispose();
          if(hem.getArende()==true){
              System.out.print("Arende");
-             Arende();
+             arende.setVisible(true);
              
          }
-         else if(hem.getKund()==true){
-             Kund();
+          if(hem.getKund()==true){
              
+            kundUI.setVisible(true);
 
          }
          System.out.println("Running");
