@@ -5,8 +5,11 @@
  */
 package gittest2;
 
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -16,6 +19,7 @@ import javax.swing.table.DefaultTableModel;
 public class ArandeUI extends javax.swing.JFrame {
     
     public ArrayList<Arende> arendeLista;
+    public int a_id;
 
     /**
      * Creates new form ArandeUI
@@ -81,12 +85,24 @@ public class ArandeUI extends javax.swing.JFrame {
                 "arande_ID", "status", "tidsatgang", "preltid", "timpris", "arbetsuppgift", "userName", "Kund_ID"
             }
         ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+            };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false, false, false, false
             };
 
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
+            }
+        });
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(jTable1);
@@ -178,7 +194,7 @@ public class ArandeUI extends javax.swing.JFrame {
                         .addComponent(jButton3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton4)))
-                .addContainerGap(140, Short.MAX_VALUE))
+                .addContainerGap(142, Short.MAX_VALUE))
         );
 
         pack();
@@ -195,6 +211,41 @@ public class ArandeUI extends javax.swing.JFrame {
     private void jRadioButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jRadioButton3ActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        // TODO add your handling code here:
+        jTable1.addMouseListener(new MouseAdapter(){
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (e.getClickCount() == 2) {
+                 JTable target = (JTable)e.getSource();   
+                 int row = target.getSelectedRow();
+                 int column = target.getColumnCount();
+                 
+                 for(int i = 0; i<=column; i++){
+                     
+                     if(jTable1.getModel().getColumnName(i).equalsIgnoreCase("arande_ID")){
+                         
+                         
+                         a_id =((Integer) jTable1.getModel().getValueAt(row, i));
+                         
+                         
+                         
+                         
+                     }
+                     
+                     
+                 }
+                    
+                    
+                    
+                }
+                
+            }
+            
+          
+        });
+    }//GEN-LAST:event_jTable1MouseClicked
 
     /**
      * @param args the command line arguments
