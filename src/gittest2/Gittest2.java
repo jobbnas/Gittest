@@ -36,12 +36,6 @@ public class Gittest2{
 
     LoadingScreen1 ladda = new LoadingScreen1();
     
-
-    
-  
-    
-  
-        
     
     data.setArendetoList();   
     ArrayList<Arende> arendeArray;
