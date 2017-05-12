@@ -96,27 +96,33 @@ public class Gittest2{
      hem.setLoop3();
      hem.setArendeDefault();
      hem.setKundDefault();
-     arende.setMervDefault();
-     arende.setMilleDefault();
+     data.arendeArray.clear();
+     data.setArendetoList();
+     arendeArray.clear();
+     arende.ClearArende();
+     arendeArray = (ArrayList<Arende>)data.arendeArray.clone();
+     arende.arendeLista = (ArrayList<Arende>)arendeArray.clone();
+     arende.VisaArende();
+     
      KommentarUI komUI = new KommentarUI();
      while(hem.getLoop()== false){
-        
+        arende.setMervToDefault();
          
          login.dispose();
          if(hem.getArende()==true){
             arende.setVisible(true);
             
-            while(arende.getMille()== false){
+         }
                 
-                if(arende.getMerv()== true){
+         if(arende.getMerv()== true){
                     
-                    komUI.setVisible(true);
-                }
+              komUI.setVisible(true);
+                
                 
             }
              
-         }
-          if(hem.getKund()==true){
+         
+         if(hem.getKund()==true){
              
             kundUI.setVisible(true);
             

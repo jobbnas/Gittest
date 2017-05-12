@@ -30,24 +30,31 @@ public class ArandeUI extends javax.swing.JFrame {
     public ArrayList<Arende> arendeLista;
     public int a_id;
     public int count;
-   boolean mille = false;
     boolean merv = false;
+   boolean mille = false;
+   
+   public void setMervToDefault(){
+       this.merv = false;
+   }
+
+    public void setMille(boolean mille) {
+        this.mille = mille;
+    }
+
+    public void setMerv(boolean merv) {
+        this.merv = merv;
+    }
+    
 
     public boolean getMerv() {
         return this.merv;
     }
-    public void setMervDefault(){
-        
-     this.merv=false;   
-    }
+
 
     public boolean getMille() {
         return this.mille;
     }
-    public void setMilleDefault(){
-        
-      this.mille=false;  
-    }
+
 
     /**
      * Creates new form ArandeUI
@@ -81,6 +88,15 @@ public class ArandeUI extends javax.swing.JFrame {
             
         }
     }
+        public void ClearArende(){
+            DefaultTableModel mode = (DefaultTableModel)jTable1.getModel();
+                while(mode.getRowCount()>0){
+                    for(int i= 0; i<mode.getRowCount();i++){
+                    mode.removeRow(i);
+                }
+                    
+                }
+        }
 
     /**
      * This method is called from within the constructor to initialize the form.

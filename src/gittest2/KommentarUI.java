@@ -60,8 +60,6 @@ public class KommentarUI extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(jTable1);
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
         jLabel1.setText("Kund");
 
         jLabel2.setText("Ärende");
