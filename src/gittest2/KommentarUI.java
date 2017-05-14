@@ -5,19 +5,24 @@
  */
 package gittest2;
 
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author mcbookpro
  */
 public class KommentarUI extends javax.swing.JFrame {
     
+    String id2;
     
+      ArrayList<Kommentar>k_lista;
         public void setKundName(String f,String e){
         jLabel1.setText(f +" "+e);
     }
         public void setArendeName(int id ){
             
-        String id2= Integer.toString(id);
+         id2 = Integer.toString(id);
                 
         jLabel2.setText(id2);
     }
@@ -35,7 +40,34 @@ public class KommentarUI extends javax.swing.JFrame {
     public KommentarUI() {
         initComponents();
     }
-
+    
+    public void rensaK_lista(){
+        k_lista.clear();
+    }
+    public void visaKommentarer(){
+        
+       System.out.println("Skriver kommentarer");
+        DefaultTableModel mode = (DefaultTableModel)jTable2.getModel();
+        Object[] row = new Object[3];
+        for(int i=0; i<k_lista.size();i++){
+            
+           row[0]=k_lista.get(i).getUnderskrift();
+            row[1]=k_lista.get(i).getDatum();
+            row[2]=k_lista.get(i).getUsername();
+            mode.addRow(row);
+            
+           
+       }
+    }
+            public void ClearKommentar(){
+            DefaultTableModel mode = (DefaultTableModel)jTable2.getModel();
+                while(mode.getRowCount()>0){
+                    for(int i= 0; i<mode.getRowCount();i++){
+                    mode.removeRow(i);
+                }
+                    
+                }
+        }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -171,13 +203,13 @@ public class KommentarUI extends javax.swing.JFrame {
 
         jLabel7.setText("Ändra status:");
 
-        jLabel8.setText("Kund");
+        jLabel8.setText("Kund:");
 
-        jLabel9.setText("Ärende");
+        jLabel9.setText("Ärende:");
 
-        jLabel10.setText("Arbetsuppgift");
+        jLabel10.setText("Arbetsuppgift:");
 
-        jLabel11.setText("Status");
+        jLabel11.setText("Status:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -189,9 +221,9 @@ public class KommentarUI extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(14, 14, 14)
                         .addComponent(jLabel3))
-                    .addComponent(jLabel8)
                     .addComponent(jLabel9)
                     .addComponent(jLabel10)
+                    .addComponent(jLabel8)
                     .addComponent(jLabel11))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -222,12 +254,12 @@ public class KommentarUI extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel6)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
+                                .addGap(36, 36, 36)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel4)
                                     .addComponent(jLabel1)
-                                    .addComponent(jLabel4))))
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel5))))
                         .addContainerGap())))
         );
         layout.setVerticalGroup(
@@ -235,16 +267,16 @@ public class KommentarUI extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jLabel9))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel10))
+                    .addComponent(jLabel11)
+                    .addComponent(jLabel4))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(12, 12, 12)
@@ -256,9 +288,9 @@ public class KommentarUI extends javax.swing.JFrame {
                                 .addComponent(choice2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel11)
-                            .addComponent(jLabel4))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel10))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -288,6 +320,11 @@ public class KommentarUI extends javax.swing.JFrame {
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         // TODO add your handling code here:
+        
+        
+        
+        
+        
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed

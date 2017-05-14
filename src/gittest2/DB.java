@@ -9,6 +9,7 @@ import static gittest2.DB.jdbcUrl;
 import static gittest2.Kund.jdbcUrl;
 import java.awt.Component;
 import java.sql.*;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Scanner;
 import javax.swing.Box;
@@ -19,7 +20,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
-
+import java.util.Date;
 
 /**
  *
@@ -38,7 +39,14 @@ public class DB {
    PreparedStatement logg = null;
    public ArrayList<Kund>listkund = new ArrayList<>();
    public ArrayList<Arende>arendeArray = new ArrayList<>();
+   public ArrayList<Kommentar>kommentarlista = new ArrayList<>();
+
+    public ArrayList<Kommentar> getKommentarlista() {
+        return kommentarlista;
+    }
    int kompetens;
+   static String Date_Format = "yyyy-MM-dd";
+   static SimpleDateFormat sdf = new SimpleDateFormat(Date_Format);
 
     public ArrayList<Arende> getArendeArray() {
         return arendeArray;
@@ -622,7 +630,79 @@ JTextField field1 = new JTextField(10),
        
        
    }
-       
+   public void getKommentar(int komid)throws ClassNotFoundException, SQLException{
+      
+       Connection conn55=null;
+       Statement stmt55=null;
+      
+       try {
+          Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+          
+         conn55 = DriverManager.getConnection(jdbcUrl, USER, PASS);
+          System.out.println("Jonas connection online!");
+          
+         System.out.println("Skapar statement");
+          stmt55 = conn55.createStatement();
+          
+         
+         String sql55 = "SELECT * FROM Kommentar WHERE arande_ID=" +komid;
+          ResultSet rsJ55 = stmt55.executeQuery(sql55);
+          while (rsJ55.next()){
+              int id = rsJ55.getInt("kommentar_ID");
+              Date date = new Date();
+              date = rsJ55.getDate("datum");
+              String datum = sdf.format(date);
+              String underskrift = rsJ55.getString("underskrift");
+              String kommentar = rsJ55.getString("kommentar");
+              int arende_ID = rsJ55.getInt("arande_ID");
+              String user = rsJ55.getString("userName");
+              int olastt = rsJ55.getInt("Olast");
+              boolean olast= false;
+              if(olastt == 1){
+                  olast=true;
+                  
+             }
+              else{
+                  
+              olast=false;  
+              }
+              
+             
+             Kommentar k = new Kommentar(id,datum,underskrift,kommentar,arende_ID,user,olast);
+              kommentarlista.add(k);
+              
+
+             
+             
+         }
+          stmt55.close();
+          rsJ55.close();
+          
+      }catch(SQLException | ClassNotFoundException se){
+       }finally{
+      //finally block used to close resources
+      try{
+         if(stmt55!=null) {
+             conn55.close();
+         }
+      }catch(SQLException se){
+      }// do nothing
+      try{
+         if(conn55!=null) {
+             conn55.close();
+         }
+      }catch(SQLException se){
+      }//end finally try
+   }//end try
+          System.out.print("We made it");
+      
+      
+      
+      
+      
+      
+      
+   }    
    }
    
  

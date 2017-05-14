@@ -59,6 +59,7 @@ public class Gittest2{
     login.setVisible(true);
     
     Hemskärm hem = new Hemskärm();
+    KommentarUI komUI = new KommentarUI();
     
     while(login.getKnapp()==false){
         
@@ -104,7 +105,14 @@ public class Gittest2{
      arende.arendeLista = (ArrayList<Arende>)arendeArray.clone();
      arende.VisaArende();
      
-     KommentarUI komUI = new KommentarUI();
+     data.kommentarlista.clear();
+     
+     komUI.ClearKommentar();
+     data.getKommentar(10);
+     komUI.k_lista =(ArrayList<Kommentar>) data.getKommentarlista().clone();
+     komUI.visaKommentarer();
+     
+     
      while(hem.getLoop()== false){
         arende.setMervToDefault();
          
@@ -132,6 +140,7 @@ public class Gittest2{
               komUI.setStatusName(stat);
               komUI.setArbetsuppgiftName(arb);
               komUI.setKundName(fe, ef);
+              
               komUI.setVisible(true);
                 
             }
