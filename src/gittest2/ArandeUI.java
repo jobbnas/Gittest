@@ -29,6 +29,15 @@ public class ArandeUI extends javax.swing.JFrame {
     
     public ArrayList<Arende> arendeLista;
     public int a_id;
+
+    public int getA_id() {
+        return a_id;
+    }
+
+    public int getK_id() {
+        return k_id;
+    }
+    public int k_id;
     public int count;
     boolean merv = false;
    boolean mille = false;
@@ -69,18 +78,23 @@ public class ArandeUI extends javax.swing.JFrame {
         System.out.println("Gandalf");
         
         DefaultTableModel mode = (DefaultTableModel)jTable1.getModel();
-        Object[] row = new Object[8];
+        Object[] row = new Object[9];
         for(int i=0; i<arendeLista.size();i++){
             
             
             row[0]=arendeLista.get(i).getArande_id();
-            row[1]=arendeLista.get(i).getArbetsuppgift();
-            row[2]=arendeLista.get(i).getKompId();
-            row[3]=arendeLista.get(i).getKund_ID();
-            row[4]=arendeLista.get(i).getPreTid();
-            row[5]=arendeLista.get(i).getTidsatgang();
-            row[6]=arendeLista.get(i).getTimPris();
-            row[7]=arendeLista.get(i).getUserNamne();
+            row[1]=arendeLista.get(i).getStatus();
+            row[2]=arendeLista.get(i).getTidsatgang();
+            row[3]=arendeLista.get(i).getPreTid(); 
+            row[4]=arendeLista.get(i).getTimPris();
+            row[5]=arendeLista.get(i).getArbetsuppgift();
+            row[6]=arendeLista.get(i).getUserNamne();
+            row[7]=arendeLista.get(i).getKund_ID();
+            row[8]=arendeLista.get(i).getKompId();
+            
+                    
+            
+            
             mode.addRow(row);
             
             
@@ -124,11 +138,11 @@ public class ArandeUI extends javax.swing.JFrame {
 
             },
             new String [] {
-                "arande_ID", "status", "tidsatgang", "preltid", "timpris", "arbetsuppgift", "userName", "Kund_ID"
+                "arande_ID", "status", "tidsatgang", "preltid", "timpris", "arbetsuppgift", "userName", "Kund_ID", "Kompetens"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -150,6 +164,7 @@ public class ArandeUI extends javax.swing.JFrame {
             jTable1.getColumnModel().getColumn(5).setResizable(false);
             jTable1.getColumnModel().getColumn(6).setResizable(false);
             jTable1.getColumnModel().getColumn(7).setResizable(false);
+            jTable1.getColumnModel().getColumn(8).setResizable(false);
         }
 
         jButton1.setText("Skapa Ärende");
@@ -334,15 +349,24 @@ public class ArandeUI extends javax.swing.JFrame {
                          mille = true;
                          merv = true;
                          System.out.println(a_id);
-                         
-                         
-                         
+      
 
-                                             }
-                                               
-                     
+                  }
                  }
-                    
+
+                   for(int i = 0; i<=column; i++){
+                       
+                        if(jTable1.getModel().getColumnName(i).equalsIgnoreCase("Kund_ID")){   
+                         
+                         
+                         k_id =((Integer) jTable1.getModel().getValueAt(row, i));
+                         
+                         System.out.println(k_id);
+                         
+                     }
+                       
+                       
+                   } 
                     
                     
                 }

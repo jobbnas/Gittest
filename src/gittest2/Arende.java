@@ -19,11 +19,11 @@ public class Arende {
         this.arande_id = arande_id;
     }
 
-    public boolean isStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(boolean status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 
@@ -59,11 +59,11 @@ public class Arende {
         this.arbetsuppgift = arbetsuppgift;
     }
 
-    public String getKund_ID() {
+    public int getKund_ID() {
         return Kund_ID;
     }
 
-    public void setKund_ID(String Kund_ID) {
+    public void setKund_ID(int Kund_ID) {
         this.Kund_ID = Kund_ID;
     }
 
@@ -84,19 +84,19 @@ public class Arende {
     }
     
      int arande_id;
-     boolean status = true;
+     String status;
      int tidsatgang;
      int preTid;
      int timPris;
      String arbetsuppgift;
-     String Kund_ID;
+     int Kund_ID;
      String userNamne;
      String kompId;
     
 
 
     public Arende(int arande_id,int tidsatgang, int preTid,
-            int timPris,String arbetsuppgift,String Kund_ID,String userNamne, String kompId){
+            int timPris,String arbetsuppgift,String userNamne, String kompId,String status, int Kund_ID){
         
         this.arande_id = arande_id;
         this.status = status;

@@ -47,11 +47,32 @@ public class DB {
     public void setArendeArray(ArrayList<Arende> arendeArray) {
         this.arendeArray = arendeArray;
     }
-       String id;
+      String id;
       String fNamn;
       String eNamn;
       String fornamn;
       String efternman;
+      String fNamn2;
+      String eNamn2;
+      String satus;
+      String arbetsuppgift;
+
+    public String getfNamn2() {
+        return fNamn2;
+    }
+
+    public String geteNamn2() {
+        return eNamn2;
+    }
+
+    public String getSatus() {
+        return satus;
+    }
+
+    public String getArbetsuppgift() {
+        return arbetsuppgift;
+    }
+
 
     public String getFornamn() {
         return fornamn;
@@ -241,17 +262,17 @@ public class DB {
               steg += 1;
               System.out.println("fan");
               int b =rsJ20.getInt("arande_ID");
-              boolean status = rsJ20.getBoolean("tillstånd");
+              String status = rsJ20.getString("tillstånd");
               int tidsatgang = rsJ20.getInt("tidsatgang");
               int preltid =rsJ20.getInt("preltid");
               int timpris = rsJ20.getInt("timpris");
               String arbetsuppgift = rsJ20.getString("arbetsuppgift");
               String userName = rsJ20.getString("userName");
               String kompID = rsJ20.getString("komp_ID");
-              String kundID = rsJ20.getString("Kund_ID");
+              int kundID = rsJ20.getInt("Kund_ID");
               
               Arende arende = new Arende(b,tidsatgang, preltid,
-            timpris,arbetsuppgift,userName,kompID, kundID);
+            timpris,arbetsuppgift,userName,kompID,status, kundID);
               arendeArray.add(arende);
               
               System.out.println("bajs");
@@ -484,9 +505,127 @@ JTextField field1 = new JTextField(10),
        
        
        
-   }     
+   }   
+   public void getÄrendeKund(int kundID){
+   
+   Connection conn21 = null;
+   Statement stmt21 = null;
+   
+   try{
+      //STEP 2: Register JDBC driver
+      Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 
-} 
+      //STEP 3: Open a connection
+      System.out.println("Connecting to database...");
+      conn21 = DriverManager.getConnection(jdbcUrl, USER, PASS);
+
+      //STEP 4: Execute a query
+      System.out.println("Creating statement...");
+      stmt21 = conn21.createStatement();
+      String sql;
+      sql = "SELECT * FROM Kund WHERE  Kund_ID = "+kundID;
+     
+      
+      ResultSet rs30 = stmt21.executeQuery(sql);
+    
+
+      //STEP 5: Extract data from result set
+      while(rs30.next()){
+          
+             String fNamn = rs30.getString("fNamn");
+             String eNamn = rs30.getString("eNamn");
+         this.fNamn2 = fNamn;
+         this.eNamn2 = eNamn; 
+      }
+     
+
+      
+      System.out.println(fNamn2+eNamn2);
+      
+      
+      rs30.close();
+      stmt21.close();
+      }catch(SQLException | ClassNotFoundException se){
+       }finally{
+      //finally block used to close resources
+      try{
+         if(stmt21!=null) {
+             conn21.close();
+         }
+      }catch(SQLException se){
+      }// do nothing
+      try{
+         if(conn21!=null) {
+             conn21.close();
+         }
+      }catch(SQLException se){
+      }//end finally try
+   }//end try 
+          System.out.print("We made it");
+}
+   public void getArendeKund2(int arendeID){
+       
+     Connection conn40 = null;
+      Statement stmt40 = null; 
+      
+      System.out.println(arendeID);
+      
+            try {
+          Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+          
+          conn40 = DriverManager.getConnection(jdbcUrl, USER, PASS);
+          System.out.println("Jonas connection online!");
+          
+          System.out.println("Skapar statement");
+          stmt40 = conn40.createStatement();
+          
+
+      String sql2 = "SELECT * FROM Arande WHERE arande_ID = "+arendeID;
+      
+     
+      ResultSet rs32 = stmt40.executeQuery(sql2);
+            
+          System.out.println("Result");
+          
+
+           while (rs32.next()){
+             String arbetsuppgift = rs32.getString("arbetsuppgift");
+             String status = rs32.getString("tillstånd");          
+         this.satus = status;
+         this.arbetsuppgift = arbetsuppgift;
+              
+              
+          }
+           
+          System.out.println(satus+arbetsuppgift);
+          
+          stmt40.close();
+          rs32.close();
+      }catch(SQLException | ClassNotFoundException se){
+       }finally{
+      //finally block used to close resources
+      try{
+         if(stmt40!=null) {
+             conn40.close();
+         }
+      }catch(SQLException se){
+      }// do nothing
+      try{
+         if(conn40!=null) {
+             conn40.close();
+         }
+      }catch(SQLException se){
+      }//end finally try
+   }//end try 
+          System.out.print("We made it");
+       
+       
+       
+   }
+       
+   }
+   
+ 
 
 
     

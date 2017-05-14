@@ -130,6 +130,7 @@ public class LoginUi extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(255, 51, 51));
 
         choice1.add("Admin"); choice1.add("IT-Support"); choice1.add("Processledare");
+        choice1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);

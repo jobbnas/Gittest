@@ -116,8 +116,23 @@ public class Gittest2{
                 
          if(arende.getMerv()== true){
                     
+              
+              
+              int a_id = arende.getA_id();
+              int k_id=arende.getK_id();
+              
+              data.getÄrendeKund(k_id);
+              data.getArendeKund2(a_id);
+              String arb = data.getArbetsuppgift();
+              String stat = data.getSatus();
+              String fe = data.getfNamn2();
+              String ef= data.geteNamn2();
+              
+              komUI.setArendeName(a_id);
+              komUI.setStatusName(stat);
+              komUI.setArbetsuppgiftName(arb);
+              komUI.setKundName(fe, ef);
               komUI.setVisible(true);
-                
                 
             }
              
