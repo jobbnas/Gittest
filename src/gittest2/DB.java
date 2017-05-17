@@ -276,7 +276,7 @@ public class DB {
               System.out.println("fan");
               int b =rsJ20.getInt("arande_ID");
               String status = rsJ20.getString("tillstånd");
-              int tidsatgang = rsJ20.getInt("tidsatgang");
+              double tidsatgang = rsJ20.getInt("tidsatgang");
               int preltid =rsJ20.getInt("preltid");
               int timpris = rsJ20.getInt("timpris");
               String arbetsuppgift = rsJ20.getString("arbetsuppgift");
@@ -799,7 +799,7 @@ JTextField field1 = new JTextField(10),
       
       
    } // DB
-   public void setTidtoArende(int a_id,int tid)throws ClassNotFoundException, SQLException{
+   public void setTidtoArende(int a_id,double tid)throws ClassNotFoundException, SQLException{
        Connection conn77=null;
        Statement stmt77=null;
       
