@@ -464,9 +464,9 @@ public class KommentarUI extends javax.swing.JFrame {
             JOptionPane.showConfirmDialog(null, myPanel, "Fyll i tid:", 
             JOptionPane.OK_CANCEL_OPTION);
             
-            int timmar,minuter;
-            timmar = Integer.parseInt(field1.getText());
-            minuter = Integer.parseInt(field2.getText());
+            double timmar,minuter;
+            timmar = Double.parseDouble(field1.getText());
+            minuter = Double.parseDouble(field2.getText());
             System.out.println(timmar+minuter);
     
     }//GEN-LAST:event_jButton2MouseClicked
