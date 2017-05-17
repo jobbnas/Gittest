@@ -82,22 +82,36 @@ public class Arende {
     public void setKompId(String kompId) {
         this.kompId = kompId;
     }
-    
-     int arande_id;
-     String status;
-     int tidsatgang;
-     int preTid;
-     int timPris;
-     String arbetsuppgift;
-     int Kund_ID;
-     String userNamne;
-     String kompId;
-    
 
+    public void laggTillTid(int tid) {
+        this.tidsatgang = this.tidsatgang + tid / 60;
 
-    public Arende(int arande_id,int tidsatgang, int preTid,
-            int timPris,String arbetsuppgift,String userNamne, String kompId,String status, int Kund_ID){
-        
+    }
+
+    public void setTidsatgangMinuter(int tidsatgang) {
+
+        this.tidsatgang = tidsatgang / 60;
+    }
+
+    public void setTidsatgangTimmar(int timmar) {
+
+        this.tidsatgang = this.tidsatgang + timmar;
+
+    }
+
+    int arande_id;
+    String status;
+    int tidsatgang;
+    int preTid;
+    int timPris;
+    String arbetsuppgift;
+    int Kund_ID;
+    String userNamne;
+    String kompId;
+
+    public Arende(int arande_id, int tidsatgang, int preTid,
+            int timPris, String arbetsuppgift, String userNamne, String kompId, String status, int Kund_ID) {
+
         this.arande_id = arande_id;
         this.status = status;
         this.tidsatgang = tidsatgang;
@@ -107,6 +121,6 @@ public class Arende {
         this.Kund_ID = Kund_ID;
         this.userNamne = userNamne;
         this.kompId = kompId;
-        
+
     }
 }

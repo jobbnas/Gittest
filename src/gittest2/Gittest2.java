@@ -105,12 +105,7 @@ public class Gittest2{
      arende.arendeLista = (ArrayList<Arende>)arendeArray.clone();
      arende.VisaArende();
      
-     data.kommentarlista.clear();
-     
-     komUI.ClearKommentar();
-     data.getKommentar(10);
-     komUI.k_lista =(ArrayList<Kommentar>) data.getKommentarlista().clone();
-     komUI.visaKommentarer();
+
      
      
      while(hem.getLoop()== false){
@@ -126,25 +121,51 @@ public class Gittest2{
                     
               
               
-              int a_id = arende.getA_id();
-              int k_id=arende.getK_id();
+            int a_id = arende.getA_id();
+            int k_id=arende.getK_id();
+
+            data.getÄrendeKund(k_id);
+            data.getArendeKund2(a_id);
+            String arb = data.getArbetsuppgift();
+            String stat = data.getSatus();
+            String fe = data.getfNamn2();
+            String ef= data.geteNamn2();
+
+            komUI.setArendeName(a_id);
+            komUI.setStatusName(stat);
+            komUI.setArbetsuppgiftName(arb);
+            komUI.setKundName(fe, ef);
+            data.kommentarlista.clear();
+
+            komUI.ClearKommentar();
+
+
+           data.getKommentar(a_id);
+           komUI.k_lista =(ArrayList<Kommentar>) data.getKommentarlista().clone();
+           komUI.visaKommentarer();
+
+            komUI.setVisible(true);
               
-              data.getÄrendeKund(k_id);
-              data.getArendeKund2(a_id);
-              String arb = data.getArbetsuppgift();
-              String stat = data.getSatus();
-              String fe = data.getfNamn2();
-              String ef= data.geteNamn2();
+              while(komUI.getTryckLoop()== false){
+                  login.dispose();
               
-              komUI.setArendeName(a_id);
-              komUI.setStatusName(stat);
-              komUI.setArbetsuppgiftName(arb);
-              komUI.setKundName(fe, ef);
               
-              komUI.setVisible(true);
-                
+                if(komUI.getTryck()==true){
+                    System.out.println("BADOOOOOOOOO");
+
+                    String kom = komUI.getKommentar();
+                    String und =  komUI.getUnderskrift();
+                    int ide = komUI.getId();
+
+                    data.setKommentar(ide, kom, und);
+
+
+                  }
+              }
+ 
             }
-             
+         
+ 
          
          if(hem.getKund()==true){
              

@@ -64,6 +64,11 @@ public class DB {
       String eNamn2;
       String satus;
       String arbetsuppgift;
+      String användarnamn;
+
+    public String getAnvändarnamn() {
+        return användarnamn;
+    }
 
     public String getfNamn2() {
         return fNamn2;
@@ -135,7 +140,7 @@ public class DB {
               
               tempu = rsJ.getString("userName");
               tempp = rsJ.getString("password");
-
+              
               
               if (tempp.equals(pass)){
                 grind1=true;
@@ -145,7 +150,7 @@ public class DB {
                   grind2=true;
               this.fornamn = rsJ.getString("fNamn");
               this.efternman = rsJ.getString("eNamn");
-              
+              this.användarnamn = rsJ.getString("userName");
               
                 
               System.out.println("sfd");
@@ -702,11 +707,140 @@ JTextField field1 = new JTextField(10),
       
       
       
-   }    
+   }  
+   public void setKommentar(int arandeID, String Kommen, String underskrift){
+     
+       
+      Connection conn45 = null;
+      Statement stmt45 = null; 
+      
+        String username = användarnamn;
+        System.out.println(username);
+        System.out.println(underskrift);
+        System.out.println(Kommen);
+        System.out.println(arandeID);
+      
+            try {
+          Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+          
+          conn45 = DriverManager.getConnection(jdbcUrl, USER, PASS);
+          System.out.println("Jonas connection online!");
+          
+          System.out.println("Skapar statement");
+          stmt45 = conn45.createStatement();
+          
+          System.out.println("Bajsbajsbajsbajs");
+      String sql2 = "INSERT INTO Kommentar (kommentar, underskrift, userName, arande_ID)\n" +
+                    "VALUES('"+Kommen+"','"+underskrift+"','"+username+"',"+arandeID+")";
+      System.out.println("Frodo");
+           stmt45.executeUpdate(sql2);
+         
+          
+          stmt45.close();
+         
+          
+      }catch(SQLException | ClassNotFoundException se){
+       }finally{
+      //finally block used to close resources
+      try{
+         if(stmt45!=null) {
+             conn45.close();
+         }
+      }catch(SQLException se){
+      }// do nothing
+      try{
+         if(conn45!=null) {
+             conn45.close();
+         }
+      }catch(SQLException se){
+      }//end finally try
+   }//end try 
+          System.out.print("We made it");
+       
+       
+       
    }
-   
+   public void setKommentarToLast(int k_id)throws ClassNotFoundException,SQLException{
+        Connection conn88=null;
+       Statement stmt88=null;
+      
+      
+        try {
+          Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+          
+        conn88 = DriverManager.getConnection(jdbcUrl, USER, PASS);
+          System.out.println("Jonas connection online!");
+          
+        System.out.println("Skapar statement");
+          stmt88 = conn88.createStatement();
+          
+         String sql88 = "Update Kommentar SET Olast=0 WHERE kommentar_ID = "+k_id;
+          
+         stmt88.executeUpdate(sql88);
+          
+         
+         System.out.println("Vi uppdaterar ÄRENDENDNEN");
+          
+         }catch(SQLException | ClassNotFoundException se){
+       }finally{
+      //finally block used to close resources
+      try{
+         if(stmt88!=null) {
+             conn88.close();
+         }
+      }catch(SQLException se){
+      }// do nothing
+      if(conn88!=null) {
+          conn88.close();
+      }
+   }//end try  
+      
+      
+      
+      
+   } // DB
+   public void setTidtoArende(int a_id,int tid)throws ClassNotFoundException, SQLException{
+       Connection conn77=null;
+       Statement stmt77=null;
+      
+      
+        try {
+          Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+          
+        conn77 = DriverManager.getConnection(jdbcUrl, USER, PASS);
+          System.out.println("Jonas connection online!");
+          
+        System.out.println("Skapar statement");
+          stmt77 = conn77.createStatement();
+          
+         String sql77 = "Update Arande SET tidsatgang=tidsatgang +"+tid+" "+"WHERE "+a_id+"="+"arande_ID";
+          
+         stmt77.executeUpdate(sql77);
+          
+         
+         System.out.println("Vi uppdaterar ÄRENDENDNEN");
+          
+         }catch(SQLException | ClassNotFoundException se){
+       }finally{
+      //finally block used to close resources
+      try{
+         if(stmt77!=null) {
+             conn77.close();
+         }
+      }catch(SQLException se){
+      }// do nothing
+      if(conn77!=null) {
+          conn77.close();
+      }
+   }//end try
+      
+      
+   }
+   }
+      
  
 
 
     
+
 

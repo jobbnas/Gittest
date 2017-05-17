@@ -5,7 +5,19 @@
  */
 package gittest2;
 
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -15,12 +27,48 @@ import javax.swing.table.DefaultTableModel;
 public class KommentarUI extends javax.swing.JFrame {
     
     String id2;
+    int id;
+    public int count;
+    String kommentarer;
+    boolean boolTillstånd = false;
+
+    public boolean getBoolTillstånd() {
+        return boolTillstånd;
+    }
+    public int getId() {
+        return id;
+    }
+    String underskrift;
+    boolean tryck = false;
+   boolean tryckLoop = false;
+
+    public boolean getTryckLoop() {
+        return tryckLoop;
+    }
+
+    public boolean getTryck() {
+        return tryck;
+    }
+
+    public String getUnderskrift() {
+        return underskrift;
+    }
+
+    public String getId2() {
+        return id2;
+    }
+    String kommentar;
+
+    public String getKommentar() {
+        return kommentar;
+    }
     
       ArrayList<Kommentar>k_lista;
         public void setKundName(String f,String e){
         jLabel1.setText(f +" "+e);
     }
         public void setArendeName(int id ){
+            this.id = id;
             
          id2 = Integer.toString(id);
                 
@@ -32,7 +80,8 @@ public class KommentarUI extends javax.swing.JFrame {
         public void setStatusName(String stat){
         jLabel4.setText(stat);
         }
-
+        
+        
 
     /**
      * Creates new form KommentarUI
@@ -48,14 +97,15 @@ public class KommentarUI extends javax.swing.JFrame {
         
        System.out.println("Skriver kommentarer");
         DefaultTableModel mode = (DefaultTableModel)jTable2.getModel();
-        Object[] row = new Object[3];
+        Object[] row = new Object[4];
         for(int i=0; i<k_lista.size();i++){
             
            row[0]=k_lista.get(i).getUnderskrift();
             row[1]=k_lista.get(i).getDatum();
             row[2]=k_lista.get(i).getUsername();
             mode.addRow(row);
-            
+            kommentarer =k_lista.get(i).getKommentar();
+            System.out.println(kommentar+"Isak är bäst");
            
        }
     }
@@ -68,6 +118,7 @@ public class KommentarUI extends javax.swing.JFrame {
                     
                 }
         }
+            
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -158,6 +209,11 @@ public class KommentarUI extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        jTable2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable2MouseClicked(evt);
+            }
+        });
         jScrollPane3.setViewportView(jTable2);
         if (jTable2.getColumnModel().getColumnCount() > 0) {
             jTable2.getColumnModel().getColumn(0).setResizable(false);
@@ -173,6 +229,11 @@ public class KommentarUI extends javax.swing.JFrame {
         choice1.add("Arbete avslutat");
 
         jButton2.setText("Lägg till tid");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -321,15 +382,94 @@ public class KommentarUI extends javax.swing.JFrame {
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         // TODO add your handling code here:
         
+        DB data = new DB();
+        JTextArea ta = new JTextArea(20, 50);               
+                ta.setWrapStyleWord(true);
+                ta.setLineWrap(true);
+                ta.setCaretPosition(0);
+                ta.setEditable(true);
+                
+                
+      
+       JOptionPane.showMessageDialog(null, new JScrollPane(ta), "Kommentar", JOptionPane.INFORMATION_MESSAGE); 
+        this.kommentar = ta.getText();
+       JFrame frame = new JFrame("InputDialog Example #1");
+        underskrift = JOptionPane.showInputDialog(frame, "Vänligen ange underskrift");
         
         
-        
+       this.tryck=true;
+       this.tryckLoop=true;
+       
+       
+       
+       
         
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
+        // TODO add your handling code here:
+                jTable2.addMouseListener(new MouseAdapter(){
+            @Override
+            public void mouseClicked(MouseEvent e) {
+               count = e.getClickCount();
+               
+                if (e.getClickCount() == 2) {
+                 JTable target = (JTable)e.getSource();   
+                 int row = target.getSelectedRow();
+                 int column = target.getColumnCount();
+                 
+                JTextArea ta = new JTextArea(20, 50);               
+                ta.setWrapStyleWord(true);
+                ta.setLineWrap(true);
+                ta.setCaretPosition(0);
+                ta.setEditable(false);
+                ta.setText(kommentarer);
+                JOptionPane.showMessageDialog(null, new JScrollPane(ta),
+                        "Kommentar", JOptionPane.INFORMATION_MESSAGE); 
+                    
+                 
+
+                }
+                
+            }
+            
+       }
+                        
+                );
+                
+                this.boolTillstånd = true;
+    }//GEN-LAST:event_jTable2MouseClicked
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+            JTextField field1 = new JTextField(10),
+        field2 = new JTextField(10); 
+        JPanel myPanel = new JPanel();
+
+        myPanel.setLayout(new BoxLayout(myPanel, BoxLayout.Y_AXIS));
+        myPanel.add(new JLabel("Timmar:"));
+            
+        myPanel.add(field1);
+        myPanel.add(Box.createHorizontalStrut(5));
+        
+        myPanel.add(new JLabel("Minuter:"));
+            
+            myPanel.add(field2);
+
+            myPanel.add(Box.createHorizontalStrut(5));
+            
+            JOptionPane.showConfirmDialog(null, myPanel, "Fyll i tid:", 
+            JOptionPane.OK_CANCEL_OPTION);
+            
+            int timmar,minuter;
+            timmar = Integer.parseInt(field1.getText());
+            minuter = Integer.parseInt(field2.getText());
+            System.out.println(timmar+minuter);
+    
+    }//GEN-LAST:event_jButton2MouseClicked
 
     /**
      * @param args the command line arguments
