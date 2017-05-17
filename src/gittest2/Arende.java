@@ -27,11 +27,11 @@ public class Arende {
         this.status = status;
     }
 
-    public int getTidsatgang() {
+    public double getTidsatgang() {
         return tidsatgang;
     }
 
-    public void setTidsatgang(int tidsatgang) {
+    public void setTidsatgang(double tidsatgang) {
         this.tidsatgang = tidsatgang;
     }
 
@@ -83,7 +83,7 @@ public class Arende {
         this.kompId = kompId;
     }
 
-    public void laggTillTid(int tid) {
+    public void laggTillTid(double tid) {
         this.tidsatgang = this.tidsatgang + tid / 60;
 
     }
@@ -100,8 +100,9 @@ public class Arende {
     }
 
     int arande_id;
+    
     String status;
-    int tidsatgang;
+    double tidsatgang;
     int preTid;
     int timPris;
     String arbetsuppgift;
@@ -109,7 +110,7 @@ public class Arende {
     String userNamne;
     String kompId;
 
-    public Arende(int arande_id, int tidsatgang, int preTid,
+    public Arende(int arande_id, double tidsatgang, int preTid,
             int timPris, String arbetsuppgift, String userNamne, String kompId, String status, int Kund_ID) {
 
         this.arande_id = arande_id;
