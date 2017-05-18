@@ -21,6 +21,8 @@ public class Gittest2{
    static final String jdbcUrl = "jdbc:sqlserver://myisak.cvhdjaougv6g.eu-central-1.rds.amazonaws.com\\myisak:1433;databaseName=Github2";
    static final String USER = "root";
    static final String PASS = "199404046253";
+   static String text= "BETA V.100";
+   static String text1= "© 2017 ISAKJONAS GROUP ALL RIGHTS RESERVED";
    
    static String b;
    static String c;
@@ -29,10 +31,16 @@ public class Gittest2{
    
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
         Scanner input = new Scanner(System.in);
-       
-//    GUI test = new GUI();
-//    test.setVisible(true);
-    
+    Hemskärm hem = new Hemskärm();
+    KommentarUI komUI = new KommentarUI();
+    ArandeUI arende = new ArandeUI();
+    KundUI kundUI = new KundUI();
+    LoginUi login = new LoginUi();
+    hem.setText(text,text1);
+    komUI.setText(text,text1);
+    arende.setText(text,text1);
+    kundUI.setText(text,text1);
+    login.setText(text, text1);
 
     LoadingScreen1 ladda = new LoadingScreen1();
     
@@ -41,7 +49,7 @@ public class Gittest2{
     ArrayList<Arende> arendeArray;
     arendeArray = (ArrayList<Arende>)data.arendeArray.clone();
     
-    ArandeUI arende = new ArandeUI();
+    
     arende.arendeLista = (ArrayList<Arende>)arendeArray.clone();
     arende.VisaArende();
    
@@ -51,18 +59,17 @@ public class Gittest2{
     kundlist = (ArrayList<Kund>)data.listkund.clone();
 
 
-    KundUI kundUI = new KundUI();
+    
     kundUI.lista = (ArrayList<Kund>)kundlist.clone();
     kundUI.Visa_Kund();
     
-    LoginUi login = new LoginUi();
+   
     login.setVisible(true);
     
-    Hemskärm hem = new Hemskärm();
-    KommentarUI komUI = new KommentarUI();
+
     
     while(login.getKnapp()==false){
-        
+        hem.setTid();
        b= login.getUser();
        c=  login.getPass();
         r= login.getPos();
@@ -81,7 +88,9 @@ public class Gittest2{
                String e = data.getEfternman();
                 
                 hem.setLabelName(f, e);
+                hem.setTid();
                 hem.setVisible(true);
+                hem.setKlockaDefault();
                 
             case"IT-Support":
                 
@@ -94,6 +103,7 @@ public class Gittest2{
     } while(login.isActive());
      
      while(true){
+         hem.setTid();
      hem.setLoop3();
      hem.setArendeDefault();
      hem.setKundDefault();
@@ -113,7 +123,7 @@ public class Gittest2{
      while(hem.getLoop()== false){
         arende.setMervToDefault();
         hem.setDefaultBoolHemskärm();
-         
+         hem.setTid();
          login.dispose();
          if(hem.getArende()==true){
             arende.setVisible(true);
@@ -163,7 +173,7 @@ public class Gittest2{
               while(komUI.getTryckLoop()== false){
 
                   login.dispose();
-              
+              hem.setTid();
               
                 if(komUI.getTryck()==true){
                     System.out.println("BADOOOOOOOOO");
