@@ -28,6 +28,10 @@ import javax.swing.table.DefaultTableModel;
 public class ArandeUI extends javax.swing.JFrame {
     
     public ArrayList<Arende> arendeLista;
+
+    public ArrayList<Arende> getArendeLista() {
+        return arendeLista;
+    }
     public int a_id;
 
     public int getA_id() {

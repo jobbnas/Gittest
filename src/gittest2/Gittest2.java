@@ -97,32 +97,43 @@ public class Gittest2{
      hem.setLoop3();
      hem.setArendeDefault();
      hem.setKundDefault();
+     
      data.arendeArray.clear();
      data.setArendetoList();
      arendeArray.clear();
      arende.ClearArende();
+     hem.ClearHemskärm();
+     
      arendeArray = (ArrayList<Arende>)data.arendeArray.clone();
      arende.arendeLista = (ArrayList<Arende>)arendeArray.clone();
      arende.VisaArende();
-     
+   
+     hem.VisaHemskärm(arendeArray);
 
-     
-     
      while(hem.getLoop()== false){
         arende.setMervToDefault();
+        hem.setDefaultBoolHemskärm();
          
          login.dispose();
          if(hem.getArende()==true){
             arende.setVisible(true);
             
          }
+
                 
-         if(arende.getMerv()== true){
-                    
-              
-              
-            int a_id = arende.getA_id();
-            int k_id=arende.getK_id();
+         if(arende.getMerv()== true || hem.getBoolHemskärm()== true){
+            int a_id;  
+            int k_id;
+                  
+            if(arende.getMerv()== true){ 
+                a_id = arende.getA_id();
+                k_id=arende.getK_id();
+            }
+            else{
+             
+                 a_id = hem.getA_id();
+                 k_id = hem.getK_id();
+            }
 
             data.getÄrendeKund(k_id);
             data.getArendeKund2(a_id);
@@ -145,8 +156,12 @@ public class Gittest2{
            komUI.visaKommentarer();
 
             komUI.setVisible(true);
-              
+            
+            komUI.setDefaultKommentar();
+            komUI.setDefaultkomID();
+
               while(komUI.getTryckLoop()== false){
+
                   login.dispose();
               
               
@@ -158,9 +173,29 @@ public class Gittest2{
                     int ide = komUI.getId();
 
                     data.setKommentar(ide, kom, und);
-
-
+                    komUI.setDefaultTryck();
+                    komUI.setDefaultTryckLoop();
+                   
                   }
+                
+                if(komUI.getBoolTillstånd()==true){
+                    
+                    int kID= komUI.getKomID();
+                    data.setKommentarToLast(kID);
+                    komUI.setDefaultBoolTillstånd();
+                    komUI.setDefaultTryckLoop();
+                    
+                }
+                                              // default kommentar
+                 if(komUI.getÄndraStatus1()==true){
+                    String val =komUI.getVal1();
+                    data.setStatus(a_id, val);
+                    komUI.ändraStatus=false;
+                    komUI.setDefaultTryckLoop();
+                 }
+                  
+
+                  //
               }
  
             }
@@ -179,27 +214,7 @@ public class Gittest2{
     
     }
     
-    static void Arende() throws ClassNotFoundException, SQLException{
-    data.setArendetoList();   
-    ArrayList<Arende> arendeArray;
-    arendeArray = (ArrayList<Arende>)data.arendeArray.clone();
-    
-    ArandeUI arende = new ArandeUI();
-    arende.arendeLista = (ArrayList<Arende>)arendeArray.clone();
-    arende.VisaArende();
-    arende.setVisible(true);
-    }
-    
-    static void Kund() throws ClassNotFoundException, SQLException{
-    data.setKundtoList();
-    ArrayList<Kund> kundlist;
-    kundlist = (ArrayList<Kund>)data.listkund.clone();
 
-    KundUI kundUI = new KundUI();
-    kundUI.lista = (ArrayList<Kund>)kundlist.clone();
-    kundUI.Visa_Kund();
-    kundUI.setVisible(true);
-    }
 
 
 }

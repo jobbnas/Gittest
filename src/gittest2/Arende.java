@@ -88,12 +88,12 @@ public class Arende {
 
     }
 
-    public void setTidsatgangMinuter(int tidsatgang) {
+    public void setTidsatgangMinuter(double tidsatgang) {
 
         this.tidsatgang = tidsatgang / 60;
     }
 
-    public void setTidsatgangTimmar(int timmar) {
+    public void setTidsatgangTimmar(double timmar) {
 
         this.tidsatgang = this.tidsatgang + timmar;
 

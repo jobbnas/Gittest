@@ -40,6 +40,11 @@ public class DB {
    public ArrayList<Kund>listkund = new ArrayList<>();
    public ArrayList<Arende>arendeArray = new ArrayList<>();
    public ArrayList<Kommentar>kommentarlista = new ArrayList<>();
+   public ArrayList<Kommentar>hemskärmLista = new ArrayList<>();
+
+    public ArrayList<Kommentar> getHemskärmLista() {
+        return hemskärmLista;
+    }
 
     public ArrayList<Kommentar> getKommentarlista() {
         return kommentarlista;
@@ -764,6 +769,7 @@ JTextField field1 = new JTextField(10),
         Connection conn88=null;
        Statement stmt88=null;
       
+       System.out.println(k_id);
       
         try {
           Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
@@ -799,7 +805,7 @@ JTextField field1 = new JTextField(10),
       
       
    } // DB
-   public void setTidtoArende(int a_id,double tid)throws ClassNotFoundException, SQLException{
+   public void setTidtoArende(int a_id,double tid )throws ClassNotFoundException, SQLException{
        Connection conn77=null;
        Statement stmt77=null;
       
@@ -836,6 +842,103 @@ JTextField field1 = new JTextField(10),
       
       
    }
+   public void setStatus(int a_id, String val )throws ClassNotFoundException, SQLException{
+       Connection conn666=null;
+       Statement stmt666=null;
+      
+      
+        try {
+          Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+          
+        conn666 = DriverManager.getConnection(jdbcUrl, USER, PASS);
+          System.out.println("Jonas connection online!");
+          
+        System.out.println("Skapar statement");
+          stmt666 = conn666.createStatement();
+          
+         String sql666 = "Update Arande SET tillstånd="+"'"+val+"'"+" "+"WHERE "+a_id+"="+"arande_ID";
+          
+         stmt666.executeUpdate(sql666);
+          
+         
+         System.out.println("Vi uppdaterar ÄRENDENDNEN");
+          
+         }catch(SQLException | ClassNotFoundException se){
+       }finally{
+      //finally block used to close resources
+      try{
+         if(stmt666!=null) {
+             conn666.close();
+         }
+      }catch(SQLException se){
+      }// do nothing
+      if(conn666!=null) {
+          conn666.close();
+      }
+   }//end try
+      
+      
+   }
+   public void Test(int sträng){
+       
+       /*Connection conn666=null;
+       Statement stmt666=null;
+      
+      
+        try {
+          Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+          
+        conn666 = DriverManager.getConnection(jdbcUrl, USER, PASS);
+          System.out.println("Jonas connection online!");
+          
+        System.out.println("Skapar statement");
+          stmt666 = conn666.createStatement();
+          
+          switch(sträng){
+              
+          
+              
+              case 1: 
+                  
+                   
+      
+     
+                   ResultSet rs32 =stmt40 .executeQuery(sql2);
+            
+                  System.out.println("Result");
+          
+
+                  while (rs32.next()){
+                  String arbetsuppgift = rs32.getString("arbetsuppgift");
+                  String status = rs32.getString("tillstånd");          
+                  this.satus = status;
+                  this.arbetsuppgift = arbetsuppgift;
+                  
+                
+                  
+                  
+              
+              
+          }
+          
+          }
+
+          
+         }catch(SQLException | ClassNotFoundException se){
+       }finally{
+      //finally block used to close resources
+      try{
+         if(stmt666!=null) {
+             conn666.close();
+         }
+      }catch(SQLException se){
+      }// do nothing
+      if(conn666!=null) {
+          conn666.close();
+      }
+   }//end try
+       
+   */}
    }
       
  
