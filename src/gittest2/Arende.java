@@ -9,7 +9,7 @@ package gittest2;
  *
  * @author mcbookpro
  */
-public class Arende {
+public abstract class Arende {
 
     public int getArande_id() {
         return arande_id;
