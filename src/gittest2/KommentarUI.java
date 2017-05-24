@@ -39,7 +39,49 @@ public class KommentarUI extends javax.swing.JFrame {
     int kommentarID;
     boolean ändraStatus = false;
     String text;
+    double timmar, minuter;
+    boolean tidbool = false;
+    boolean boolDDKom = false;
+boolean arbUI = false;
 
+    public boolean getArbUI() {
+        return arbUI;
+    }
+
+    public void setArbUI(boolean arbUI) {
+        this.arbUI = arbUI;
+    }
+    public void setBoolDDKom(boolean boolDDKom) {
+        this.boolDDKom = boolDDKom;
+    }
+
+    public boolean getBoolDDKom() {
+        return boolDDKom;
+    }
+
+   public boolean getTidbool() {
+        return tidbool;
+    }
+
+   public void setTidbool(boolean tidbool) {
+        this.tidbool = tidbool;
+    }
+
+   public double getTimmar() {
+        return timmar;
+    }
+
+   public void setTimmar(double timmar) {
+        this.timmar = timmar;
+    }
+
+   public double getMinuter() {
+        return minuter;
+    }
+
+   public void setMinuter(double minuter) {
+        this.minuter = minuter;
+    }
 
 
     public boolean getÄndraStatus1() {
@@ -169,7 +211,7 @@ public class KommentarUI extends javax.swing.JFrame {
            
        }
     }
-            public void ClearKommentar(){
+    public void ClearKommentar(){
             DefaultTableModel mode = (DefaultTableModel)jTable2.getModel();
                 while(mode.getRowCount()>0){
                     for(int i= 0; i<mode.getRowCount();i++){
@@ -178,6 +220,21 @@ public class KommentarUI extends javax.swing.JFrame {
                     
                 }
         }
+    public void LäsKommentar(){
+                JTextArea ta = new JTextArea(20, 50);               
+                ta.setWrapStyleWord(true);
+                ta.setLineWrap(true);
+                ta.setCaretPosition(0);
+                ta.setEditable(false);
+                System.out.println("ayyyyyyy"+kommentarID);
+                String badass = getKom(kommentarID);
+                System.out.println("Lets go"+badass);
+                ta.setText(badass);
+                JOptionPane.showMessageDialog(null, new JScrollPane(ta),
+                        "Kommentar", JOptionPane.INFORMATION_MESSAGE); 
+                    
+                 boolTillstånd = true;
+    }
             
     /**
      * This method is called from within the constructor to initialize the form.
@@ -203,7 +260,6 @@ public class KommentarUI extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jToggleButton1 = new javax.swing.JToggleButton();
         jButton3 = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -212,6 +268,7 @@ public class KommentarUI extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
+        jButton5 = new javax.swing.JButton();
 
         javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
         jFrame1.getContentPane().setLayout(jFrame1Layout);
@@ -326,13 +383,6 @@ public class KommentarUI extends javax.swing.JFrame {
 
         jLabel6.setText("VISA TID HÄR HH:MM");
 
-        jToggleButton1.setText("Lägg till kommentar");
-        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton1ActionPerformed(evt);
-            }
-        });
-
         jButton3.setText("Arbetsuppgifter");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -359,6 +409,13 @@ public class KommentarUI extends javax.swing.JFrame {
 
         jLabel12.setText("jLabel12");
 
+        jButton5.setText("Lägg till kommentar");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -378,15 +435,15 @@ public class KommentarUI extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(14, 14, 14)
                         .addComponent(jButton2)
-                        .addGap(18, 18, 18)
-                        .addComponent(jToggleButton1)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(102, 102, 102)
+                                .addGap(50, 50, 50)
+                                .addComponent(jButton5)
+                                .addGap(70, 70, 70)
                                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(170, 170, Short.MAX_VALUE)
                                 .addComponent(jButton4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -408,7 +465,7 @@ public class KommentarUI extends javax.swing.JFrame {
                                     .addComponent(jLabel1)
                                     .addComponent(jLabel2)
                                     .addComponent(jLabel5))))
-                        .addContainerGap())))
+                        .addContainerGap(434, Short.MAX_VALUE))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(152, 152, 152)
                 .addComponent(jLabel12)
@@ -450,8 +507,8 @@ public class KommentarUI extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
-                    .addComponent(jToggleButton1)
-                    .addComponent(jButton3))
+                    .addComponent(jButton3)
+                    .addComponent(jButton5))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -474,35 +531,11 @@ public class KommentarUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
-        // TODO add your handling code here:
-        
-        DB data = new DB();
-        JTextArea ta = new JTextArea(20, 50);               
-                ta.setWrapStyleWord(true);
-                ta.setLineWrap(true);
-                ta.setCaretPosition(0);
-                ta.setEditable(true);
-                
-                
-      
-       JOptionPane.showMessageDialog(null, new JScrollPane(ta), "Kommentar", JOptionPane.INFORMATION_MESSAGE); 
-        this.kommentar = ta.getText();
-       JFrame frame = new JFrame("InputDialog Example #1");
-        underskrift = JOptionPane.showInputDialog(frame, "Vänligen ange underskrift");
-        
-        
-       this.tryck=true;
-       this.tryckLoop=true;
-       
-       
-       
-       
-        
-    }//GEN-LAST:event_jToggleButton1ActionPerformed
-
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        this.arbUI = true;
+        
+        
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
@@ -528,23 +561,11 @@ public class KommentarUI extends javax.swing.JFrame {
 
                          System.out.println(kommentarID);
       
-
+                       
                   }
                  }
                  
-                JTextArea ta = new JTextArea(20, 50);               
-                ta.setWrapStyleWord(true);
-                ta.setLineWrap(true);
-                ta.setCaretPosition(0);
-                ta.setEditable(false);
-                System.out.println("ayyyyyyy"+kommentarID);
-                String badass = getKom(kommentarID);
-                System.out.println("Lets go"+badass);
-                ta.setText(badass);
-                JOptionPane.showMessageDialog(null, new JScrollPane(ta),
-                        "Kommentar", JOptionPane.INFORMATION_MESSAGE); 
-                    
-                 boolTillstånd = true;
+                 boolDDKom = true;  
                  
 
                 }
@@ -575,10 +596,14 @@ public class KommentarUI extends javax.swing.JFrame {
             
             JOptionPane.showConfirmDialog(null, myPanel, "Fyll i tid:", 
             JOptionPane.OK_CANCEL_OPTION);
-            
-            double timmar,minuter;
             timmar = Double.parseDouble(field1.getText());
             minuter = Double.parseDouble(field2.getText());
+            minuter = minuter/60;
+            timmar=timmar + minuter;
+            System.out.println(timmar);
+            tidbool=true;
+            
+  
             System.out.println(timmar+minuter);
     
     }//GEN-LAST:event_jButton2MouseClicked
@@ -617,6 +642,27 @@ public class KommentarUI extends javax.swing.JFrame {
         // TODO add your handling code here:
           
     }//GEN-LAST:event_formWindowDeiconified
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+                DB data = new DB();
+        JTextArea ta = new JTextArea(20, 50);               
+                ta.setWrapStyleWord(true);
+                ta.setLineWrap(true);
+                ta.setCaretPosition(0);
+                ta.setEditable(true);
+                
+                
+      
+       JOptionPane.showMessageDialog(null, new JScrollPane(ta), "Kommentar", JOptionPane.INFORMATION_MESSAGE); 
+        this.kommentar = ta.getText();
+       JFrame frame = new JFrame("InputDialog Example #1");
+        underskrift = JOptionPane.showInputDialog(frame, "Vänligen ange underskrift");
+        
+        
+       this.tryck=true;
+       this.tryckLoop=true;
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -660,6 +706,7 @@ public class KommentarUI extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -677,6 +724,5 @@ public class KommentarUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
-    private javax.swing.JToggleButton jToggleButton1;
     // End of variables declaration//GEN-END:variables
 }

@@ -13,7 +13,32 @@ import java.util.ArrayList;
  */
 public class Felsokning  {
     
-    int felkod;
-    private ArrayList<Hittadefel>fellista = new ArrayList<>();
+String handelse;
+String level;
+String atgard;
+
+    public String getHandelse() {
+        return handelse;
+    }
+
+    public void setHandelse(String handelse) {
+        this.handelse = handelse;
+    }
+
+    public String getLevel() {
+        return level;
+    }
+
+    public void setLevel(String level) {
+        this.level = level;
+    }
+
+    public String getAtgard() {
+        return atgard;
+    }
+
+    public void setAtgard(String atgard) {
+        this.atgard = atgard;
+    }
     
 }

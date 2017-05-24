@@ -11,7 +11,7 @@ import java.util.ArrayList;
  *
  * @author El Rey
  */
-public class IT_Support extends Personal {
+public class IT_Support  {
     
     String något;
     int hour;

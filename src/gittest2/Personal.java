@@ -9,15 +9,26 @@ package gittest2;
  *
  * @author mcbookpro
  */
-public class Personal {
+
+public class  Personal {
     String username;
     String perNr;
     String adress;
     String ort;
     String postNr;
-    String telNr;
     String fNamn;
     String eNamn;
+    
+    
+    public Personal(String username,String perNr,String adress,String ort,String postNr,String fNamn,String eNamn) {
+    this.username=username;
+    this.perNr=perNr;
+    this.adress=adress;
+    this.ort=ort;
+    this.postNr=postNr;
+    this.fNamn=fNamn;
+    this.eNamn=eNamn;
+    }
     
     
 }

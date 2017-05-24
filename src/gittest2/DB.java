@@ -41,6 +41,9 @@ public class DB {
    public ArrayList<Arende>arendeArray = new ArrayList<>();
    public ArrayList<Kommentar>kommentarlista = new ArrayList<>();
    public ArrayList<Kommentar>hemskärmLista = new ArrayList<>();
+   public Natvark nat = new Natvark();
+   public Lagring lagring = new Lagring();
+   public Felsokning fel = new Felsokning();
 
     public ArrayList<Kommentar> getHemskärmLista() {
         return hemskärmLista;
@@ -292,7 +295,6 @@ public class DB {
               Arende arende = new Arende(b,tidsatgang, preltid,
             timpris,arbetsuppgift,userName,kompID,status, kundID);
               arendeArray.add(arende);
-              
               System.out.println("bajs");
               
               
@@ -679,7 +681,7 @@ JTextField field1 = new JTextField(10),
               
              
              Kommentar k = new Kommentar(id,datum,underskrift,kommentar,arende_ID,user,olast);
-              kommentarlista.add(k);
+             kommentarlista.add(k);
               
 
              
@@ -819,11 +821,12 @@ JTextField field1 = new JTextField(10),
         System.out.println("Skapar statement");
           stmt77 = conn77.createStatement();
           
-         String sql77 = "Update Arande SET tidsatgang=tidsatgang +"+tid+" "+"WHERE "+a_id+"="+"arande_ID";
+         String sql77 = "Update Arande SET tidsatgang=(tidsatgang +"+tid+") "+"WHERE "+a_id+"="+"arande_ID";
+          System.out.println(sql77);
           
          stmt77.executeUpdate(sql77);
           
-         
+         stmt77.close();
          System.out.println("Vi uppdaterar ÄRENDENDNEN");
           
          }catch(SQLException | ClassNotFoundException se){
@@ -879,51 +882,94 @@ JTextField field1 = new JTextField(10),
       
       
    }
-   public void Test(int sträng){
-       
-       /*Connection conn666=null;
+   public void getSpecArende(int s, String a)throws ClassNotFoundException, SQLException{
+      
+       Connection conn666=null;
        Statement stmt666=null;
-      
-      
-        try {
+      ResultSet rs32 =null;
+      String sql66;
+              
+     
+       try {
           Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
           
-        conn666 = DriverManager.getConnection(jdbcUrl, USER, PASS);
+       conn666 = DriverManager.getConnection(jdbcUrl, USER, PASS);
           System.out.println("Jonas connection online!");
           
-        System.out.println("Skapar statement");
+       System.out.println("Skapar statement");
           stmt666 = conn666.createStatement();
-          
-          switch(sträng){
-              
-          
-              
-              case 1: 
+          switch (a){
+              case "Nätverk":
+          sql66 = "SELECT * Natverk WHERE natID ="+s;
                   
-                   
-      
+         
      
-                   ResultSet rs32 =stmt40 .executeQuery(sql2);
+                  rs32 =stmt666 .executeQuery(sql66);
             
-                  System.out.println("Result");
+                 System.out.println("Result");
           
 
-                  while (rs32.next()){
-                  String arbetsuppgift = rs32.getString("arbetsuppgift");
-                  String status = rs32.getString("tillstånd");          
-                  this.satus = status;
-                  this.arbetsuppgift = arbetsuppgift;
+                 while (rs32.next()){
+                  String hastighet = rs32.getString("Hastighet");
+                  String leverantor = rs32.getString("tillstånd");          
+                 String typ = rs32.getString("Uppkopplingstyp");
+                  nat.setHastighet(hastighet);
+                  nat.setLeverantör(leverantor);
+                  nat.setNatvarkstyp(typ);
                   
+               
+                 
+                 
+             
+             
+         }
+                  break;
+              case "Lagring":
+                  sql66 = "SELECT * Lagring WHERE lagID ="+s;
+                  
+                 rs32 =stmt666 .executeQuery(sql66);
+                  
+                 while (rs32.next()){
+                  String marke = rs32.getString("Marke");
+                  String typ = rs32.getString("Typ");          
+                 String strlk = rs32.getString("Storlek");
+                  lagring.setMarke(marke);
+                  lagring.setStorlekGB(strlk);
+                  lagring.setTyp(typ);
                 
                   
+               
+             
+         }
+                  break;
+                    
+             case "Incident":
+                  sql66 = "SELECT * Incident WHERE incID ="+s;
                   
-              
-              
-          }
-          
-          }
+                 rs32 =stmt666 .executeQuery(sql66);
+                  
+                 while (rs32.next()){
+                  String marke = rs32.getString("Handelse");
+                  String typ = rs32.getString("Nivå");          
+                 String strlk = rs32.getString("Åtgärd");
+                  fel.setAtgard(strlk);
+                  fel.setHandelse(marke);
+                  fel.setLevel(typ);
 
-          
+               
+                  
+               
+             
+         }
+                  break;
+              default:
+                  break;
+                  
+       }
+        
+         
+
+         stmt666.close();
          }catch(SQLException | ClassNotFoundException se){
        }finally{
       //finally block used to close resources
@@ -937,8 +983,111 @@ JTextField field1 = new JTextField(10),
           conn666.close();
       }
    }//end try
-       
-   */}
+      
+  } // db spec
+   public void setSpecArende(int s, String a)throws ClassNotFoundException, SQLException{
+      
+       Connection conn666=null;
+       Statement stmt666=null;
+      ResultSet rs32 =null;
+      String sql66;
+              
+     
+       try {
+          Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+          
+       conn666 = DriverManager.getConnection(jdbcUrl, USER, PASS);
+          System.out.println("Jonas connection online!");
+          
+       System.out.println("Skapar statement");
+          stmt666 = conn666.createStatement();
+          switch (a){
+              case "Nätverk":
+          sql66 = "SELECT * Natverk WHERE natID ="+s;
+                  
+         
+     
+                  rs32 =stmt666 .executeQuery(sql66);
+            
+                 System.out.println("Result");
+          
+
+                 while (rs32.next()){
+                  String hastighet = rs32.getString("Hastighet");
+                  String leverantor = rs32.getString("tillstånd");          
+                 String typ = rs32.getString("Uppkopplingstyp");
+                  nat.setHastighet(hastighet);
+                  nat.setLeverantör(leverantor);
+                  nat.setNatvarkstyp(typ);
+                  
+               
+                 
+                 
+             
+             
+         }
+                  break;
+              case "Lagring":
+                  sql66 = "SELECT * Lagring WHERE lagID ="+s;
+                  
+                 rs32 =stmt666 .executeQuery(sql66);
+                  
+                 while (rs32.next()){
+                  String marke = rs32.getString("Marke");
+                  String typ = rs32.getString("Typ");          
+                 String strlk = rs32.getString("Storlek");
+                  lagring.setMarke(marke);
+                  lagring.setStorlekGB(strlk);
+                  lagring.setTyp(typ);
+                
+                  
+               
+             
+         }
+                  break;
+                    
+             case "Incident":
+                  sql66 = "SELECT * Incident WHERE incID ="+s;
+                  
+                 rs32 =stmt666 .executeQuery(sql66);
+                  
+                 while (rs32.next()){
+                  String marke = rs32.getString("Handelse");
+                  String typ = rs32.getString("Nivå");          
+                 String strlk = rs32.getString("Åtgärd");
+                  fel.setAtgard(strlk);
+                  fel.setHandelse(marke);
+                  fel.setLevel(typ);
+
+               
+                  
+               
+             
+         }
+                  break;
+              default:
+                  break;
+                  
+       }
+        
+         
+
+         stmt666.close();
+         }catch(SQLException | ClassNotFoundException se){
+       }finally{
+      //finally block used to close resources
+      try{
+         if(stmt666!=null) {
+             conn666.close();
+         }
+      }catch(SQLException se){
+      }// do nothing
+      if(conn666!=null) {
+          conn666.close();
+      }
+   }//end try
+      
+  } // db spec
    }
       
  

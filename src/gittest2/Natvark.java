@@ -9,15 +9,26 @@ package gittest2;
  *
  * @author mcbookpro
  */
-public class Natvark extends Arende {
+public class Natvark {
     
     String natvarkstyp;
+
+    public void setNatvarkstyp(String natvarkstyp) {
+        this.natvarkstyp = natvarkstyp;
+    }
+
+    public void setHastighet(String hastighet) {
+        this.hastighet = hastighet;
+    }
+
+    public void setLeverantör(String leverantör) {
+        this.leverantör = leverantör;
+    }
     String hastighet;
     String leverantör;
 
-    public Natvark(int arande_id, double tidsatgang, int preTid, int timPris, String arbetsuppgift, String userNamne, String kompId, String status, int Kund_ID) {
-        super(arande_id, tidsatgang, preTid, timPris, arbetsuppgift, userNamne, kompId, status, Kund_ID);
-    }
+    
+    
 
 
     public String getNatvarkstyp() {
@@ -29,10 +40,38 @@ public class Natvark extends Arende {
     }
 
     public String getLeverantör() {
+        
         return leverantör;
     }
     
-    
+    String marke;
+
+   public String getMarke() {
+        return marke;
+    }
+
+   public void setMarke(String marke) {
+        this.marke = marke;
+    }
+
+   public String getTyp() {
+        return typ;
+    }
+
+   public void setTyp(String typ) {
+        this.typ = typ;
+    }
+
+   public String getStorlekGB() {
+        return StorlekGB;
+    }
+
+   public void setStorlekGB(String StorlekGB) {
+        this.StorlekGB = StorlekGB;
+    }
+    String typ;
+    String StorlekGB;
+ 
 
     
    

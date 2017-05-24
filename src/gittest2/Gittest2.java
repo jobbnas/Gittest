@@ -8,9 +8,10 @@ package gittest2;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Scanner;
-import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 
 
 //asdadsaasdSADasdASDSAdASasdasdAS
@@ -30,12 +31,13 @@ public class Gittest2{
    static DB data = new DB();
    
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
-        Scanner input = new Scanner(System.in);
+    Scanner input = new Scanner(System.in);
     Hemskärm hem = new Hemskärm();
     KommentarUI komUI = new KommentarUI();
     ArandeUI arende = new ArandeUI();
     KundUI kundUI = new KundUI();
     LoginUi login = new LoginUi();
+    ArbetsBeskrivningUI arbUI = new ArbetsBeskrivningUI();
     hem.setText(text,text1);
     komUI.setText(text,text1);
     arende.setText(text,text1);
@@ -91,11 +93,14 @@ public class Gittest2{
                 hem.setTid();
                 hem.setVisible(true);
                 hem.setKlockaDefault();
-                
+                break;
             case"IT-Support":
                 
+                break;
             case"Processledare":
-                
+                AdminUI adm = new AdminUI();
+                adm.setVisible(true);
+                break;
             default:
         }
     }
@@ -166,7 +171,7 @@ public class Gittest2{
            komUI.visaKommentarer();
 
             komUI.setVisible(true);
-            
+            komUI.setDefaultTryckLoop();
             komUI.setDefaultKommentar();
             komUI.setDefaultkomID();
 
@@ -174,6 +179,13 @@ public class Gittest2{
 
                   login.dispose();
               hem.setTid();
+              
+                if(komUI.getBoolDDKom()==true){
+                    
+                    komUI.LäsKommentar();
+                    komUI.setBoolDDKom(false);
+                    
+                }
               
                 if(komUI.getTryck()==true){
                     System.out.println("BADOOOOOOOOO");
@@ -184,16 +196,39 @@ public class Gittest2{
 
                     data.setKommentar(ide, kom, und);
                     komUI.setDefaultTryck();
-                    komUI.setDefaultTryckLoop();
+                    
                    
                   }
+                
+                if(komUI.getArbUI()==true){
+                    
+                    
+                    data.getSpecArende(a_id, arb);
+                    
+                    arbUI.setVisible(true);
+                    komUI.setArbUI(false);
+                    if(!"".equals(data.nat.getHastighet())){
+                        arbUI.setChoice(arb, data.nat.getHastighet(), data.nat.getLeverantör(), data.nat.typ);
+                        
+                    }
+                    else if(!"".equals(data.fel.getAtgard())){
+                        arbUI.setChoice(arb, data.fel.getAtgard(), data.fel.getHandelse(), data.fel.getLevel());
+                        
+                    }
+                    else if(!"".equals(data.lagring.getMarke())){
+                        arbUI.setChoice(arb,data.lagring.getMarke(),data.lagring.getStorlekGB(),data.lagring.getTyp());
+                        
+                    }
+                    
+                    
+                }
                 
                 if(komUI.getBoolTillstånd()==true){
                     
                     int kID= komUI.getKomID();
                     data.setKommentarToLast(kID);
                     komUI.setDefaultBoolTillstånd();
-                    komUI.setDefaultTryckLoop();
+                    
                     
                 }
                                               // default kommentar
@@ -201,9 +236,15 @@ public class Gittest2{
                     String val =komUI.getVal1();
                     data.setStatus(a_id, val);
                     komUI.ändraStatus=false;
-                    komUI.setDefaultTryckLoop();
+                    
                  }
-                  
+                if(komUI.getTidbool()==true){
+                     System.out.println(a_id);
+                     data.setTidtoArende(a_id,komUI.getTimmar());
+                     komUI.tidbool=false;
+                    
+                    
+                 }  
 
                   //
               }
