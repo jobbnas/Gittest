@@ -227,7 +227,7 @@ public class LoginUi extends javax.swing.JFrame {
       String pass = String.valueOf(jPasswordField1.getPassword());
       this.user = usi;
       this.passw = pass;
-      System.out.println(usi + " " + pass);
+    
       this.knapp=true;
     }//GEN-LAST:event_jButton1MouseClicked
 

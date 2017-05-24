@@ -126,7 +126,7 @@ public void setKundDefault(){
        public void VisaHemskärm(ArrayList<Arende> arendeLista) throws ClassNotFoundException, SQLException{
         
         
-        System.out.println("Gandalf");
+        
         
         DefaultTableModel mode = (DefaultTableModel)jTable1.getModel();
         Object[] row = new Object[4];
@@ -359,7 +359,7 @@ public void setKundDefault(){
                          
                          a_id =((Integer) jTable1.getModel().getValueAt(row, i));
                          
-                         System.out.println(a_id);
+                         
                          
                          boolHemskärm = true;
       

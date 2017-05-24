@@ -17,7 +17,18 @@ public class ArbetsBeskrivningUI extends javax.swing.JFrame {
     public ArbetsBeskrivningUI() {
         initComponents();
     }
-    
+        String getPos1(){
+       String hoho = this.choice1.getSelectedItem();
+       return hoho;
+    }
+            String getPos2(){
+       String hoho = this.choice2.getSelectedItem();
+       return hoho;
+    }
+        String getPos3(){
+       String hoho = this.choice3.getSelectedItem();
+       return hoho;
+    }
 public void clearChoice(){    
     choice1.removeAll();
     choice2.removeAll();

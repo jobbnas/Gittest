@@ -82,7 +82,7 @@ public class ArandeUI extends javax.swing.JFrame {
         public void VisaArende() throws ClassNotFoundException, SQLException{
         
         
-        System.out.println("Gandalf");
+   
         
         DefaultTableModel mode = (DefaultTableModel)jTable1.getModel();
         Object[] row = new Object[9];
@@ -375,7 +375,7 @@ public class ArandeUI extends javax.swing.JFrame {
                          
                          mille = true;
                          merv = true;
-                         System.out.println(a_id);
+                   
       
 
                   }
@@ -388,7 +388,7 @@ public class ArandeUI extends javax.swing.JFrame {
                          
                          k_id =((Integer) jTable1.getModel().getValueAt(row, i));
                          
-                         System.out.println(k_id);
+                     
                          
                      }
                        

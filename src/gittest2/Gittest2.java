@@ -44,7 +44,7 @@ public class Gittest2{
     kundUI.setText(text,text1);
     login.setText(text, text1);
 
-    LoadingScreen1 ladda = new LoadingScreen1();
+   
     
     
     data.setArendetoList();   
@@ -81,7 +81,7 @@ public class Gittest2{
  
        
     if (data.loginjonas(b, c, r)==true){ // Ändrar man detta till false så stängs den, så ifsatsen funkar. men verkar vara något kraj på metoden
-        System.out.println("Hej");
+       
         login.dispose();
         
         switch(r){
@@ -104,7 +104,7 @@ public class Gittest2{
             default:
         }
     }
-     System.out.println("Running");
+ 
     } while(login.isActive());
      
      while(true){
@@ -188,7 +188,7 @@ public class Gittest2{
                 }
               
                 if(komUI.getTryck()==true){
-                    System.out.println("BADOOOOOOOOO");
+                    
 
                     String kom = komUI.getKommentar();
                     String und =  komUI.getUnderskrift();
@@ -220,7 +220,8 @@ public class Gittest2{
                         
                     }
                     
-                    
+                    data.setSpecArende(a_id, arb, arbUI.getPos1(), arbUI.getPos2(), arbUI.getPos3());
+                    arbUI.clearChoice();
                 }
                 
                 if(komUI.getBoolTillstånd()==true){
@@ -239,7 +240,7 @@ public class Gittest2{
                     
                  }
                 if(komUI.getTidbool()==true){
-                     System.out.println(a_id);
+                    
                      data.setTidtoArende(a_id,komUI.getTimmar());
                      komUI.tidbool=false;
                     

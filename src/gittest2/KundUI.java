@@ -318,7 +318,7 @@ File icon = new File("C:\\Users\\El Rey\\Desktop\\Skola\\reload-icon-blue-symbol
               
              pung = ((Integer) JTable_KundLista.getModel().getValueAt(row, i));
              
-             System.out.println(pung);
+             
           }
           
 
@@ -333,14 +333,14 @@ File icon = new File("C:\\Users\\El Rey\\Desktop\\Skola\\reload-icon-blue-symbol
               
              namn = ((String) JTable_KundLista.getModel().getValueAt(row, i));
              
-             System.out.println(namn);
+          
           }
           
       }
       
       
       
-      System.out.println("Hejhgdsjfkladkfjklsafj"+namn+pung);
+      
       
       // do some action if appropriate column
     }

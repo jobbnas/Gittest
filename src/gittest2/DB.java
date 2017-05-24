@@ -136,9 +136,9 @@ public class DB {
           Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
           
           conn3 = DriverManager.getConnection(jdbcUrl, USER, PASS);
-          System.out.println("Jonas connection online!");
+
           
-          System.out.println("Skapar statement");
+
           stmt3 = conn3.createStatement();
           
           String sqlJ = "SELECT * FROM Personal WHERE position= "+"'"+ pos+"'";
@@ -161,7 +161,7 @@ public class DB {
               this.användarnamn = rsJ.getString("userName");
               
                 
-              System.out.println("sfd");
+             
               }
 
               
@@ -189,7 +189,7 @@ public class DB {
       }//end finally try
    }//end try
                           if (grind1==true && grind2==true)  {
-                              System.out.println("Lösenord giltigt");
+                              
                 return true;
             }
             else{
@@ -208,19 +208,18 @@ public class DB {
           Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
           
           conn8 = DriverManager.getConnection(jdbcUrl, USER, PASS);
-          System.out.println("Jonas connection online!");
+
           
-          System.out.println("Skapar statement");
+ 
           stmt8 = conn8.createStatement();
           
           String sqlJ = "SELECT * FROM Kund";
           ResultSet rsJ8 = stmt8.executeQuery(sqlJ);
-          System.out.println("Result");
+
           int steg=0;
           while (rsJ8.next()){
               
-              steg += 1;
-              System.out.println(steg);
+
               int b =rsJ8.getInt("Kund_ID");
               String fNamn = rsJ8.getString("fNamn");
               String eNamn = rsJ8.getString("eNamn");
@@ -255,7 +254,7 @@ public class DB {
       }catch(SQLException se){
       }//end finally try
    }//end try 
-          System.out.print("We made it");
+    
        
        
        
@@ -268,20 +267,19 @@ public class DB {
           Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
           
           conn20 = DriverManager.getConnection(jdbcUrl, USER, PASS);
-          System.out.println("Jonas connection online!");
+     
           
-          System.out.println("Skapar statement");
+    
           stmt20 = conn20.createStatement();
           
           String sqlJ4 = "SELECT * FROM Arande";
           ResultSet rsJ20 = stmt20.executeQuery(sqlJ4);
             
-          System.out.println("Result");
+   
           int steg=0;
           while (rsJ20.next()){
-              System.out.println("YO");
-              steg += 1;
-              System.out.println("fan");
+
+ 
               int b =rsJ20.getInt("arande_ID");
               String status = rsJ20.getString("tillstånd");
               double tidsatgang = rsJ20.getInt("tidsatgang");
@@ -295,7 +293,7 @@ public class DB {
               Arende arende = new Arende(b,tidsatgang, preltid,
             timpris,arbetsuppgift,userName,kompID,status, kundID);
               arendeArray.add(arende);
-              System.out.println("bajs");
+         
               
               
           }
@@ -317,7 +315,7 @@ public class DB {
       }catch(SQLException se){
       }//end finally try
    }//end try 
-          System.out.print("We made it");
+ 
        
        
        
@@ -399,16 +397,16 @@ JTextField field1 = new JTextField(10),
 
             
 
-            System.out.println(fNamn+"Hej");
+         
             
             
       try {
           Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
           
           conn3 = DriverManager.getConnection(jdbcUrl, USER, PASS);
-          System.out.println("Jonas connection online!");
+       
           
-          System.out.println("Skapar statement");
+ 
           stmt3 = conn3.createStatement();
           
           CallableStatement cstmt = null;
@@ -422,7 +420,7 @@ JTextField field1 = new JTextField(10),
                     cstmt.setString(4, perNr);
                     
                     cstmt.execute();
-                    System.out.println("Färdig");
+             
                     rsJ = cstmt.getResultSet();
 
 
@@ -472,25 +470,25 @@ JTextField field1 = new JTextField(10),
           Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
           
           conn10 = DriverManager.getConnection(jdbcUrl, USER, PASS);
-          System.out.println("Jonas connection online!");
+ 
           
-          System.out.println("Skapar statement");
+   
           stmt10 = conn10.createStatement();
           
         String sqlJ = ("SELECT komp_ID FROM  Kompetens\n" +
             "WHERE namn =" +"'"+komp+"'");
           
           ResultSet rsJ10 = stmt10.executeQuery(sqlJ);
-          System.out.println("Result");
+   
           int steg=0;
           while (rsJ10.next()){
               
-              steg += 1;
-              System.out.println(steg);
+
+              
 
               kompetens = rsJ10.getInt("komp_ID");
 
-          System.out.println("JAJAJAJAJ");
+
           }
           
 
@@ -498,7 +496,7 @@ JTextField field1 = new JTextField(10),
      String sql =("INSERT INTO Arande (preltid,arbetsuppgift,timpris,userName,komp_ID, Kund_ID) " +
      "VALUES('"+tid+"','"+upp+"','"+pris+"','"+sign+"',"+kompetens+",'"+kundID+"')");
      
-     System.out.println("Skapar ärendet");
+   
 
      stmt10.executeUpdate(sql);
      
@@ -521,7 +519,7 @@ JTextField field1 = new JTextField(10),
       }catch(SQLException se){
       }//end finally try
    }//end try 
-          System.out.print("We made it");
+       
        
        
        
@@ -536,11 +534,11 @@ JTextField field1 = new JTextField(10),
       Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 
       //STEP 3: Open a connection
-      System.out.println("Connecting to database...");
+   
       conn21 = DriverManager.getConnection(jdbcUrl, USER, PASS);
 
       //STEP 4: Execute a query
-      System.out.println("Creating statement...");
+     
       stmt21 = conn21.createStatement();
       String sql;
       sql = "SELECT * FROM Kund WHERE  Kund_ID = "+kundID;
@@ -560,7 +558,7 @@ JTextField field1 = new JTextField(10),
      
 
       
-      System.out.println(fNamn2+eNamn2);
+      
       
       
       rs30.close();
@@ -581,22 +579,21 @@ JTextField field1 = new JTextField(10),
       }catch(SQLException se){
       }//end finally try
    }//end try 
-          System.out.print("We made it");
-}
+   }
    public void getArendeKund2(int arendeID){
        
      Connection conn40 = null;
       Statement stmt40 = null; 
       
-      System.out.println(arendeID);
+    
       
             try {
           Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
           
           conn40 = DriverManager.getConnection(jdbcUrl, USER, PASS);
-          System.out.println("Jonas connection online!");
+
           
-          System.out.println("Skapar statement");
+
           stmt40 = conn40.createStatement();
           
 
@@ -605,7 +602,7 @@ JTextField field1 = new JTextField(10),
      
       ResultSet rs32 = stmt40.executeQuery(sql2);
             
-          System.out.println("Result");
+
           
 
            while (rs32.next()){
@@ -617,7 +614,7 @@ JTextField field1 = new JTextField(10),
               
           }
            
-          System.out.println(satus+arbetsuppgift);
+         
           
           stmt40.close();
           rs32.close();
@@ -637,7 +634,7 @@ JTextField field1 = new JTextField(10),
       }catch(SQLException se){
       }//end finally try
    }//end try 
-          System.out.print("We made it");
+      
        
        
        
@@ -651,9 +648,9 @@ JTextField field1 = new JTextField(10),
           Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
           
          conn55 = DriverManager.getConnection(jdbcUrl, USER, PASS);
-          System.out.println("Jonas connection online!");
+
           
-         System.out.println("Skapar statement");
+   
           stmt55 = conn55.createStatement();
           
          
@@ -706,7 +703,7 @@ JTextField field1 = new JTextField(10),
       }catch(SQLException se){
       }//end finally try
    }//end try
-          System.out.print("We made it");
+      
       
       
       
@@ -722,24 +719,21 @@ JTextField field1 = new JTextField(10),
       Statement stmt45 = null; 
       
         String username = användarnamn;
-        System.out.println(username);
-        System.out.println(underskrift);
-        System.out.println(Kommen);
-        System.out.println(arandeID);
+
       
             try {
           Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
           
           conn45 = DriverManager.getConnection(jdbcUrl, USER, PASS);
-          System.out.println("Jonas connection online!");
+ 
           
-          System.out.println("Skapar statement");
+    
           stmt45 = conn45.createStatement();
           
-          System.out.println("Bajsbajsbajsbajs");
+        
       String sql2 = "INSERT INTO Kommentar (kommentar, underskrift, userName, arande_ID)\n" +
                     "VALUES('"+Kommen+"','"+underskrift+"','"+username+"',"+arandeID+")";
-      System.out.println("Frodo");
+   
            stmt45.executeUpdate(sql2);
          
           
@@ -762,7 +756,7 @@ JTextField field1 = new JTextField(10),
       }catch(SQLException se){
       }//end finally try
    }//end try 
-          System.out.print("We made it");
+
        
        
        
@@ -771,15 +765,15 @@ JTextField field1 = new JTextField(10),
         Connection conn88=null;
        Statement stmt88=null;
       
-       System.out.println(k_id);
+       
       
         try {
           Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
           
         conn88 = DriverManager.getConnection(jdbcUrl, USER, PASS);
-          System.out.println("Jonas connection online!");
+        
           
-        System.out.println("Skapar statement");
+    
           stmt88 = conn88.createStatement();
           
          String sql88 = "Update Kommentar SET Olast=0 WHERE kommentar_ID = "+k_id;
@@ -787,7 +781,7 @@ JTextField field1 = new JTextField(10),
          stmt88.executeUpdate(sql88);
           
          
-         System.out.println("Vi uppdaterar ÄRENDENDNEN");
+         
           
          }catch(SQLException | ClassNotFoundException se){
        }finally{
@@ -816,18 +810,18 @@ JTextField field1 = new JTextField(10),
           Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
           
         conn77 = DriverManager.getConnection(jdbcUrl, USER, PASS);
-          System.out.println("Jonas connection online!");
+
           
-        System.out.println("Skapar statement");
+     
           stmt77 = conn77.createStatement();
           
          String sql77 = "Update Arande SET tidsatgang=(tidsatgang +"+tid+") "+"WHERE "+a_id+"="+"arande_ID";
-          System.out.println(sql77);
+          
           
          stmt77.executeUpdate(sql77);
           
          stmt77.close();
-         System.out.println("Vi uppdaterar ÄRENDENDNEN");
+         
           
          }catch(SQLException | ClassNotFoundException se){
        }finally{
@@ -854,9 +848,9 @@ JTextField field1 = new JTextField(10),
           Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
           
         conn666 = DriverManager.getConnection(jdbcUrl, USER, PASS);
-          System.out.println("Jonas connection online!");
+       
           
-        System.out.println("Skapar statement");
+       
           stmt666 = conn666.createStatement();
           
          String sql666 = "Update Arande SET tillstånd="+"'"+val+"'"+" "+"WHERE "+a_id+"="+"arande_ID";
@@ -864,7 +858,7 @@ JTextField field1 = new JTextField(10),
          stmt666.executeUpdate(sql666);
           
          
-         System.out.println("Vi uppdaterar ÄRENDENDNEN");
+       
           
          }catch(SQLException | ClassNotFoundException se){
        }finally{
@@ -894,9 +888,9 @@ JTextField field1 = new JTextField(10),
           Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
           
        conn666 = DriverManager.getConnection(jdbcUrl, USER, PASS);
-          System.out.println("Jonas connection online!");
+         
           
-       System.out.println("Skapar statement");
+      
           stmt666 = conn666.createStatement();
           switch (a){
               case "Nätverk":
@@ -906,7 +900,7 @@ JTextField field1 = new JTextField(10),
      
                   rs32 =stmt666 .executeQuery(sql66);
             
-                 System.out.println("Result");
+               
           
 
                  while (rs32.next()){
@@ -985,7 +979,8 @@ JTextField field1 = new JTextField(10),
    }//end try
       
   } // db spec
-   public void setSpecArende(int s, String a)throws ClassNotFoundException, SQLException{
+  
+    public void setSpecArende(int s, String a, String typ1,String typ2,String typ3)throws ClassNotFoundException, SQLException{
       
        Connection conn666=null;
        Statement stmt666=null;
@@ -997,73 +992,36 @@ JTextField field1 = new JTextField(10),
           Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
           
        conn666 = DriverManager.getConnection(jdbcUrl, USER, PASS);
-          System.out.println("Jonas connection online!");
           
-       System.out.println("Skapar statement");
+          
+       
           stmt666 = conn666.createStatement();
           switch (a){
               case "Nätverk":
-          sql66 = "SELECT * Natverk WHERE natID ="+s;
+          sql66 = "UPDATE Natverk SET Hastighet= '"+typ1+"'"+", Leverantor= '"+typ2+"'"+",Uppkopplingstyp= '"+typ3+"' "+ "WHERE natID ="+s;
                   
          
      
-                  rs32 =stmt666 .executeQuery(sql66);
+                  stmt666.executeUpdate(sql66);
             
                  System.out.println("Result");
           
 
-                 while (rs32.next()){
-                  String hastighet = rs32.getString("Hastighet");
-                  String leverantor = rs32.getString("tillstånd");          
-                 String typ = rs32.getString("Uppkopplingstyp");
-                  nat.setHastighet(hastighet);
-                  nat.setLeverantör(leverantor);
-                  nat.setNatvarkstyp(typ);
-                  
-               
-                 
-                 
-             
-             
-         }
+    
                   break;
               case "Lagring":
-                  sql66 = "SELECT * Lagring WHERE lagID ="+s;
+                  sql66 = "UPDATE Lagring SET Marke= '"+typ1+"'"+", Typ= '"+typ2+"'"+",Åtgärd= '"+typ3+"' "+ "WHERE lagID ="+s;
                   
-                 rs32 =stmt666 .executeQuery(sql66);
+                 stmt666.executeUpdate(sql66);
                   
-                 while (rs32.next()){
-                  String marke = rs32.getString("Marke");
-                  String typ = rs32.getString("Typ");          
-                 String strlk = rs32.getString("Storlek");
-                  lagring.setMarke(marke);
-                  lagring.setStorlekGB(strlk);
-                  lagring.setTyp(typ);
-                
-                  
-               
-             
-         }
+    
                   break;
                     
              case "Incident":
-                  sql66 = "SELECT * Incident WHERE incID ="+s;
+                  sql66 = "UPDATE Incident SET Handelse= '"+typ1+"'"+", Nivå= '"+typ2+"'"+",Åtgärd= '"+typ3+"' "+ "WHERE incID ="+s;
+                 stmt666.executeUpdate(sql66);
                   
-                 rs32 =stmt666 .executeQuery(sql66);
-                  
-                 while (rs32.next()){
-                  String marke = rs32.getString("Handelse");
-                  String typ = rs32.getString("Nivå");          
-                 String strlk = rs32.getString("Åtgärd");
-                  fel.setAtgard(strlk);
-                  fel.setHandelse(marke);
-                  fel.setLevel(typ);
 
-               
-                  
-               
-             
-         }
                   break;
               default:
                   break;

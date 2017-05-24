@@ -182,20 +182,20 @@ boolean arbUI = false;
     public String getKom(int k_id){
         
         for(int i=0;i<k_lista.size();i++){
-         System.out.println("Sanna hej"+k_id );
+
         
         if(k_lista.get(i).getKommentarid()==k_id){
            kkk  = k_lista.get(i).getKommentar();  
-           System.out.println("ja här funkar det"+kkk);
+      
         }
             
         }
-        System.out.println("Isak hej"+kkk );
+      
         return kkk;
     }
     public void visaKommentarer(){
         
-       System.out.println("Skriver kommentarer");
+     
         DefaultTableModel mode = (DefaultTableModel)jTable2.getModel();
         Object[] row = new Object[4];
         for(int i=0; i<k_lista.size();i++){
@@ -207,7 +207,7 @@ boolean arbUI = false;
             mode.addRow(row);
             kommentarer =k_lista.get(i).getKommentar();
             
-            System.out.println(kommentarer+"Isak är bäst");
+         
            
        }
     }
@@ -226,9 +226,9 @@ boolean arbUI = false;
                 ta.setLineWrap(true);
                 ta.setCaretPosition(0);
                 ta.setEditable(false);
-                System.out.println("ayyyyyyy"+kommentarID);
+               
                 String badass = getKom(kommentarID);
-                System.out.println("Lets go"+badass);
+                
                 ta.setText(badass);
                 JOptionPane.showMessageDialog(null, new JScrollPane(ta),
                         "Kommentar", JOptionPane.INFORMATION_MESSAGE); 
@@ -559,7 +559,7 @@ boolean arbUI = false;
                          kommentarID =((Integer) jTable2.getModel().getValueAt(row, i));
                          
 
-                         System.out.println(kommentarID);
+                   
       
                        
                   }
@@ -600,11 +600,11 @@ boolean arbUI = false;
             minuter = Double.parseDouble(field2.getText());
             minuter = minuter/60;
             timmar=timmar + minuter;
-            System.out.println(timmar);
+           
             tidbool=true;
             
   
-            System.out.println(timmar+minuter);
+        
     
     }//GEN-LAST:event_jButton2MouseClicked
 
@@ -612,7 +612,7 @@ boolean arbUI = false;
         // TODO add your handling code here:
         
         val=choice1.getSelectedItem();
-        System.out.println(val);
+        
         this.ändraStatus = true;
         
     }//GEN-LAST:event_jButton4ActionPerformed
